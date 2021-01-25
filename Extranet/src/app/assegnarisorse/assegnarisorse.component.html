@@ -1,0 +1,29 @@
+<div class="centrale">
+    <div id="inserisci" name="inserisci" class="inserisci">
+        <b>seleziona la task</b> 
+        <br>
+            <select class="form-control form-control-lg" name="task" id="task" [(ngModel)]="usorisorse.attivita.id">
+              <option *ngFor="let attivita of attivitas" value={{attivita.id}}>{{attivita.id}}-{{attivita.nome}}</option>
+            </select>
+        <br>
+        <b>seleziona il mese</b> 
+        <br>
+            <select class="form-control form-control-lg" name="mese" id="mese" [(ngModel)]="usorisorse.mese">
+              <option *ngFor="let mese of mesi" value={{mese.id}}>{{mese.id}}-{{mese.nome}}</option>
+            </select>
+        <br>
+
+        <b>seleziona il tipo di risorsa</b> 
+        <br>
+            <select class="form-control form-control-lg" name="risorse" id="risorse" [(ngModel)]="usorisorse.tipousorisorse">
+              <option *ngFor="let risorsa of risorse" value={{risorsa.id}}>{{risorse.id}}-{{risorse.nome}}</option>
+            </select>
+        <br>
+    
+        <label for="ore" name="lore"><b>Inserisci i giorni di impiego</b></label>
+        <input class="form-control form-control-lg" type="number"  [(ngModel)]="usorisorse.ore" name="ore">
+    
+        <button type="submit" (click)=inseriscirisorse()>invia</button>
+      </div>
+    </div>
+    

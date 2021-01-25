@@ -41,9 +41,13 @@ export class AssegnataskComponent implements OnInit {
   {
    this.inserisci.setAttivita(this.attivita).subscribe(response=>{})
   }
-  assegnarisorse()
+  assegnarisorseerogate()
   {
-    this.route.navigate(['assegnarisorse'])
+    this.route.navigate(['assegnarisorseerogate'])
+  }
+  assegnarisorsepreventivate()
+  {
+    this.route.navigate(['assegnarisorsepreventivate'])
   }
 
 }

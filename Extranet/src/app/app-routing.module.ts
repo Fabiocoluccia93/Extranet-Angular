@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AssegnarisorseComponent } from './assegnarisorse/assegnarisorse.component';
 import { AssegnataskComponent } from './assegnatask/assegnatask.component';
 import { CreacommessaComponent } from './creacommessa/creacommessa.component';
 import { HomeAdminComponent } from './home-admin/home-admin.component';
@@ -14,6 +15,8 @@ const routes: Routes = [
   { path : "homeadmin" , component : HomeAdminComponent},
   { path: 'creacommessa',component:CreacommessaComponent},
   { path: 'assegnatask',component:AssegnataskComponent},
+  { path: 'assegnarisorseerogate', component:AssegnarisorseComponent, data :{ id_tipo_usorisorse:'1', nome:"Erogate"}},
+  { path: 'assegnarisorsepreventivate', component:AssegnarisorseComponent, data :{ id_tipo_usorisorse:'2', nome:"Previste"}},
   { path: 'task', component:InseriscitaskComponent, data :{ tipologia:'1'}},
   { path: 'ricavi', component:InseriscitaskComponent, data :{ tipologia:'2'}},
   { path: 'prevtask', component:InseriscitaskComponent, data :{ tipologia:'3'}},
