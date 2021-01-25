@@ -1,0 +1,28 @@
+.sidebar {
+    margin: 0;
+    padding: 0;
+    width: 12%;
+    background-color:  #F8F9FA;;
+    position: absolute;
+    height: 100%;
+    overflow: auto;
+    top: 85px;
+  }
+  .sidebar a {
+    display: block;
+    color: rgb(26, 26, 26);
+    padding: 25px;
+    text-decoration: none;
+    font-size: large;
+    text-decoration-style: double;
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  }
+
+ 
+  
+  
+  
+
+  
+
+  
