@@ -16,6 +16,8 @@ import { CreacommessaComponent } from './creacommessa/creacommessa.component';
 import { InseriscitaskComponent } from './inseriscitask/inseriscitask.component';
 import { SelezionacommessaComponent } from './selezionacommessa/selezionacommessa.component';
 import { HttpClientModule } from '@angular/common/http';
+import { AssegnataskComponent } from './assegnatask/assegnatask.component';
+import { AssegnarisorseComponent } from './assegnarisorse/assegnarisorse.component';
 
 
 @NgModule({
@@ -31,6 +33,8 @@ import { HttpClientModule } from '@angular/common/http';
     CreacommessaComponent,
     InseriscitaskComponent,
     SelezionacommessaComponent,
+    AssegnataskComponent,
+    AssegnarisorseComponent,
   ],
   imports: [
     BrowserModule,
