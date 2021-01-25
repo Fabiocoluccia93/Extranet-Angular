@@ -3,6 +3,7 @@ import { Commessa } from '../selezionacommessa/selezionacommessa.component';
 import { FormGroup , FormControl , Validators } from '@angular/forms'
 import { InseriscitaskComponent } from '../inseriscitask/inseriscitask.component';
 import { InserimentoService } from '../services/inserimento.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-creacommessa',
@@ -11,7 +12,7 @@ import { InserimentoService } from '../services/inserimento.service';
 })
 export class CreacommessaComponent implements OnInit {
   commessa : Commessa = new Commessa
-  constructor(private inserisci : InserimentoService) { }
+  constructor(private inserisci : InserimentoService,private route : Router) { }
  
  
   
@@ -26,7 +27,15 @@ export class CreacommessaComponent implements OnInit {
       {
         if(this.commessa.inizio<this.commessa.fine)
           {
+            this.commessa.idcommessa=1
+            console.log(this.commessa.idcommessa)
+            console.log(this.commessa.nome)
+            console.log(this.commessa.cliente)
+            console.log(this.commessa.inizio)
+            console.log(this.commessa.fine)
+            sessionStorage.setItem("idcommessa",this.commessa.idcommessa.toString())
             this.inserisci.setCommessa(this.commessa).subscribe(response=>{})
+            this.route.navigate(['assegnatask']);
           }
         else
         {
