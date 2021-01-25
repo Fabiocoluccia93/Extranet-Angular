@@ -1,22 +1,22 @@
 <div class="centrale">
     <div id="inserisci" name="inserisci" class="inserisci">
-        <b>seleziona la task</b> 
+        <b>seleziona l'attivita</b> 
         <br>
-            <select class="form-control form-control-lg" name="task" id="task" [(ngModel)]="usorisorse.attivita.id">
-              <option *ngFor="let attivita of attivitas" value={{attivita.id}}>{{attivita.id}}-{{attivita.nome}}</option>
+            <select class="form-control form-control-lg" name="task" id="task" [(ngModel)]="usorisorse.attivita">
+              <option *ngFor="let attivita of attivitas" value={{attivita.id}}>{{attivita.id}}-{{attivita.task}}</option>
             </select>
         <br>
         <b>seleziona il mese</b> 
         <br>
-            <select class="form-control form-control-lg" name="mese" id="mese" [(ngModel)]="usorisorse.mese">
+            <select class="form-control form-control-lg" name="mese" id="mese" [(ngModel)]="usorisorse.mesa">
               <option *ngFor="let mese of mesi" value={{mese.id}}>{{mese.id}}-{{mese.nome}}</option>
             </select>
         <br>
 
         <b>seleziona il tipo di risorsa</b> 
         <br>
-            <select class="form-control form-control-lg" name="risorse" id="risorse" [(ngModel)]="usorisorse.tipousorisorse">
-              <option *ngFor="let risorsa of risorse" value={{risorsa.id}}>{{risorse.id}}-{{risorse.nome}}</option>
+            <select class="form-control form-control-lg" name="risorse" id="risorse" [(ngModel)]="usorisorse.risorsa">
+              <option *ngFor="let risorsa of risorse" value={{risorsa.id}}>{{risorsa.id}}-{{risorsa.nome}}</option>
             </select>
         <br>
     

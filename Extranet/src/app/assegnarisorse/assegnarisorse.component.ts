@@ -12,14 +12,15 @@ export class Usorisorse
     public ore? : number |null,
     public ricavi? : number | null,
     public costi? : number | null,
-    public tiporisorsa? : TipoRisorse | null
+    public tiporisorsa? : TipoRisorse | null,
+    public attivita? : Attivita | null
   )  {  }
 }
 
 export class Risorse
 {
   constructor(
-    public id_risorse? : number | null,
+    public id? : number | null,
     public nome? : string | null,
     public tariffa? : number | null
   ){}
