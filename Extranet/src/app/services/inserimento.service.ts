@@ -23,4 +23,9 @@ export class InserimentoService {
     return this.http.get<Commessa[]>(`http://localhost:8080/commessa`);
   }
 
+  setCommessa(c : Commessa)
+  {
+    return this.http.post<Commessa>(`http://localhost:8080/commessa`,c);
+  }
+
 }
