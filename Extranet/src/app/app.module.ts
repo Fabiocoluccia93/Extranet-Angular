@@ -12,6 +12,10 @@ import { HomeAdminComponent } from './home-admin/home-admin.component';
 import { FooterComponent } from './footer/footer.component';
 import { LateraleComponent } from './laterale/laterale.component';
 import { TaskComponent } from './task/task.component';
+import { CreacommessaComponent } from './creacommessa/creacommessa.component';
+import { InseriscitaskComponent } from './inseriscitask/inseriscitask.component';
+import { SelezionacommessaComponent } from './selezionacommessa/selezionacommessa.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -23,12 +27,16 @@ import { TaskComponent } from './task/task.component';
     HomeAdminComponent,
     FooterComponent,
     LateraleComponent,
-    TaskComponent
+    TaskComponent,
+    CreacommessaComponent,
+    InseriscitaskComponent,
+    SelezionacommessaComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule, 
-    FormsModule
+    FormsModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

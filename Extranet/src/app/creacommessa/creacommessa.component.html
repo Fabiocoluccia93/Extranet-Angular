@@ -1,0 +1,22 @@
+<div class="centrale">
+  <h1 class="titolo">Creazione Commessa</h1>
+  <br>
+    <div class="form-group row">
+      <label class="col-2 col-form-label" for="nomecommessa" name="lnomecommessa">Nome Commessa</label>
+       <div class="col-10">
+         <input class="form-control" type="text"   name="nomecommessa" [(ngModel)]="commessa.nome" required>
+      </div>
+        <label class="col-2 col-form-label" for="clientecommessa" name="lclientecommessa">Nome Cliente</label>
+           <div class="col-10">
+             <input class="form-control" type="text"   name="clientecommessa" [(ngModel)]="commessa.cliente">
+          </div>
+            <label for="datainizio" class="col-2 col-form-label">Data Inizio</label>
+           <div class="col-10">
+              <input class="form-control" type="date" value="2011-08-19" id="datainizio" [(ngModel)]="commessa.inizio">
+           </div>
+            <label for="datafine" class="col-2 col-form-label">Data Fine</label>
+    <div class="col-10">
+    <input class="form-control" type="date" value="2011-08-19" id="datafine" [(ngModel)]="commessa.fine">
+    </div>
+    <button type="submit" (click)=inserisci()>Inserisci Commessa</button>
+</div>

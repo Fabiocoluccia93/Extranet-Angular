@@ -1,1 +1,9 @@
-/* You can add global styles to this file, and also import other style files */
+.centrale
+{
+    padding-left: 20%;
+    width: 80%;
+}
+.titolo
+{
+    text-align: center;
+}

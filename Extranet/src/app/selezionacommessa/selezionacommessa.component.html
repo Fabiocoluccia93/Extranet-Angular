@@ -1,0 +1,7 @@
+<div class="centrale">
+    <select class="form-control form-control-lg" name="commessa" id="commessa" [(ngModel)]="commessasel.idcommessa">
+        <option *ngFor="let commessa of commesse" value={{commessa.idcommessa}}>{{commessa.idcommessa}}-{{commessa.nome}}</option>
+      </select>
+
+    <button type="submit" (click)=inserisce()>invia</button>
+</div>
