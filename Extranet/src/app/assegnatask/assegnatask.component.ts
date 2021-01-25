@@ -7,6 +7,7 @@ import { InserimentoService } from '../services/inserimento.service';
 export class Attivita
 {
   constructor(
+    public id? : number | null,
     public task? : number | null,   //tipo task
     public commessa? : number | null, //tipo commessa
     public valore? : number | null
