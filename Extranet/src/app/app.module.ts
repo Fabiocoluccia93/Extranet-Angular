@@ -40,7 +40,7 @@ import { AssegnarisorseComponent } from './assegnarisorse/assegnarisorse.compone
     BrowserModule,
     AppRoutingModule, 
     FormsModule,
-    HttpClientModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

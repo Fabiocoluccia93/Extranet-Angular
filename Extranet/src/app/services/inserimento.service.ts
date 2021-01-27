@@ -1,9 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Mese, Task } from '../inseriscitask/inseriscitask.component';
+import { Avanzamento, Mese, Task } from '../inseriscitask/inseriscitask.component';
 import { Commessa } from '../selezionacommessa/selezionacommessa.component';
 import { Attivita } from '../assegnatask/assegnatask.component';
 import { Risorse, TipoRisorse } from '../assegnarisorse/assegnarisorse.component';
+import { ThrowStmt } from '@angular/compiler';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -37,14 +40,27 @@ export class InserimentoService {
     return this.http.get<TipoRisorse[]>(`http://localhost:8080/tiporisorse`);
   }
 
-  setCommessa(c : Commessa)
+  setCommessa( c: Commessa )
   {
-    return this.http.post<Commessa>(`http://localhost:8080/commessa`,c);
+    return this.http.post<number>(`http://localhost:8080/commessa`, c ) 
   }
 
-  setAttivita(a : Attivita)
+  getCommessaId(id : number)
+  {
+    return this.http.get<Commessa>(`http://localhost:8080/commessa/${id}`)
+  }
+    
+    // sessionStorage.setItem("idcommessa",newCommessa.idcommessa.toString());
+  
+
+  setAttivita(a : Attivita) 
   {
     return this.http.post<Attivita>(`http://localhost:8080/assegnaattivita`,a);
+  }
+
+  setAvanzamento(a : Avanzamento)
+  {
+    return this.http.post<Avanzamento>(`http://localhost:8080/avanzamento` ,a)
   }
 
 }

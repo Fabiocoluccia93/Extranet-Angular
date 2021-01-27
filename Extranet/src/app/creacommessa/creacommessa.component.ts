@@ -4,6 +4,8 @@ import { FormGroup , FormControl , Validators } from '@angular/forms'
 import { InseriscitaskComponent } from '../inseriscitask/inseriscitask.component';
 import { InserimentoService } from '../services/inserimento.service';
 import { Router } from '@angular/router';
+import { HttpClient, HttpResponse } from '@angular/common/http';
+import { observable } from 'rxjs';
 
 @Component({
   selector: 'app-creacommessa',
@@ -12,34 +14,48 @@ import { Router } from '@angular/router';
 })
 export class CreacommessaComponent implements OnInit {
   commessa : Commessa = new Commessa
-  constructor(private inserisci : InserimentoService,private route : Router) { }
- 
- 
+  constructor(private inserisci : InserimentoService,private route : Router,private http: HttpClient) { }
+
   
   ngOnInit(): void 
   {
-   
+  
   }
 
-    inseriscicommessa()
+    inseriscicommessa() 
     {
+      
       if(this.commessa.nome!=null && this.commessa.nome!='' && this.commessa.cliente!=null && this.commessa.cliente!='' && this.commessa.inizio!=null && this.commessa.fine!=null)
       {
         if(this.commessa.inizio<this.commessa.fine)
-          {
-            this.commessa.idcommessa=1
+         {
             console.log(this.commessa.idcommessa)
             console.log(this.commessa.nome)
             console.log(this.commessa.cliente)
-            console.log(this.commessa.inizio)
-            console.log(this.commessa.fine)
-            sessionStorage.setItem("idcommessa",this.commessa.idcommessa.toString())
-            this.inserisci.setCommessa(this.commessa).subscribe(response=>{})
+           console.log(this.commessa.inizio)
+           console.log(this.commessa.fine)
+           this.commessa.valore=0
+          
+           
+              this.commessa.inizio=null
+              this.commessa.fine=null
+              this.inserisci.setCommessa(this.commessa).subscribe(response=>{
+                
+              
+                  sessionStorage.setItem("idcommessa",response.toString());
+                  console.log(response)
+              
+                
+              })
+              
+
+            
+            
             this.route.navigate(['assegnatask']);
           }
         else
         {
-          window.alert("insrisci una data di inzio antecedente alla data di fine")
+          window.alert("inserisci una data di inzio antecedente alla data di fine")
         }
       }
       else 

@@ -8,8 +8,8 @@ export class Attivita
 {
   constructor(
     public id? : number | null,
-    public task? : number | null,   //tipo task
-    public commessa? : number | null, //tipo commessa
+    public task? : Task | null,   //tipo task
+    public commessa? : Commessa | null, //tipo commessa
     public valore? : number | null
   ){}
 }
@@ -24,7 +24,7 @@ export class AssegnataskComponent implements OnInit {
   constructor(private inserisci : InserimentoService,private route : Router) { }
   tasks : Task [] = []
   attivita : Attivita = new Attivita
-  
+  a : number = 0
   ngOnInit(): void 
   {
     if(this.idcommessa!=null)
@@ -32,7 +32,15 @@ export class AssegnataskComponent implements OnInit {
       this.idcommessa = sessionStorage.getItem("idcommessa")
       if(this.idcommessa!=null)
       {
-         this.attivita.commessa = + this.idcommessa
+         this.a  = +this.idcommessa
+         //passare get a 
+         this.inserisci.getCommessaId(this.a).subscribe(response=>{
+          this.attivita.commessa=response
+         })
+         if(this.attivita.commessa!=null)
+         {
+         console.log("ID Commessa "+this.attivita.commessa.idcommessa)
+        }
       }
     }
     this.inserisci.getTasks().subscribe(response=>{this.tasks=response;})
