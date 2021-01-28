@@ -12,11 +12,11 @@
           </div>
             <label for="datainizio" class="col-2 col-form-label">Data Inizio</label>
            <div class="col-10">
-              <input class="form-control" type="date" value="2011-08-19" id="datainizio" [(ngModel)]="commessa.inizio">
+              <input class="form-control" type="date" value="2011-08-19" id="datainizio"[(ngModel)]="commessa.inizio" ><!---->
            </div>
             <label for="datafine" class="col-2 col-form-label">Data Fine</label>
     <div class="col-10">
-    <input class="form-control" type="date" value="2011-08-19" id="datafine" [(ngModel)]="commessa.fine">
+    <input class="form-control" type="date" value="2011-08-19" id="datafine" [(ngModel)]="commessa.fine"><!-- -->
     </div>
     <button type="submit" (click)=inseriscicommessa()>Inserisci Commessa</button>
 </div>

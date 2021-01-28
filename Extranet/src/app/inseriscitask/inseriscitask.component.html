@@ -1,14 +1,15 @@
+<!-- form inserimento avanzamento-->
 <div class="centrale">
 <div id="inserisci" name="inserisci" class="inserisci">
     <b>Inserisci la task da selezionare</b> 
     <br>
-        <select class="form-control form-control-lg" name="task" id="task" [(ngModel)]="avanzamento.attivita">
+        <select class="form-control form-control-lg" name="task" id="task" [(ngModel)]="idtask">
           <option *ngFor="let task of tasks" value={{task.id}}>{{task.id}}-{{task.nome}}</option>
         </select>
     <br>
     <b>Inserisci mese da selezionare</b> 
     <br>
-        <select class="form-control form-control-lg" name="mese" id="mese" [(ngModel)]="avanzamento.mese">
+        <select class="form-control form-control-lg" name="mese" id="mese" [(ngModel)]="idmese">
           <option *ngFor="let mese of mesi" value={{mese.id}}>{{mese.id}}-{{mese.nome}}</option>
         </select>
     <br>

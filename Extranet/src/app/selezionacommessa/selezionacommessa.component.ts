@@ -29,6 +29,7 @@ export class SelezionacommessaComponent implements OnInit {
   ngOnInit(): void 
   {
     this.inserimento.getCommessa().subscribe(response=>{this.commesse=response;})
+    
   }
   inserisce()
   {
