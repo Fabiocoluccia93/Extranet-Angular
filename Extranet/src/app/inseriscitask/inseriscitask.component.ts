@@ -7,7 +7,7 @@ import { InserimentoService } from '../services/inserimento.service';
 export class Task
 {
     constructor(
-    public id? : number, 
+    public id_task? : number, 
     public nome? : string
     ) {}
 }
@@ -56,7 +56,7 @@ export class InseriscitaskComponent implements OnInit {
     this.inserimento.getMesi().subscribe(response1=>{this.mesi=response1;})
   }
 
-  inserisce()
+ /* inserisce()
   {
        if(this.avanzamento.percentuale!=null && this.avanzamento.percentuale>=0 && this.avanzamento.percentuale<=100)
        {
@@ -68,8 +68,8 @@ export class InseriscitaskComponent implements OnInit {
          }
          for(let i=0;i<this.tasks.length;i++)
          {
-            if(this.tasks[i].id==this.idtask)
-            this.avanzamento.attivita=this.tasks[i]
+            if(this.tasks[i].id_task==this.idtask)
+            //this.avanzamento.attivita=this.tasks[i]
          }
 
           window.alert(this.avanzamento.mese)
@@ -83,7 +83,7 @@ export class InseriscitaskComponent implements OnInit {
           window.alert("false control")
        }
          
-  }
+  }*/
 
   
 }

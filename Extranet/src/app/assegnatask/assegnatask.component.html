@@ -2,10 +2,15 @@
     <div id="inserisci" name="inserisci" class="inserisci">
         <b>Inserisci la task da selezionare</b> 
         <br>
-            <select class="form-control form-control-lg" name="task" id="task" [(ngModel)]="attivita.task">
+         <!--   <select class="form-control form-control-lg" name="task" id="task" onchange=[(ngModel)]=task>
               <option *ngFor="let task of tasks" value={{task.id}}>{{task.id}}-{{task.nome}}</option>
-            </select>
+            </select>-->
         <br>
+        <select [(ngModel)]="task" (ngModelChange)="taskChanged($event)" name="data" class="form-control form-control-lg">
+            <option *ngFor="let task1 of tasks" [ngValue]="task1">
+                {{task1.id_task}}-{{task1.nome}}
+            </option>
+        </select>
         <b>Inserisci valore della task</b>
         <input type="number" class="form-control-lg" name="valore" id="valore"  [(ngModel)]="attivita.valore">
         <button type="submit" (click)=inserisciattivita()>Inserisci Attivita</button>
