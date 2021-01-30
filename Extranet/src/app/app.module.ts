@@ -18,6 +18,7 @@ import { SelezionacommessaComponent } from './selezionacommessa/selezionacommess
 import { HttpClientModule } from '@angular/common/http';
 import { AssegnataskComponent } from './assegnatask/assegnatask.component';
 import { AssegnarisorseComponent } from './assegnarisorse/assegnarisorse.component';
+import { PreventivorisorseComponent } from './preventivorisorse/preventivorisorse.component';
 
 
 @NgModule({
@@ -35,6 +36,7 @@ import { AssegnarisorseComponent } from './assegnarisorse/assegnarisorse.compone
     SelezionacommessaComponent,
     AssegnataskComponent,
     AssegnarisorseComponent,
+    PreventivorisorseComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,14 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, ActivatedRouteSnapshot } from '@angular/router';
 import { Attivita } from '../assegnatask/assegnatask.component';
 import { InserimentoService } from '../services/inserimento.service';
 
 
 export class Task
 {
+  id_task : number = 0
+  nome : string = ''
     constructor(
-    public id? : number, 
-    public nome? : string
+    id_task? : number, 
+    nome? : string
     ) {}
 }
 
@@ -27,8 +29,18 @@ export class Avanzamento
     public attivita? : Attivita  | null,
     public valore? : number  | null,
     public percentuale? : number  | null,
-    public tipo? : number | null,
+    public tipoAvanzamento? : TipoAvanzamento | null,
   ){}
+}
+export class TipoAvanzamento
+{
+  constructor(
+    public  id_tipo_avanzamento? : number | null,
+    public nome? : string  | null
+  )
+  {
+
+  }
 }
 
 @Component({
@@ -38,50 +50,107 @@ export class Avanzamento
 })
 export class InseriscitaskComponent implements OnInit {
 
-  constructor(private inserimento : InserimentoService,private activatedroute:ActivatedRoute) { }
-  tasks : Task[] = []
+  constructor(private inserisci : InserimentoService,public activatedroute:ActivatedRoute) { }
+  attivitas : Attivita[] = []
   mesi : Mese[] = []
 
+  percentuale : number | null = 0
+
   mese : Mese = new Mese
-  i : number = 0
+  attivita : Attivita = new Attivita
+
+  a : number = 0
 
   idtask? : number |null
   idmese? : number |null
 
+  idcommessa : String | null =''
+
+  tipoAvanzamento : TipoAvanzamento = new TipoAvanzamento
+
   avanzamento : Avanzamento = new Avanzamento//(null,null,null,null,null)
   ngOnInit(): void 
   {
-    this.activatedroute.data.subscribe(data => {this.avanzamento.tipo=data.tipologia})
-    this.inserimento.getTasks().subscribe(response=>{this.tasks=response;})
-    this.inserimento.getMesi().subscribe(response1=>{this.mesi=response1;})
+    this.activatedroute.data.subscribe(data => { 
+      switch(data.kind)
+      {
+        case('task') :
+        {
+          this.tipoAvanzamento.id_tipo_avanzamento = 1
+          this.tipoAvanzamento.nome = "Task"
+          console.log('task')
+          break;
+        }
+        case('ricavi') :
+        {
+          this.tipoAvanzamento.id_tipo_avanzamento = 2 
+          this.tipoAvanzamento.nome = "Ricavi"
+          console.log('ricavi')
+          break;
+        }
+        case('previsionericavi') :
+        {
+          this.tipoAvanzamento.id_tipo_avanzamento = 3 
+          this.tipoAvanzamento.nome = "Previsione ricavi"
+          console.log('previsionericavi')
+          break;
+        }
+        case('previsionetask') :
+        {
+          this.tipoAvanzamento.id_tipo_avanzamento = 4
+          this.tipoAvanzamento.nome = "Previsione task"
+          console.log('previsionetask')
+          break;
+        }
+      }
+    })
+    this.avanzamento.tipoAvanzamento=this.tipoAvanzamento
+    console.log("avanzamento")
+    console.log(this.avanzamento.tipoAvanzamento.id_tipo_avanzamento)
+    console.log(this.avanzamento.tipoAvanzamento.nome)
+    console.log("***********")
+    this.idcommessa = sessionStorage.getItem("idcommessa")
+    if(this.idcommessa!=null)
+    {
+       this.a  = +this.idcommessa
+       console.log("ID Commessa nello storage"+this.a)
+       //passare get a 
+       this.inserisci.getCommessaAttivita(this.a).subscribe(response=>{
+       this.attivitas=response
+       })
+       if(this.attivita.commessa!=null)
+       {
+        console.log("ID Commessa "+this.attivita.commessa.id_commessa)
+       }
+   
+    this.inserisci.getMesi().subscribe(response=>{this.mesi=response;})
+  }
+ }
+
+  meseChanged(mese : Mese)
+  {
+    this.avanzamento.mese = mese
+  }
+
+  attivitaChanged(attivita : Attivita)
+  {
+    this.avanzamento.attivita = attivita
   }
 
   inserisce()
   {
-       if(this.avanzamento.percentuale!=null && this.avanzamento.percentuale>=0 && this.avanzamento.percentuale<=100)
+       if(this.percentuale!=null && this.percentuale>=0 && this.percentuale<=100)
        {
-         
-         for(let i=0;i<this.mesi.length;i++)
-         {
-            if(this.mesi[i].id==this.idmese)
-            this.avanzamento.mese=this.mesi[i]
-         }
-         for(let i=0;i<this.tasks.length;i++)
-         {
-            if(this.tasks[i].id==this.idtask)
-            this.avanzamento.attivita=this.tasks[i]
-         }
-
-          window.alert(this.avanzamento.mese)
-          window.alert(this.avanzamento.attivita)
-          window.alert(this.avanzamento.percentuale)
-          window.alert(this.avanzamento.tipo)
-          this.inserimento.setAvanzamento(this.avanzamento).subscribe()
+        this.avanzamento.percentuale=this.percentuale
        }
        else
        {
-          window.alert("false control")
+         window.alert("percentuale errata")
        }
+       this.inserisci.setAvanzamento(this.avanzamento).subscribe(response =>{ 
+        
+             })
+
          
   }
 

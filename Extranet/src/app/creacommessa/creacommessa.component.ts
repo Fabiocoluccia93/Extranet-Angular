@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Commessa } from '../selezionacommessa/selezionacommessa.component';
 import { FormGroup , FormControl , Validators } from '@angular/forms'
-import { InseriscitaskComponent } from '../inseriscitask/inseriscitask.component';
 import { InserimentoService } from '../services/inserimento.service';
 import { Router } from '@angular/router';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { observable } from 'rxjs';
+
+
 
 @Component({
   selector: 'app-creacommessa',
@@ -29,7 +30,7 @@ export class CreacommessaComponent implements OnInit {
       {
         if(this.commessa.inizio<this.commessa.fine)
          {
-            console.log(this.commessa.idcommessa)
+            console.log(this.commessa.id_commessa)
             console.log(this.commessa.nome)
             console.log(this.commessa.cliente)
            console.log(this.commessa.inizio)
@@ -37,13 +38,13 @@ export class CreacommessaComponent implements OnInit {
            this.commessa.valore=0
           
            
-              this.commessa.inizio=null
-              this.commessa.fine=null
+           //   this.commessa.inizio=null
+           //   this.commessa.fine=null
               this.inserisci.setCommessa(this.commessa).subscribe(response=>{
                 
               
                   sessionStorage.setItem("idcommessa",response.toString());
-                  console.log(response)
+                  console.log("id commessa in creacommessa"+response.toString())
               
                 
               })

@@ -2,10 +2,13 @@
     <div id="inserisci" name="inserisci" class="inserisci">
         <b>Inserisci la task da selezionare</b> 
         <br>
-            <select class="form-control form-control-lg" name="task" id="task" [(ngModel)]="attivita.task">
-              <option *ngFor="let task of tasks" value={{task.id}}>{{task.id}}-{{task.nome}}</option>
-            </select>
+        <select [(ngModel)]="task" (ngModelChange)="taskChanged($event)" name="data" class="form-control form-control-lg">
+            <option *ngFor="let task1 of tasks" [ngValue]="task1">
+                {{task1.id_task}}-{{task1.nome}}
+            </option>
+       </select> 
         <br>
+
         <b>Inserisci valore della task</b>
         <input type="number" class="form-control-lg" name="valore" id="valore"  [(ngModel)]="attivita.valore">
         <br>
@@ -14,4 +17,20 @@
         <button type="submit" (click)=assegnarisorseerogate()>Passa ad assegnamento risorse erogate</button>
         <button type="submit" (click)=assegnarisorsepreventivate()>Passa ad assegnamento risorse preventivate</button>
     </div>
+</div>
+
+<div class="centrale">
+<table>
+    <thead>
+        <th>Nome Attivita</th>
+        <th>Valore Attivita</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let attivita1 of attivitas">
+        <td>{{attivita1.task?.nome}}</td>
+        <td>{{attivita1.valore}}</td>
+       </tr>
+    </tbody>
+</table>
+
 </div>

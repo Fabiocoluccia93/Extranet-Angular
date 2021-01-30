@@ -1,22 +1,27 @@
 <!-- form inserimento avanzamento-->
 <div class="centrale">
 <div id="inserisci" name="inserisci" class="inserisci">
-    <b>Inserisci la task da selezionare</b> 
+    <b>seleziona l'attivita</b> 
     <br>
-        <select class="form-control form-control-lg" name="task" id="task" [(ngModel)]="idtask">
-          <option *ngFor="let task of tasks" value={{task.id}}>{{task.id}}-{{task.nome}}</option>
-        </select>
+        <select [(ngModel)]="attivita" (ngModelChange)="attivitaChanged($event)" name="attivita" class="form-control form-control-lg">
+            <option *ngFor="let attivita1 of attivitas" [ngValue]="attivita1">
+                {{attivita1.id}}-{{attivita1.task.nome}}
+            </option>
+        </select> 
     <br>
-    <b>Inserisci mese da selezionare</b> 
+<b>seleziona il mese</b> 
     <br>
-        <select class="form-control form-control-lg" name="mese" id="mese" [(ngModel)]="idmese">
-          <option *ngFor="let mese of mesi" value={{mese.id}}>{{mese.id}}-{{mese.nome}}</option>
-        </select>
-    <br>
+        <select [(ngModel)]="mese" (ngModelChange)="meseChanged($event)" name="attivita" class="form-control form-control-lg">
+            <option *ngFor="let mese1 of mesi" [ngValue]="mese1">
+                {{mese1.id}}-{{mese1.nome}}
+            </option>
+        </select> 
+    
+<br>
 
     <label for="percentuale" name="lpercentuale"><b>Inserisci Percentuale di completamento</b></label>
-    <input class="form-control form-control-lg" type="number"  [(ngModel)]="avanzamento.percentuale" name="percentuale">
+    <input class="form-control form-control-lg" type="number"  [(ngModel)]="percentuale" name="percentuale">
 
-    <button type="submit" (click)=inserisce()>invia</button>
+    <button type="submit" (click)=inserisce()>invia</button> 
   </div>
 </div>
