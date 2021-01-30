@@ -7,6 +7,8 @@ import { Router } from '@angular/router';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { observable } from 'rxjs';
 
+
+
 @Component({
   selector: 'app-creacommessa',
   templateUrl: './creacommessa.component.html',
@@ -43,7 +45,7 @@ export class CreacommessaComponent implements OnInit {
                 
               
                   sessionStorage.setItem("idcommessa",response.toString());
-                  console.log(response)
+                  console.log("id commessa in creacommessa"+response.toString())
               
                 
               })

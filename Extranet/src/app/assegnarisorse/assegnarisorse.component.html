@@ -1,13 +1,13 @@
 <div class="centrale">
     <div id="inserisci" name="inserisci" class="inserisci">
         <b>seleziona l'attivita</b> 
-        <br>
+          <br>
             <select class="form-control form-control-lg" name="task" id="task" [(ngModel)]="usorisorse.attivita">
               <option *ngFor="let attivita of attivitas" value={{attivita.id}}>{{attivita.id}}-{{attivita.task}}</option>
             </select>
-        <br>
+          <br>
         <b>seleziona il mese</b> 
-        <br>
+          <br>
             <select class="form-control form-control-lg" name="mese" id="mese" [(ngModel)]="usorisorse.mesa">
               <option *ngFor="let mese of mesi" value={{mese.id}}>{{mese.id}}-{{mese.nome}}</option>
             </select>

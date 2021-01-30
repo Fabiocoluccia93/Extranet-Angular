@@ -6,9 +6,11 @@ import { InserimentoService } from '../services/inserimento.service';
 
 export class Task
 {
+  id_task : number = 0
+  nome : string = ''
     constructor(
-    public id_task? : number, 
-    public nome? : string
+    id_task? : number, 
+    nome? : string
     ) {}
 }
 
