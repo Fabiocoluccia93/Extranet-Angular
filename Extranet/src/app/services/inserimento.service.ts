@@ -29,7 +29,7 @@ export class InserimentoService {
 
   getCommessa()
   {
-    return this.http.get<Commessa[]>(`http://localhost:8080/commessa`);
+    return this.http.get<Commessa[]>(`http://localhost:8080/commessalist`);
   }
 
   getRisorse()
@@ -78,5 +78,6 @@ export class InserimentoService {
   {
     return this.http.post<Usorisorse>(`http://localhost:8080/usorisorse`,u)
   }
+
 
 }

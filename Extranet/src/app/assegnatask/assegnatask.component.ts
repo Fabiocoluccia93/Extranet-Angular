@@ -53,7 +53,7 @@ export class AssegnataskComponent implements OnInit {
          })
          if(this.attivita.commessa!=null)
          {
-          console.log("ID Commessa "+this.attivita.commessa.idcommessa)
+          console.log("ID Commessa "+this.attivita.commessa.id_commessa)
          }
       }
     

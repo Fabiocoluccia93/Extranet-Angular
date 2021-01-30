@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Commessa } from '../selezionacommessa/selezionacommessa.component';
 import { FormGroup , FormControl , Validators } from '@angular/forms'
-import { InseriscitaskComponent } from '../inseriscitask/inseriscitask.component';
 import { InserimentoService } from '../services/inserimento.service';
 import { Router } from '@angular/router';
 import { HttpClient, HttpResponse } from '@angular/common/http';
@@ -31,7 +30,7 @@ export class CreacommessaComponent implements OnInit {
       {
         if(this.commessa.inizio<this.commessa.fine)
          {
-            console.log(this.commessa.idcommessa)
+            console.log(this.commessa.id_commessa)
             console.log(this.commessa.nome)
             console.log(this.commessa.cliente)
            console.log(this.commessa.inizio)
