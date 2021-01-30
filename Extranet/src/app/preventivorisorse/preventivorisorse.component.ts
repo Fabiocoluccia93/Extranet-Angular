@@ -6,6 +6,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 
 
+
 export class UsoRisorse
 {
   
@@ -46,7 +47,7 @@ export class Risorsa
 })
 export class PreventivorisorseComponent implements OnInit {
 
-  constructor(private inserisci : InserimentoService,private  route : ActivatedRoute) { }
+  constructor(private inserisci : InserimentoService,private  activatedroute : ActivatedRoute) { }
 
   attivitas : Attivita [] = []
   mesi : Mese [] = []
@@ -70,9 +71,25 @@ export class PreventivorisorseComponent implements OnInit {
 
   ngOnInit(): void 
   { 
-    
-    
-      this.idtipousorisorse = sessionStorage.getItem('tipoUsoRisorse')
+    this.activatedroute.data.subscribe(data => { 
+      switch(data.kind)
+      {
+        case('preventivate') :
+        {
+          this.tipoUsoRisorse.id_tipo_usorisorse=1
+          this.tipoUsoRisorse.nome='Preventivo'
+          break;
+        }
+        case('erogate'):
+        {
+          this.tipoUsoRisorse.id_tipo_usorisorse=2
+          this.tipoUsoRisorse.nome='Erogate'
+          break;
+        }
+      }
+    })
+     this.usoRisorse.tipoUsoRisorse=this.tipoUsoRisorse
+  /*    this.idtipousorisorse = sessionStorage.getItem('tipoUsoRisorse')
       if(this.idtipousorisorse!= null)
       {
         this.a = +this.idtipousorisorse
@@ -84,9 +101,10 @@ export class PreventivorisorseComponent implements OnInit {
         {
           console.log("tipo uso risorse id: "+this.usoRisorse.tipoUsoRisorse.id_tipo_usorisorse)
           console.log("tipo uso risorse nome:  "+this.usoRisorse.tipoUsoRisorse.nome)
+          
         }
         
-      }
+      }*/
     
     
     
