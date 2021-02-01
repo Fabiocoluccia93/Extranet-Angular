@@ -1,13 +1,13 @@
 <div class="centrale">
     <div id="inserisci" name="inserisci" class="inserisci">
-        <b>seleziona l'attivita</b> 
+        <!-- <b>seleziona l'attivita</b> 
             <br>
                 <select [(ngModel)]="attivita" (ngModelChange)="attivitaChanged($event)" name="attivita" class="form-control form-control-lg">
                     <option *ngFor="let attivita1 of attivitas" [ngValue]="attivita1">
                         {{attivita1.id}}-{{attivita1.task.nome}}
                     </option>
                 </select> 
-            <br>
+            <br> -->
         <b>seleziona il mese</b> 
             <br>
                 <select [(ngModel)]="mese" (ngModelChange)="meseChanged($event)" name="attivita" class="form-control form-control-lg">
@@ -30,4 +30,11 @@
         
         <button type="submit" (click)=inseriscirisorse()>invia</button>
     </div>
+</div>
+<div class="centrale">
+    <h1>{{messaggio}}</h1>
+</div>
+
+<div class="centrale" >
+    <button class="btn btn-secondary" type="submit" (click)=assegnarisorsepreventivate()>Passa ad assegnamento risorse preventivate</button>
 </div>

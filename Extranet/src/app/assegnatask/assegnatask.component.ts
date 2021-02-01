@@ -41,7 +41,7 @@ export class AssegnataskComponent implements OnInit {
   {
     
     //prendo id commessa dal session storage e cerco nel db l'oggetto che passo a attivita.commessa
-
+      
       this.idcommessa = sessionStorage.getItem("idcommessa")
       if(this.idcommessa!=null)
       {
@@ -60,7 +60,7 @@ export class AssegnataskComponent implements OnInit {
 
     this.inserisci.getTasks().subscribe(response=>{this.tasks=response})
     this.inserisci.getCommessaAttivita(this.a).subscribe(response=>{this.attivitas=response;})
-      
+  
   }
 
   taskChanged(taska : Task)
@@ -88,9 +88,8 @@ export class AssegnataskComponent implements OnInit {
     }
     else
     {
-      window.alert("attivita nuova")
       this.attivita.task=taska
-     
+      
     }
     console.log(taska.id_task)
     console.log(taska.nome)
@@ -119,10 +118,6 @@ export class AssegnataskComponent implements OnInit {
     //sessionStorage.setItem('tipoUsoRisorse', '1')
     this.route.navigate(['assegnarisorseerogate'])
   }
-  assegnarisorsepreventivate()
-  {
-    //sessionStorage.setItem('tipoUsoRisorse', '2')
-    this.route.navigate(['assegnarisorsepreventivate'])
-  }
+  
 
 }

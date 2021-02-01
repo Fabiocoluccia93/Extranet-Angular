@@ -47,7 +47,7 @@ export class InserimentoService {
     return this.http.post<number>(`http://localhost:8080/commessa`, c ) 
   }
 
-  getCommessaId(id : number)
+  getCommessaId(id : number) 
   {
     return this.http.get<Commessa>(`http://localhost:8080/commessa/${id}`)
   }
@@ -69,14 +69,19 @@ export class InserimentoService {
     return this.http.post<Attivita>(`http://localhost:8080/assegnaattivita`,a);
   }
 
-  setAvanzamento(a : Avanzamento)
+  setAvanzamento(a : Avanzamento) 
   {
-    return this.http.post<Avanzamento>(`http://localhost:8080/avanzamento` ,a)
+    return this.http.post<string>(`http://localhost:8080/avanzamento` ,a)
+  }
+
+  modAvanzamento(a : Avanzamento) 
+  {
+    return this.http.put<string>(`http://localhost:8080/modavanzamento` ,a)
   }
 
   setUsoRisorse(u :Usorisorse)
   {
-    return this.http.post<Usorisorse>(`http://localhost:8080/usorisorse`,u)
+    return this.http.post<string>(`http://localhost:8080/usorisorse`,u)
   }
 
 

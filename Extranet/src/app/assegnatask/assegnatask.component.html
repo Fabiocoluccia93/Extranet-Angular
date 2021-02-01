@@ -11,24 +11,28 @@
 
         <b>Inserisci valore della task</b>
         <input type="number" class="form-control-lg" name="valore" id="valore"  [(ngModel)]="attivita.valore">
-        <button type="submit" (click)=inserisciattivita()>Inserisci Attivita</button>
-        <button type="submit" (click)=assegnarisorseerogate()>Passa ad assegnamento risorse erogate</button>
-        <button type="submit" (click)=assegnarisorsepreventivate()>Passa ad assegnamento risorse preventivate</button>
+        <br>
+        <button class="btn btn-secondary" type="submit" (click)=inserisciattivita()>Inserisci Attivita</button>
+        
+        
     </div>
 </div>
 
 <div class="centrale">
-<table>
-    <thead>
-        <th>Nome Attivita</th>
-        <th>Valore Attivita</th>
-    </thead>
-    <tbody>
-        <tr *ngFor="let attivita1 of attivitas">
-        <td>{{attivita1.task?.nome}}</td>
-        <td>{{attivita1.valore}}</td>
-       </tr>
-    </tbody>
-</table>
+    <table class="table">
+        <thead>
+            <th>Nome Attivita</th>
+            <th>Valore Attivita</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let attivita1 of attivitas">
+            <td>{{attivita1.task?.nome}}</td>
+            <td>{{attivita1.valore}}</td>
+        </tr>
+        </tbody>
+    </table>
 
+</div>
+<div class="centrale">
+    <button type="submit" class="btn btn-secondary" (click)=assegnarisorseerogate()>Passa ad assegnamento risorse erogate</button>
 </div>

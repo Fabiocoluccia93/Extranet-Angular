@@ -66,6 +66,15 @@ export class InseriscitaskComponent implements OnInit {
 
   idcommessa : String | null =''
 
+  messaggio : string | null = 'messaggio'
+  messaggiolocale : string | null = ''
+
+  
+
+  //insertloc = false
+  insert =   true
+  modify = false
+
   tipoAvanzamento : TipoAvanzamento = new TipoAvanzamento
 
   avanzamento : Avanzamento = new Avanzamento//(null,null,null,null,null)
@@ -147,11 +156,41 @@ export class InseriscitaskComponent implements OnInit {
        {
          window.alert("percentuale errata")
        }
+       
        this.inserisci.setAvanzamento(this.avanzamento).subscribe(response =>{ 
-        
-             })
-
-         
+       this.messaggiolocale=response
+       if(this.messaggiolocale == "modifica" )
+       {
+        this.messaggio =  "Attivita già inserita se vuoi eseguire la modifica premi il tasto modifica"
+        let insertloc=false
+        let modifyloc= true
+        this.insert = insertloc
+        this.modify = modifyloc
+        console.log("insert= "+insertloc)
+        console.log("insert= "+this.insert)
+       }
+       else
+       {
+        this.messaggio = this.messaggiolocale
+       }
+             })  
+            
+            
+             
+  }
+  modifica()
+  {
+    if(this.percentuale!=null && this.percentuale>=0 && this.percentuale<=100)
+    {
+     this.avanzamento.percentuale=this.percentuale
+    }
+    else
+    {
+      window.alert("percentuale errata")
+    }
+    this.inserisci.modAvanzamento(this.avanzamento).subscribe(response =>{ 
+      this.messaggiolocale=response
+    this.messaggio = this.messaggiolocale})
   }
 
   
