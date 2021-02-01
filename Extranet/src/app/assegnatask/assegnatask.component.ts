@@ -116,12 +116,12 @@ export class AssegnataskComponent implements OnInit {
   }
   assegnarisorseerogate()
   {
-    sessionStorage.setItem('tipoUsoRisorse', '1')
-    this.route.navigate(['assegnarisorsepreventivate'])
+    //sessionStorage.setItem('tipoUsoRisorse', '1')
+    this.route.navigate(['assegnarisorseerogate'])
   }
   assegnarisorsepreventivate()
   {
-    sessionStorage.setItem('tipoUsoRisorse', '2')
+    //sessionStorage.setItem('tipoUsoRisorse', '2')
     this.route.navigate(['assegnarisorsepreventivate'])
   }
 
