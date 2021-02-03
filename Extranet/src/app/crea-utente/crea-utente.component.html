@@ -1,0 +1,20 @@
+<!-- form inserimento avanzamento-->
+<div class="centrale">
+    <h1 class="titolo">Creazione nuovo utente</h1>
+    <div id="inserisci">
+        <b>seleziona tipologia nuovo utente</b> 
+        <br>
+            <select [(ngModel)]="gruppo.id" (ngModelChange)="gruppoChanged($event)" name="gruppo" class="form-control form-control-lg">
+                <option *ngFor="let tipologia of tipologie" [ngValue]="tipologia">
+                    {{tipologia.descrizione}}
+                </option>
+            </select>
+        <br>       
+    <br> 
+        <label for="Username"><b>Inserisci username del nuovo utente</b></label>
+        <input class="form-control form-control-lg"  [(ngModel)]="utente.username">
+    <br>
+        <input type="submit" (click)=crea()  class="fadeIn fourth" value="CREA UTENTE">
+      </div>
+    </div>
+    

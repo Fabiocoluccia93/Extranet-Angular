@@ -19,6 +19,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { AssegnataskComponent } from './assegnatask/assegnatask.component';
 import { AssegnarisorseComponent } from './assegnarisorse/assegnarisorse.component';
 import { PreventivorisorseComponent } from './preventivorisorse/preventivorisorse.component';
+import { CreaUtenteComponent } from './crea-utente/crea-utente.component';
+import { ModificaPasswordComponent } from './modifica-password/modifica-password.component';
+import { DisabilitaUtenteComponent } from './disabilita-utente/disabilita-utente.component';
 
 
 @NgModule({
@@ -37,6 +40,9 @@ import { PreventivorisorseComponent } from './preventivorisorse/preventivorisors
     AssegnataskComponent,
     AssegnarisorseComponent,
     PreventivorisorseComponent,
+    CreaUtenteComponent,
+    ModificaPasswordComponent,
+    DisabilitaUtenteComponent,
   ],
   imports: [
     BrowserModule,
