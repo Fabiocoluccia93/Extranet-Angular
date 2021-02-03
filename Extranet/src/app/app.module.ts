@@ -24,6 +24,9 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { TableManagmentComponent } from './table-managment/table-managment.component';
+import { CreaUtenteComponent } from './crea-utente/crea-utente.component';
+import { ModificaPasswordComponent } from './modifica-password/modifica-password.component';
+import { DisabilitaUtenteComponent } from './disabilita-utente/disabilita-utente.component';
 
 
 
@@ -44,7 +47,10 @@ import { TableManagmentComponent } from './table-managment/table-managment.compo
     AssegnarisorseComponent,
     PreventivorisorseComponent,
     TableManagmentComponent,
-   
+    CreaUtenteComponent,
+    ModificaPasswordComponent,
+    DisabilitaUtenteComponent,
+
   ],
   imports: [
     BrowserModule,
