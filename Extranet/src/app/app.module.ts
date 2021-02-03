@@ -19,6 +19,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { AssegnataskComponent } from './assegnatask/assegnatask.component';
 import { AssegnarisorseComponent } from './assegnarisorse/assegnarisorse.component';
 import { PreventivorisorseComponent } from './preventivorisorse/preventivorisorse.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatTableModule } from '@angular/material/table';
+import { MatButtonModule } from '@angular/material/button';
+import { TableManagmentComponent } from './table-managment/table-managment.component';
+
 
 
 @NgModule({
@@ -37,12 +43,21 @@ import { PreventivorisorseComponent } from './preventivorisorse/preventivorisors
     AssegnataskComponent,
     AssegnarisorseComponent,
     PreventivorisorseComponent,
+    TableManagmentComponent,
+   
   ],
   imports: [
     BrowserModule,
     AppRoutingModule, 
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatPaginatorModule,
+    MatTableModule,
+    MatButtonModule,
+    
+    
+
   ],
   providers: [],
   bootstrap: [AppComponent]
