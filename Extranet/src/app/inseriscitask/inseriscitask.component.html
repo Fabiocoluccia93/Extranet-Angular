@@ -5,18 +5,24 @@
     <br>
         <select [(ngModel)]="attivita" (ngModelChange)="attivitaChanged($event)" name="attivita" class="form-control form-control-lg">
             <option *ngFor="let attivita1 of attivitas" [ngValue]="attivita1">
-                {{attivita1.id}}-{{attivita1.task.nome}}
+                {{attivita1.task?.nome}}
             </option>
         </select> 
     <br>
 <b>seleziona il mese</b> 
     <br>
-        <select [(ngModel)]="mese" (ngModelChange)="meseChanged($event)" name="attivita" class="form-control form-control-lg">
+        <select [(ngModel)]="mese" (ngModelChange)="meseChanged($event)" name="mese" class="form-control form-control-lg">
             <option *ngFor="let mese1 of mesi" [ngValue]="mese1">
-                {{mese1.id}}-{{mese1.nome}}
+                {{mese1.nome}}
             </option>
         </select> 
-    
+ <b>seleziona l'anno</b> 
+    <br>
+        <select [(ngModel)]="anno" (ngModelChange)="annoChanged($event)" name="anno" class="form-control form-control-lg">
+            <option *ngFor="let anno1 of anni" [ngValue]="anno1">
+                {{anno1.numero}}
+            </option>
+        </select>    
 <br>
 
     <label for="percentuale" name="lpercentuale"><b>Inserisci Percentuale di completamento</b></label>

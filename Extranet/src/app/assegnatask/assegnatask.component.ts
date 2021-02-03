@@ -9,10 +9,10 @@ import { InserimentoService } from '../services/inserimento.service';
 
 export class Attivita
 {
-  task : Task = new Task 
+  
   constructor(
     public id? : number | null,
-    task? : Task | null,   //tipo task
+    public task? : Task ,   //tipo task
     public commessa? : Commessa | null, //tipo commessa
     public valore? : number | null
   ){}
@@ -28,8 +28,8 @@ export class AssegnataskComponent implements OnInit {
   constructor(private inserisci : InserimentoService,private route : Router) { }
   tasks : Task [] = []
   attivitas : Attivita [] =[]
-  attivita : Attivita = new Attivita
-  attivita1 : Attivita = new Attivita
+  attivita : Attivita = new Attivita()
+  attivita1 : Attivita = new Attivita()
   a : number = 0
 
   tipoUsoRisorse : TipoUsoRisorse = new TipoUsoRisorse

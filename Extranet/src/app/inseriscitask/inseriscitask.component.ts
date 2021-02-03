@@ -17,15 +17,25 @@ export class Task
 export class Mese
 {
   constructor(
-    public id? : number,
+    public id_mese? : number,
     public nome? : string
+  ){}
+}
+
+export class Anno
+{
+  constructor(
+    public id_anno? : number,
+    public numero? : number,
   ){}
 }
 
 export class Avanzamento
 {
   constructor(
+    public id_attivita? : number | null,
     public mese? : Mese | null ,
+    public anno? : Anno | null ,
     public attivita? : Attivita  | null,
     public valore? : number  | null,
     public percentuale? : number  | null,
@@ -53,10 +63,12 @@ export class InseriscitaskComponent implements OnInit {
   constructor(private inserisci : InserimentoService,public activatedroute:ActivatedRoute) { }
   attivitas : Attivita[] = []
   mesi : Mese[] = []
+  anni : Anno[]= []
 
   percentuale : number | null = 0
 
   mese : Mese = new Mese
+  anno:Anno=new Anno
   attivita : Attivita = new Attivita
 
   a : number = 0
@@ -132,6 +144,7 @@ export class InseriscitaskComponent implements OnInit {
         console.log("ID Commessa "+this.attivita.commessa.id_commessa)
        }
    
+       this.inserisci.getAnni().subscribe(response=>{this.anni=response;})
     this.inserisci.getMesi().subscribe(response=>{this.mesi=response;})
   }
  }
@@ -139,6 +152,11 @@ export class InseriscitaskComponent implements OnInit {
   meseChanged(mese : Mese)
   {
     this.avanzamento.mese = mese
+  }
+
+  annoChanged(anno : Anno)
+  {
+    this.avanzamento.anno = anno
   }
 
   attivitaChanged(attivita : Attivita)

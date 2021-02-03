@@ -12,10 +12,18 @@
             <br>
                 <select [(ngModel)]="mese" (ngModelChange)="meseChanged($event)" name="attivita" class="form-control form-control-lg">
                     <option *ngFor="let mese1 of mesi" [ngValue]="mese1">
-                        {{mese1.id}}-{{mese1.nome}}
+                        {{mese1.id_mese}}-{{mese1.nome}}
                     </option>
                 </select> 
             <br>
+         <b>seleziona l'anno</b> 
+        <br>
+            <select [(ngModel)]="anno" (ngModelChange)="annoChanged($event)" name="anno" class="form-control form-control-lg">
+                <option *ngFor="let anno1 of anni" [ngValue]="anno1">
+                    {{anno1.numero}}
+                </option>
+            </select>   
+        <br>                   
         <b>seleziona la figura professionale</b> 
             <br>
                 <select [(ngModel)]="risorsa" (ngModelChange)="risorsaChanged($event)" name="attivita" class="form-control form-control-lg">

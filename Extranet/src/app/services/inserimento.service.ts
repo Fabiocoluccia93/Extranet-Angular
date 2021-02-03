@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Avanzamento, Mese, Task } from '../inseriscitask/inseriscitask.component';
+import { Anno, Avanzamento, Mese, Task } from '../inseriscitask/inseriscitask.component';
 import { Commessa } from '../selezionacommessa/selezionacommessa.component';
 import { Attivita } from '../assegnatask/assegnatask.component';
 import { Risorse, TipoRisorse, Usorisorse } from '../assegnarisorse/assegnarisorse.component';
@@ -25,6 +25,11 @@ export class InserimentoService {
   getMesi()
   {
     return this.http.get<Mese[]>(`http://localhost:8080/mese`);
+  }
+
+  getAnni()
+  {
+    return this.http.get<Anno[]>(`http://localhost:8080/getanno`);
   }
 
   getCommessa()
@@ -77,6 +82,11 @@ export class InserimentoService {
   modAvanzamento(a : Avanzamento) 
   {
     return this.http.put<string>(`http://localhost:8080/modavanzamento` ,a)
+  }
+
+  getAvanzamentoByCommessa(id: number)
+  {
+    return this.http.get<Avanzamento[]>(`http://localhost:8080/avanzamentolist/${id}`)
   }
 
   setUsoRisorse(u :Usorisorse)

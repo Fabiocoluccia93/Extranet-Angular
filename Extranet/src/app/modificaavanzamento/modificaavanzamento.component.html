@@ -1,0 +1,21 @@
+<div class="centrale">
+    <table>
+        <thead>
+            <th>Mese</th>
+            <th>Attivita</th>
+            <th>Percentuale</th>
+            <th>Valore</th>
+            <th></th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let avanzamento1 of avanzamenti">
+                <td>{{avanzamento1.mese?.nome}}</td>
+                <td>{{avanzamento1.attivita?.task?.nome}}</td>
+                <td>{{avanzamento1.percentuale}}</td>
+                <td>{{avanzamento1.valore}}</td>
+                <td><button type="submit" onclick=modavanzamento($event)>modifica</button></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

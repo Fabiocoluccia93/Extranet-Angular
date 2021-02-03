@@ -19,6 +19,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AssegnataskComponent } from './assegnatask/assegnatask.component';
 import { AssegnarisorseComponent } from './assegnarisorse/assegnarisorse.component';
 import { PreventivorisorseComponent } from './preventivorisorse/preventivorisorse.component';
+import { ModificaavanzamentoComponent } from './modificaavanzamento/modificaavanzamento.component';
 
 
 @NgModule({
@@ -37,6 +38,7 @@ import { PreventivorisorseComponent } from './preventivorisorse/preventivorisors
     AssegnataskComponent,
     AssegnarisorseComponent,
     PreventivorisorseComponent,
+    ModificaavanzamentoComponent,
   ],
   imports: [
     BrowserModule,

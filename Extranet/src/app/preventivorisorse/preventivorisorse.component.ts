@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Attivita } from '../assegnatask/assegnatask.component';
-import { Mese } from '../inseriscitask/inseriscitask.component';
+import { Anno, Mese } from '../inseriscitask/inseriscitask.component';
 import { InserimentoService } from '../services/inserimento.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Commessa } from '../selezionacommessa/selezionacommessa.component';
@@ -18,6 +18,7 @@ export class UsoRisorse
    public commessa? : Commessa | null,
    public ore? : number | null,
    public mese? : Mese | null,
+   public anno? : Anno | null,
    public risorse? : Risorsa | null,
    public tipoUsoRisorse? : TipoUsoRisorse | null,
   ){}
@@ -51,12 +52,15 @@ export class PreventivorisorseComponent implements OnInit {
   constructor(private inserisci : InserimentoService,private  activatedroute : ActivatedRoute,private route : Router) { }
 
   // attivitas : Attivita [] = []
+
+  anni: Anno[] =[]
   mesi : Mese [] = []
   risorse : Risorsa [] = []
 
   messaggio: string = "messaggio"
   // attivita : Attivita = new Attivita
  
+  anno : Anno = new Anno
   mese : Mese = new Mese
   risorsa : Risorsa = new Risorsa
   tipoUsoRisorse : TipoUsoRisorse = new TipoUsoRisorse
@@ -114,6 +118,7 @@ export class PreventivorisorseComponent implements OnInit {
      
       
     //console.log("ID Commessa usorisorse "+this.usoRisorse.commessa.id_commessa)
+    this.inserisci.getAnni().subscribe(response=>{this.anni=response})
     this.inserisci.getMesi().subscribe(response=>{this.mesi=response})
     this.inserisci.getRisorse().subscribe(response=>{this.risorse=response})
     
@@ -128,6 +133,11 @@ export class PreventivorisorseComponent implements OnInit {
   meseChanged(mese2 : Mese)
   {
    this.usoRisorse.mese = mese2
+  }
+
+  annoChanged(anno : Anno)
+  {
+   this.usoRisorse.anno = anno
   }
 
   risorsaChanged(risorsa2 : Risorsa)
