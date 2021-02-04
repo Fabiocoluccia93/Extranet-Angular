@@ -1,8 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-// import {ChartsModule} from 'ng2-charts';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -49,7 +47,7 @@ import { DisabilitaUtenteComponent } from './disabilita-utente/disabilita-utente
     TableManagmentComponent,
     CreaUtenteComponent,
     ModificaPasswordComponent,
-    DisabilitaUtenteComponent,
+    DisabilitaUtenteComponent
 
   ],
   imports: [
@@ -60,11 +58,7 @@ import { DisabilitaUtenteComponent } from './disabilita-utente/disabilita-utente
     BrowserAnimationsModule,
     MatPaginatorModule,
     MatTableModule,
-    MatButtonModule,
-    
-    
-
-  ],
+    MatButtonModule],
   providers: [],
   bootstrap: [AppComponent]
 })
