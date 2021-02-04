@@ -2,7 +2,9 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AssegnarisorseComponent } from './assegnarisorse/assegnarisorse.component';
 import { AssegnataskComponent } from './assegnatask/assegnatask.component';
+import { CreaUtenteComponent } from './crea-utente/crea-utente.component';
 import { CreacommessaComponent } from './creacommessa/creacommessa.component';
+import { DisabilitaUtenteComponent } from './disabilita-utente/disabilita-utente.component';
 import { HomeAdminComponent } from './home-admin/home-admin.component';
 import { HomeUserComponent } from './home-user/home-user.component';
 import { InseriscitaskComponent } from './inseriscitask/inseriscitask.component';
@@ -16,6 +18,8 @@ const routes: Routes = [
   { path : "login", component : LoginComponent},
   { path : "homeuser" , component : HomeUserComponent},
   { path : "homeadmin" , component : HomeAdminComponent},
+  { path : "creaUtente" , component : CreaUtenteComponent},
+  { path : "disabilitaUtente" , component :DisabilitaUtenteComponent},
   { path: 'creacommessa',component:CreacommessaComponent},
   { path: 'selezionacommessa',component:SelezionacommessaComponent},
   { path: 'assegnatask',component:AssegnataskComponent},
