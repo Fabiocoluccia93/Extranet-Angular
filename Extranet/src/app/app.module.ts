@@ -20,6 +20,7 @@ import { AssegnataskComponent } from './assegnatask/assegnatask.component';
 import { AssegnarisorseComponent } from './assegnarisorse/assegnarisorse.component';
 import { PreventivorisorseComponent } from './preventivorisorse/preventivorisorse.component';
 import { ModificaavanzamentoComponent } from './modificaavanzamento/modificaavanzamento.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -44,7 +45,8 @@ import { ModificaavanzamentoComponent } from './modificaavanzamento/modificaavan
     BrowserModule,
     AppRoutingModule, 
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
