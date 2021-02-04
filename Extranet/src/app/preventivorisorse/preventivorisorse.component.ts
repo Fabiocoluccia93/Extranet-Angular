@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Attivita } from '../assegnatask/assegnatask.component';
-import { Mese } from '../inseriscitask/inseriscitask.component';
+import { Anno, Mese } from '../inseriscitask/inseriscitask.component';
 import { InserimentoService } from '../services/inserimento.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Commessa } from '../selezionacommessa/selezionacommessa.component';
 
 
 
@@ -14,9 +15,10 @@ export class UsoRisorse
    public id? :number | null,
    public costi? : number | null,
    public ricavi? : number | null,
-   public attivita? : Attivita | null,
+   public commessa? : Commessa | null,
    public ore? : number | null,
    public mese? : Mese | null,
+   public anno? : Anno | null,
    public risorse? : Risorsa | null,
    public tipoUsoRisorse? : TipoUsoRisorse | null,
   ){}
@@ -47,25 +49,31 @@ export class Risorsa
 })
 export class PreventivorisorseComponent implements OnInit {
 
-  constructor(private inserisci : InserimentoService,private  activatedroute : ActivatedRoute) { }
+  constructor(private inserisci : InserimentoService,private  activatedroute : ActivatedRoute,private route : Router) { }
 
-  attivitas : Attivita [] = []
+  // attivitas : Attivita [] = []
+
+  anni: Anno[] =[]
   mesi : Mese [] = []
   risorse : Risorsa [] = []
 
-  attivita : Attivita = new Attivita
+  messaggio: string = "messaggio"
+  // attivita : Attivita = new Attivita
+ 
+  anno : Anno = new Anno
   mese : Mese = new Mese
   risorsa : Risorsa = new Risorsa
   tipoUsoRisorse : TipoUsoRisorse = new TipoUsoRisorse
   usoRisorse : UsoRisorse = new UsoRisorse
+  commessa1 : Commessa = new Commessa
 
-  attivita1 : Attivita = new Attivita
+  // attivita1 : Attivita = new Attivita
   mese1 : Mese = new Mese
   risorsa1 : Risorsa = new Risorsa
 
   idcommessa : string | null = ''
   idtipousorisorse : string | null =''
-  a : number | null = 0
+  a : number = 0
 
   
 
@@ -89,51 +97,47 @@ export class PreventivorisorseComponent implements OnInit {
       }
     })
      this.usoRisorse.tipoUsoRisorse=this.tipoUsoRisorse
-  /*    this.idtipousorisorse = sessionStorage.getItem('tipoUsoRisorse')
-      if(this.idtipousorisorse!= null)
-      {
-        this.a = +this.idtipousorisorse
-        console.log("tipo uso risorse"+this.a)
-        this.inserisci.getTipoUsoRisorse(this.a).subscribe(response=>{this.usoRisorse.tipoUsoRisorse=response})
-        //this.usoRisorse.tipoUsoRisorse = this.tipoUsoRisorse
-        
-        if(this.usoRisorse.tipoUsoRisorse!=null)
-        {
-          console.log("tipo uso risorse id: "+this.usoRisorse.tipoUsoRisorse.id_tipo_usorisorse)
-          console.log("tipo uso risorse nome:  "+this.usoRisorse.tipoUsoRisorse.nome)
-          
-        }
-        
-      }*/
-    
-    
-    
-    
-    
 
-    
-    this.idcommessa = sessionStorage.getItem('idcommessa')
+    this.idcommessa = sessionStorage.getItem("idcommessa")
+    console.log("commessa in preventivorisorse"+sessionStorage.getItem("idcommessa"))
     if(this.idcommessa!=null)
     {
-      this.a = +this.idcommessa
-      console.log("ID Commessa nello storage"+this.a)
-      //passare get a 
-      this.inserisci.getCommessaId(this.a).subscribe(response=>{this.attivita.commessa=response})
-      this.inserisci.getCommessaAttivita(this.a).subscribe(response=>{this.attivitas=response;})
+      this.a= +this.idcommessa
+     
+      this.inserisci.getCommessaId(this.a).subscribe(response=>{
+        this.commessa1=response 
+       
+      })
+       
+      
+
+     
+      // this.inserisci.getCommessaAttivita(this.a).subscribe(response=>{this.attivitas=response;})
     }
    
+     
+      
+    //console.log("ID Commessa usorisorse "+this.usoRisorse.commessa.id_commessa)
+    this.inserisci.getAnni().subscribe(response=>{this.anni=response})
     this.inserisci.getMesi().subscribe(response=>{this.mesi=response})
     this.inserisci.getRisorse().subscribe(response=>{this.risorse=response})
+    
   }
 
-  attivitaChanged(attivita2 : Attivita)
-  {
-   this.usoRisorse.attivita = attivita2;
-  }
+  // attivitaChanged(attivita2 : Attivita)
+  // {
+  //  this.usoRisorse.attivita = attivita2;
+  // }
+
 
   meseChanged(mese2 : Mese)
   {
    this.usoRisorse.mese = mese2
+  }
+
+  annoChanged(anno : Anno)
+  {
+   this.usoRisorse.anno = anno
   }
 
   risorsaChanged(risorsa2 : Risorsa)
@@ -143,15 +147,20 @@ export class PreventivorisorseComponent implements OnInit {
 
   inseriscirisorse()
   {
-
-
-    if(this.usoRisorse.attivita==null || this.usoRisorse.mese==null || this.usoRisorse.risorse==null || this.usoRisorse.ore==null)
+    this.usoRisorse.commessa=this.commessa1
+    
+    if(this.usoRisorse.mese==null || this.usoRisorse.risorse==null || this.usoRisorse.ore==null)
     {
       window.alert("tutti i dati sono obligatori")
     }
     else
     {
-      this.inserisci.setUsoRisorse(this.usoRisorse).subscribe(response=>{})
+      this.inserisci.setUsoRisorse(this.usoRisorse).subscribe(response=>{this.messaggio=response})
     }
+  }
+  assegnarisorsepreventivate()
+  {
+    //sessionStorage.setItem('tipoUsoRisorse', '2')
+    this.route.navigate(['assegnarisorsepreventivate'])
   }
 }

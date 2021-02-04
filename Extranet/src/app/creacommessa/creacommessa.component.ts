@@ -17,7 +17,7 @@ export class CreacommessaComponent implements OnInit {
   commessa : Commessa = new Commessa
   constructor(private inserisci : InserimentoService,private route : Router,private http: HttpClient) { }
 
-  
+  a : number = 0
   ngOnInit(): void 
   {
   
@@ -41,18 +41,24 @@ export class CreacommessaComponent implements OnInit {
            //   this.commessa.inizio=null
            //   this.commessa.fine=null
               this.inserisci.setCommessa(this.commessa).subscribe(response=>{
-                
-              
-                  sessionStorage.setItem("idcommessa",response.toString());
-                  console.log("id commessa in creacommessa"+response.toString())
+              let b = response
+                //this.a = b
+                let c  = b.toString()
+                  sessionStorage.setItem("idcommessa",c);
+                 // sessionStorage.setItem("idcommessa",response.toString());
+                  console.log("id commessa in creacommessa"+c)
               
                 
               })
               
 
             
-            
-            this.route.navigate(['assegnatask']);
+              setTimeout(() => 
+              {
+                this.route.navigate(['assegnatask']);
+              },
+              2000);
+           
           }
         else
         {

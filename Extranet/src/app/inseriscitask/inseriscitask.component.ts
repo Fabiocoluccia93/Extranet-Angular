@@ -17,15 +17,25 @@ export class Task
 export class Mese
 {
   constructor(
-    public id? : number,
+    public id_mese? : number,
     public nome? : string
+  ){}
+}
+
+export class Anno
+{
+  constructor(
+    public id_anno? : number,
+    public numero? : number,
   ){}
 }
 
 export class Avanzamento
 {
   constructor(
+    public id_attivita? : number | null,
     public mese? : Mese | null ,
+    public anno? : Anno | null ,
     public attivita? : Attivita  | null,
     public valore? : number  | null,
     public percentuale? : number  | null,
@@ -53,10 +63,12 @@ export class InseriscitaskComponent implements OnInit {
   constructor(private inserisci : InserimentoService,public activatedroute:ActivatedRoute) { }
   attivitas : Attivita[] = []
   mesi : Mese[] = []
+  anni : Anno[]= []
 
   percentuale : number | null = 0
 
   mese : Mese = new Mese
+  anno:Anno=new Anno
   attivita : Attivita = new Attivita
 
   a : number = 0
@@ -65,6 +77,15 @@ export class InseriscitaskComponent implements OnInit {
   idmese? : number |null
 
   idcommessa : String | null =''
+
+  messaggio : string | null = 'messaggio'
+  messaggiolocale : string | null = ''
+
+  
+
+  //insertloc = false
+  insert =   true
+  modify = false
 
   tipoAvanzamento : TipoAvanzamento = new TipoAvanzamento
 
@@ -123,6 +144,7 @@ export class InseriscitaskComponent implements OnInit {
         console.log("ID Commessa "+this.attivita.commessa.id_commessa)
        }
    
+       this.inserisci.getAnni().subscribe(response=>{this.anni=response;})
     this.inserisci.getMesi().subscribe(response=>{this.mesi=response;})
   }
  }
@@ -130,6 +152,11 @@ export class InseriscitaskComponent implements OnInit {
   meseChanged(mese : Mese)
   {
     this.avanzamento.mese = mese
+  }
+
+  annoChanged(anno : Anno)
+  {
+    this.avanzamento.anno = anno
   }
 
   attivitaChanged(attivita : Attivita)
@@ -147,11 +174,41 @@ export class InseriscitaskComponent implements OnInit {
        {
          window.alert("percentuale errata")
        }
+       
        this.inserisci.setAvanzamento(this.avanzamento).subscribe(response =>{ 
-        
-             })
-
-         
+       this.messaggiolocale=response
+       if(this.messaggiolocale == "modifica" )
+       {
+        this.messaggio =  "Attivita già inserita se vuoi eseguire la modifica premi il tasto modifica"
+        let insertloc=false
+        let modifyloc= true
+        this.insert = insertloc
+        this.modify = modifyloc
+        console.log("insert= "+insertloc)
+        console.log("insert= "+this.insert)
+       }
+       else
+       {
+        this.messaggio = this.messaggiolocale
+       }
+             })  
+            
+            
+             
+  }
+  modifica()
+  {
+    if(this.percentuale!=null && this.percentuale>=0 && this.percentuale<=100)
+    {
+     this.avanzamento.percentuale=this.percentuale
+    }
+    else
+    {
+      window.alert("percentuale errata")
+    }
+    this.inserisci.modAvanzamento(this.avanzamento).subscribe(response =>{ 
+      this.messaggiolocale=response
+    this.messaggio = this.messaggiolocale})
   }
 
   

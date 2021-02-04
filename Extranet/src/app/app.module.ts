@@ -17,6 +17,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { AssegnataskComponent } from './assegnatask/assegnatask.component';
 import { AssegnarisorseComponent } from './assegnarisorse/assegnarisorse.component';
 import { PreventivorisorseComponent } from './preventivorisorse/preventivorisorse.component';
+
+import { ModificaavanzamentoComponent } from './modificaavanzamento/modificaavanzamento.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
@@ -25,6 +29,7 @@ import { TableManagmentComponent } from './table-managment/table-managment.compo
 import { CreaUtenteComponent } from './crea-utente/crea-utente.component';
 import { ModificaPasswordComponent } from './modifica-password/modifica-password.component';
 import { DisabilitaUtenteComponent } from './disabilita-utente/disabilita-utente.component';
+
 
 
 
@@ -44,10 +49,14 @@ import { DisabilitaUtenteComponent } from './disabilita-utente/disabilita-utente
     AssegnataskComponent,
     AssegnarisorseComponent,
     PreventivorisorseComponent,
+
+    ModificaavanzamentoComponent,
+
     TableManagmentComponent,
     CreaUtenteComponent,
     ModificaPasswordComponent,
     DisabilitaUtenteComponent
+
 
   ],
   imports: [
@@ -55,10 +64,12 @@ import { DisabilitaUtenteComponent } from './disabilita-utente/disabilita-utente
     AppRoutingModule, 
     FormsModule,
     HttpClientModule,
+
     BrowserAnimationsModule,
     MatPaginatorModule,
     MatTableModule,
     MatButtonModule],
+
   providers: [],
   bootstrap: [AppComponent]
 })
