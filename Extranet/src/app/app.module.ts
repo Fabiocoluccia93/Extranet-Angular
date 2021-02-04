@@ -21,7 +21,6 @@ import { PreventivorisorseComponent } from './preventivorisorse/preventivorisors
 import { ModificaavanzamentoComponent } from './modificaavanzamento/modificaavanzamento.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
