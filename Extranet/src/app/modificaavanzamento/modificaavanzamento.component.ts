@@ -192,8 +192,9 @@ export class ModificaavanzamentoComponent implements OnInit {
   {
     this.inserisci.modAvanzamento(this.avanzamentomod).subscribe(response=>{
       this.messaggiolocale=response
+      this.messaggio = this.messaggiolocale
     })
-    this.messaggio = this.messaggiolocale
+    
     this.modify=false
   }
   
