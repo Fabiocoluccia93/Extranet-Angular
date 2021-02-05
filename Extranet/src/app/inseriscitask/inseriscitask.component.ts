@@ -92,50 +92,10 @@ export class InseriscitaskComponent implements OnInit {
   avanzamento : Avanzamento = new Avanzamento//(null,null,null,null,null)
   ngOnInit(): void 
   {
-    this.activatedroute.data.subscribe(data => { 
-      switch(data.kind)
-      {
-        case('task') :
-        {
-          this.tipoAvanzamento.id_tipo_avanzamento = 1
-          this.tipoAvanzamento.nome = "Task"
-          console.log('task')
-          break;
-        }
-        case('ricavi') :
-        {
-          this.tipoAvanzamento.id_tipo_avanzamento = 2 
-          this.tipoAvanzamento.nome = "Ricavi"
-          console.log('ricavi')
-          break;
-        }
-        case('previsionericavi') :
-        {
-          this.tipoAvanzamento.id_tipo_avanzamento = 3 
-          this.tipoAvanzamento.nome = "Previsione ricavi"
-          console.log('previsionericavi')
-          break;
-        }
-        case('previsionetask') :
-        {
-          this.tipoAvanzamento.id_tipo_avanzamento = 4
-          this.tipoAvanzamento.nome = "Previsione task"
-          console.log('previsionetask')
-          break;
-        }
-      }
-    })
-    this.avanzamento.tipoAvanzamento=this.tipoAvanzamento
-    console.log("avanzamento")
-    console.log(this.avanzamento.tipoAvanzamento.id_tipo_avanzamento)
-    console.log(this.avanzamento.tipoAvanzamento.nome)
-    console.log("***********")
     this.idcommessa = sessionStorage.getItem("idcommessa")
     if(this.idcommessa!=null)
     {
        this.a  = +this.idcommessa
-       console.log("ID Commessa nello storage"+this.a)
-       //passare get a 
        this.inserisci.getCommessaAttivita(this.a).subscribe(response=>{
        this.attivitas=response
        })
@@ -180,12 +140,6 @@ export class InseriscitaskComponent implements OnInit {
        if(this.messaggiolocale == "modifica" )
        {
         this.messaggio =  "Attivita già inserita se vuoi eseguire la modifica premi il tasto modifica"
-        let insertloc=false
-        let modifyloc= true
-        this.insert = insertloc
-        this.modify = modifyloc
-        console.log("insert= "+insertloc)
-        console.log("insert= "+this.insert)
        }
        else
        {
@@ -194,24 +148,9 @@ export class InseriscitaskComponent implements OnInit {
              })  
             
             
-             
-  }
-  modifica()
-  {
-    if(this.percentuale!=null && this.percentuale>=0 && this.percentuale<=100)
-    {
-     this.avanzamento.percentuale=this.percentuale
-    }
-    else
-    {
-      window.alert("percentuale errata")
-    }
-    this.inserisci.modAvanzamento(this.avanzamento).subscribe(response =>{ 
-      this.messaggiolocale=response
-    this.messaggio = this.messaggiolocale})
-  }
+            
 
   
-}
+}}
 
 

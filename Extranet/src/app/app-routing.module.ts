@@ -25,10 +25,10 @@ const routes: Routes = [
   { path: 'assegnatask',component:AssegnataskComponent},
   { path: 'assegnarisorsepreventivate', component:PreventivorisorseComponent,data: { kind: 'preventivate' }},
   { path: 'assegnarisorseerogate', component:PreventivorisorseComponent,data: { kind: 'erogate' }},
-  { path: 'task', component:InseriscitaskComponent, data: { kind: 'task' }},
-  { path: 'ricavi', component:InseriscitaskComponent, data :{ kind:'ricavi'}},
-  { path: 'previsionericavi', component:InseriscitaskComponent, data :{ kind:'previsionericavi'}},
-  { path: 'previsionetask', component:InseriscitaskComponent, data :{ kind:'previsionetask'}},
+  { path: 'task', component:ModificaavanzamentoComponent, data: { kind: 'task' }},
+  { path: 'ricavi', component:ModificaavanzamentoComponent, data :{ kind:'ricavi'}},
+  { path: 'previsionericavi', component:ModificaavanzamentoComponent, data :{ kind:'previsionericavi'}},
+  { path: 'previsionetask', component:ModificaavanzamentoComponent, data :{ kind:'previsionetask'}},
   { path : "modificaavanzamento", component : ModificaavanzamentoComponent},
 ];
 

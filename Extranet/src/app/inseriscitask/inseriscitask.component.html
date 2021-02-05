@@ -28,13 +28,10 @@
     <label for="percentuale" name="lpercentuale"><b>Inserisci Percentuale di completamento</b></label>
     <input class="form-control form-control-lg" type="number"  [(ngModel)]="percentuale" name="percentuale">
 
-    <div *ngIf="insert">
+<div>
     <button type="submit" (click)=inserisce()>invia</button> 
 </div>
 
-<div *ngIf="modify">
-    <button type="submit" (click)=modifica()>modifica</button> 
-</div>
 
     <div><h1>{{messaggio}}</h1></div>
   </div>
