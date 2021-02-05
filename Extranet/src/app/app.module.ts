@@ -27,6 +27,8 @@ import { ModificaPasswordComponent } from './modifica-password/modifica-password
 import { DisabilitaUtenteComponent } from './disabilita-utente/disabilita-utente.component';
 import { MatListModule } from '@angular/material/list';
 import {MatIconModule} from '@angular/material/icon';
+import { TableAdminComponent } from './table-admin/table-admin.component';
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 
 
@@ -50,6 +52,7 @@ import {MatIconModule} from '@angular/material/icon';
     CreaUtenteComponent,
     ModificaPasswordComponent,
     DisabilitaUtenteComponent,
+    TableAdminComponent
     
 
   ],
@@ -63,7 +66,8 @@ import {MatIconModule} from '@angular/material/icon';
     MatTableModule,
     MatButtonModule,
     MatListModule,
-    MatIconModule
+    MatIconModule,
+    MatFormFieldModule
     
   ],
   providers: [],
