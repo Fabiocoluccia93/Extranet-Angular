@@ -17,10 +17,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { AssegnataskComponent } from './assegnatask/assegnatask.component';
 import { AssegnarisorseComponent } from './assegnarisorse/assegnarisorse.component';
 import { PreventivorisorseComponent } from './preventivorisorse/preventivorisorse.component';
-
 import { ModificaavanzamentoComponent } from './modificaavanzamento/modificaavanzamento.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';

@@ -89,6 +89,11 @@ export class InserimentoService {
     return this.http.get<Avanzamento[]>(`http://localhost:8080/avanzamentolist/${id}`)
   }
 
+  getAvanzamentoByCommessaType(id: number,idt : number)
+  {
+    return this.http.get<Avanzamento[]>(`http://localhost:8080/avanzamentolist/${id}/${idt}`)
+  }
+
   setUsoRisorse(u :Usorisorse)
   {
     return this.http.post<string>(`http://localhost:8080/usorisorse`,u)
