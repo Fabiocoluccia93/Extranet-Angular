@@ -1,4 +1,9 @@
 <div class="centrale">
+  <div class="titolo">
+  <h1>{{titolo}} {{commessa.nome}}</h1>
+  </div>
+</div>
+<div class="centrale">
     <button mat-raised-button color="primary" (click)="inserimentoAvanzamento()" class="nuovo">Inserisci Attivita</button>
 <div class="mat-elevation-z8">
     <table mat-table [dataSource]="dataSource" class>
@@ -94,6 +99,7 @@
         
         <div>
             <button type="submit" (click)=inserisce()>invia</button> 
+            
         </div>
         
         

@@ -7,7 +7,7 @@ import { Risorse, TipoRisorse, Usorisorse } from '../assegnarisorse/assegnarisor
 import { ThrowStmt } from '@angular/compiler';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { TipoUsoRisorse } from '../preventivorisorse/preventivorisorse.component';
+import { TipoUsoRisorse, UsoRisorse } from '../preventivorisorse/preventivorisorse.component';
 
 
 @Injectable({
@@ -47,6 +47,11 @@ export class InserimentoService {
     return this.http.get<TipoRisorse[]>(`http://localhost:8080/tiporisorse`);
   }
 
+  controllaCommessa()
+  {
+    return this.http.get<string>(`http://localhost:8080/getmessaggio`) 
+  }
+
   setCommessa( c: Commessa )
   {
     return this.http.post<number>(`http://localhost:8080/commessa`, c ) 
@@ -65,7 +70,10 @@ export class InserimentoService {
   {
     return this.http.get<Attivita[]>(`http://localhost:8080/listaattivita/${id}`)
   }
-    
+  getUsoRisorse(id : number , idt : number)
+  {
+    return this.http.get<UsoRisorse[]>(`http://localhost:8080/usorisorselist/${id}/${idt}`);
+  }
     // sessionStorage.setItem("idcommessa",newCommessa.idcommessa.toString());
   
 
@@ -99,5 +107,10 @@ export class InserimentoService {
     return this.http.post<string>(`http://localhost:8080/usorisorse`,u)
   }
 
+  
+  modUsoRisorse(u :Usorisorse)
+  {
+    return this.http.put<string>(`http://localhost:8080/modusorisorse`,u)
+  }
 
 }

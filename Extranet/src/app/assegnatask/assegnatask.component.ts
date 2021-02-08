@@ -113,10 +113,10 @@ export class AssegnataskComponent implements OnInit {
       this.inserisci.getCommessaAttivita(this.a).subscribe(response=>{this.attivitas=response;})
       window.location.reload()
   }
-  assegnarisorseerogate()
+  assegnarisorsepreventivate()
   {
     //sessionStorage.setItem('tipoUsoRisorse', '1')
-    this.route.navigate(['assegnarisorseerogate'])
+    this.route.navigate(['assegnarisorsepreventivate'])
   }
   
 
