@@ -7,6 +7,7 @@ import { Attivita } from '../assegnatask/assegnatask.component';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { ActivatedRoute } from '@angular/router';
+import { Commessa } from '../selezionacommessa/selezionacommessa.component';
 
 
 @Component({
@@ -40,6 +41,8 @@ export class ModificaavanzamentoComponent implements OnInit {
   @ViewChild(MatPaginator, { static: true })
   paginator!: MatPaginator;
 
+titolo : string =''
+commessa : Commessa = new Commessa
   ngOnInit(): void 
   {
     this.activatedroute.data.subscribe(data => { 
@@ -50,6 +53,7 @@ export class ModificaavanzamentoComponent implements OnInit {
           this.tipoAvanzamento.id_tipo_avanzamento = 1
           this.tipoAvanzamento.nome = "Task"
           console.log('task')
+          this.titolo="Stato di avanzamento task di"
           break;
         }
         case('ricavi') :
@@ -57,6 +61,7 @@ export class ModificaavanzamentoComponent implements OnInit {
           this.tipoAvanzamento.id_tipo_avanzamento = 2 
           this.tipoAvanzamento.nome = "Ricavi"
           console.log('ricavi')
+          this.titolo="Ricavi delle Task di"
           break;
         }
         case('previsionericavi') :
@@ -64,6 +69,7 @@ export class ModificaavanzamentoComponent implements OnInit {
           this.tipoAvanzamento.id_tipo_avanzamento = 3 
           this.tipoAvanzamento.nome = "Previsione ricavi"
           console.log('previsionericavi')
+          this.titolo="Preveisione dei ricavi di"
           break;
         }
         case('previsionetask') :
@@ -71,6 +77,7 @@ export class ModificaavanzamentoComponent implements OnInit {
           this.tipoAvanzamento.id_tipo_avanzamento = 4
           this.tipoAvanzamento.nome = "Previsione task"
           console.log('previsionetask')
+          this.titolo="Preveisione avanzamento task di"
           break;
         }
       }
@@ -86,8 +93,8 @@ export class ModificaavanzamentoComponent implements OnInit {
     {
       this.b=this.tipoAvanzamento.id_tipo_avanzamento
     }
-   
-
+    this.inserisci.getCommessaId(this.a).subscribe(response=>{this.commessa=response})
+    
     this.inserisci.getAvanzamentoByCommessaType(this.a,this.b).subscribe(response=>{this.avanzamenti=response
       this.dataSource.data = this.avanzamenti;
       console.log(this.avanzamenti)
@@ -172,7 +179,7 @@ export class ModificaavanzamentoComponent implements OnInit {
           this.divinsert = false
           this.inserisci.getAvanzamentoByCommessaType(this.a,this.b).subscribe(response=>{this.avanzamenti=response
             this.dataSource.data = this.avanzamenti;})
-          
+            setTimeout("location.reload(true);",1000)
         }    
       }) 
   }
@@ -193,6 +200,7 @@ export class ModificaavanzamentoComponent implements OnInit {
     this.inserisci.modAvanzamento(this.avanzamentomod).subscribe(response=>{
       this.messaggiolocale=response
       this.messaggio = this.messaggiolocale
+      setTimeout("location.reload(true);",1000)
     })
     
     this.modify=false
