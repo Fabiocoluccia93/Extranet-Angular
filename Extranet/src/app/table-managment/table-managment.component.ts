@@ -6,16 +6,6 @@ import { Attivita } from 'src/app/assegnatask/assegnatask.component'
 import { MatPaginator } from '@angular/material/paginator';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 
-
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
-  description: string;
-  
-}
-
 @Component({
   selector: 'app-table-managment',
   templateUrl: './table-managment.component.html',
@@ -34,11 +24,13 @@ export class TableManagmentComponent implements OnInit {
   isTableExpanded = false;
   commessa : Commessa [] = []
   detAttivita : Attivita[] = [];
+  
 
   constructor(private ins : InserimentoService) { }
 
   dataSource = new MatTableDataSource(this.commessa);
-  displayedColumns: string[] = ['cod', 'nome', 'cliente', 'valore', 'inizio', 'fine', "getdetails", "getedit"]
+  // dataAttivita = new MatTableDataSource(this.detAttivita);
+  displayedColumns: string[] = ['cod', 'nome', 'cliente', 'valore', 'inizio', 'fine', "getdetails"]
   @ViewChild(MatPaginator, { static: true })
   paginator!: MatPaginator;
   ngOnInit(): void {
@@ -51,14 +43,8 @@ export class TableManagmentComponent implements OnInit {
 
   getRecord(id_commessa: any)
   {
+    
     this.ins.getCommessaAttivita(id_commessa).subscribe(response=>{this.detAttivita=response;})
-  }
-
-  toggleTableRows() {
-    this.isTableExpanded = !this.isTableExpanded;
-
-    this.dataSource.data.forEach((row: any) => {
-      row.isExpanded = this.isTableExpanded;
-    })
+  
   }
 }
