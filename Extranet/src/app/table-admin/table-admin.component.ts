@@ -6,7 +6,6 @@ import { Attivita } from 'src/app/assegnatask/assegnatask.component'
 import { MatPaginator } from '@angular/material/paginator';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 
-
 export interface PeriodicElement {
   name: string;
   position: number;
@@ -17,20 +16,22 @@ export interface PeriodicElement {
 }
 
 @Component({
-  selector: 'app-table-managment',
-  templateUrl: './table-managment.component.html',
-  styleUrls: ['./table-managment.component.css'],
+  selector: 'app-table-admin',
+  templateUrl: './table-admin.component.html',
+  styleUrls: ['./table-admin.component.css'],
   animations: [
     trigger('detailExpand', [
       state('collapsed', style({ height: '0px', minHeight: '0' })),
       state('expanded', style({ height: '*' })),
       transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
+      
     ]),
   ],
 })
+export class TableAdminComponent implements OnInit {
 
-export class TableManagmentComponent implements OnInit {
-
+  public myDates : any = {};
+  
   isTableExpanded = false;
   commessa : Commessa [] = []
   detAttivita : Attivita[] = [];
@@ -54,11 +55,4 @@ export class TableManagmentComponent implements OnInit {
     this.ins.getCommessaAttivita(id_commessa).subscribe(response=>{this.detAttivita=response;})
   }
 
-  toggleTableRows() {
-    this.isTableExpanded = !this.isTableExpanded;
-
-    this.dataSource.data.forEach((row: any) => {
-      row.isExpanded = this.isTableExpanded;
-    })
-  }
 }
