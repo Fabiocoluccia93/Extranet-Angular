@@ -23,6 +23,7 @@ import { DisabilitaUtenteComponent } from './disabilita-utente/disabilita-utente
 import { HomePageComponent } from './home-page/home-page.component';
 import { ErrorPathComponent } from './error-path/error-path.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -50,7 +51,8 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
     BrowserModule,
     AppRoutingModule, 
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

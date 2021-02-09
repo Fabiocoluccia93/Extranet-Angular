@@ -12,8 +12,9 @@ export class DisabilitaUtenteComponent implements OnInit {
   tipologie : Gruppo[]=[]
   utente : Utente = new Utente
   gruppo : Gruppo = new Gruppo
+  utenti : Utente[] = []
 
-  constructor(private gest :GestAccessoService ) { }
+  constructor(private gest : GestAccessoService) { }
 
   ngOnInit(): void {
     this.gest.tuttiGruppi().subscribe(response=>{this.tipologie=response})
