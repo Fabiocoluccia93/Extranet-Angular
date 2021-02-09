@@ -14,9 +14,9 @@ export class GestAccessoService {
     return this.http.post<Utente>(`http://localhost:8080/utenti/accesso`, u)
   }
 
-  utentiDiUnGruppo( descrizione : string)
+  utentiDiUnGruppo(descrizione : string)
   {
-    return this.http.get<Utente[]>(`http://localhost:8080/utenti`);
+    return this.http.get<Utente[]>(`http://localhost:8080/utenti/${descrizione}`);
   }
 
   modificaPassword(u : Utente)
