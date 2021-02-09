@@ -6,9 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
-import { HomeUserComponent } from './home-user/home-user.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { HomeAdminComponent } from './home-admin/home-admin.component';
 import { FooterComponent } from './footer/footer.component';
 import { LateraleComponent } from './laterale/laterale.component';
 import { TaskComponent } from './task/task.component';
@@ -22,15 +20,16 @@ import { PreventivorisorseComponent } from './preventivorisorse/preventivorisors
 import { CreaUtenteComponent } from './crea-utente/crea-utente.component';
 import { ModificaPasswordComponent } from './modifica-password/modifica-password.component';
 import { DisabilitaUtenteComponent } from './disabilita-utente/disabilita-utente.component';
+import { HomePageComponent } from './home-page/home-page.component';
+import { ErrorPathComponent } from './error-path/error-path.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    HomeUserComponent,
     NavbarComponent,
-    HomeAdminComponent,
     FooterComponent,
     LateraleComponent,
     TaskComponent,
@@ -43,6 +42,9 @@ import { DisabilitaUtenteComponent } from './disabilita-utente/disabilita-utente
     CreaUtenteComponent,
     ModificaPasswordComponent,
     DisabilitaUtenteComponent,
+    HomePageComponent,
+    ErrorPathComponent,
+    ResetPasswordComponent
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { SessionStorageService } from 'angular-web-storage';
+import { Utente } from '../login/login.component';
+import { SessionUtenteService } from '../services/session-utente.service';
+
 
 @Component({
   selector: 'app-navbar',
@@ -7,11 +11,25 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
+utente : Utente = new Utente
+amministratore : boolean = false
 
-
-  constructor() { }
+  constructor(private sessioneAutenticata : SessionUtenteService ,  private session : SessionStorageService) { }
 
   ngOnInit(): void {
+    this.utente=this.session.get('UTENTE')
+    if(this.utente.gruppo?.descrizione=="amministratore")
+    {
+      this.amministratore=true
+    }
+    else
+    {
+      this.amministratore = false
+    }
   }
 
+  logOut()
+  {
+    this.sessioneAutenticata.logOut()
+  }
 }

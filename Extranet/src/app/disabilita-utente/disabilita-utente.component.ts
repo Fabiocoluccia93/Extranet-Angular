@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Gruppo, Utente } from '../login/login.component';
+import { GestAccessoService } from '../services/gest-accesso.service';
 
 @Component({
   selector: 'app-disabilita-utente',
@@ -7,12 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DisabilitaUtenteComponent implements OnInit {
 
-  constructor() { }
+  tipologie : Gruppo[]=[]
+  utente : Utente = new Utente
+  gruppo : Gruppo = new Gruppo
+
+  constructor(private gest :GestAccessoService ) { }
 
   ngOnInit(): void {
+    this.gest.tuttiGruppi().subscribe(response=>{this.tipologie=response})
   }
 
-  gruppoChanged()
-  {}
+
+  gruppoChanged(gruppo : Gruppo)
+  {
+    this.utente.gruppo = gruppo
+  }
 
 }
