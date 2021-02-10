@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Anno, Avanzamento, Mese, Task } from '../inseriscitask/inseriscitask.component';
+import { Anno, Avanzamento, Mese} from '../inseriscitask/inseriscitask.component';
 import { Commessa } from '../selezionacommessa/selezionacommessa.component';
 import { Attivita } from '../assegnatask/assegnatask.component';
 import { Risorse, TipoRisorse, Usorisorse } from '../assegnarisorse/assegnarisorse.component';
@@ -16,11 +16,6 @@ import { TipoUsoRisorse, UsoRisorse } from '../preventivorisorse/preventivorisor
 export class InserimentoService {
 
   constructor(private http : HttpClient) { }
-
-  getTasks() : Observable<Task[]>
-  {
-    return this.http.get<Task[]>(`http://localhost:8080/task`);
-  }
   
   getMesi()
   {

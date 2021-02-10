@@ -26,7 +26,7 @@ import { TableManagmentComponent } from './table-managment/table-managment.compo
 import { CreaUtenteComponent } from './crea-utente/crea-utente.component';
 import { ModificaPasswordComponent } from './modifica-password/modifica-password.component';
 import { DisabilitaUtenteComponent } from './disabilita-utente/disabilita-utente.component';
-
+import {MatIconModule} from '@angular/material/icon';
 
 
 
@@ -61,7 +61,7 @@ import { DisabilitaUtenteComponent } from './disabilita-utente/disabilita-utente
     AppRoutingModule, 
     FormsModule,
     HttpClientModule,
-
+    MatIconModule,
     BrowserAnimationsModule,
     MatPaginatorModule,
     MatTableModule,
