@@ -17,8 +17,7 @@ amministratore : boolean = false
   constructor(private sessioneAutenticata : SessionUtenteService ,  private session : SessionStorageService) { }
 
   ngOnInit(): void {
-    this.utente=this.session.get('UTENTE')
-    if(this.utente.gruppo?.descrizione=="amministratore")
+    if(this.session.get('TIPOLOGIA')==="amministratore")
     {
       this.amministratore=true
     }

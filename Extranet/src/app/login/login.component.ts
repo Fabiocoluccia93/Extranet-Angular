@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
 
 
 
-  constructor(private route :Router, private app : AppComponent, private gestAccesso : GestAccessoService, private sessioneAutenticata : SessionUtenteService ) { }
+  constructor(private route :Router, private app : AppComponent, private gestAccesso : GestAccessoService, private sessioneAutenticata : SessionUtenteService, private session:SessionStorageService ) { }
 
   ngOnInit(): void {
     this.app.show=false
@@ -50,23 +50,22 @@ export class LoginComponent implements OnInit {
       this.gestAccesso.autenticazione(this.utente).subscribe(
         response=>{
          this.utente=response
-         console.log(this.utente)
          if(response != null)
          {
           this.sessioneAutenticata.autenticazioneAccesso(this.utente)
            if(this.utente.stato===1)
            {
-                if(this.utente.gruppo?.descrizione=="amministratore")
+                if(this.session.get('TIPOLOGIA')=="amministratore")
                 {
                   window.alert("hai effettuato l'accesso come amministratore")
                   this.route.navigate(['homepage'])          
                 }
-                else if(this.utente.gruppo?.descrizione=="utente")
+                else if(this.session.get('TIPOLOGIA')=="utente")
                 {
                   window.alert("hai effettuato l'accesso come utente")
                   this.route.navigate(['homepage'])
                 }
-                if(this.utente.primo_accesso===1){
+                if(sessionStorage.getItem('STATOACCESSO')=="1"){
                   window.alert("Questo è il primo accesso che effettui, cambia password!")
                   this.route.navigate(['modificaPassword'])
                   

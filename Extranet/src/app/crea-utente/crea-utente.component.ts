@@ -17,22 +17,23 @@ export class CreaUtenteComponent implements OnInit {
   constructor( private route : Router, private gest : GestAccessoService) { }
 
   ngOnInit(): void {
-  this.gest.tuttiGruppi().subscribe(response=>{this.tipologie=response})
+    this.gest.tuttiGruppi().subscribe(response=>{this.tipologie=response})
   }
 
   crea()
   {
-    this.gest.creaUtente(this.utente).subscribe(response=>{this.utente=response
-    if(response!=null){
-      window.alert("utente creato correttamente")
-      window.location.reload()
-    }
-    else{
-      window.alert("utente gia presente nel sistema.")
-      window.location.reload()
-    }
-    
-    })
+    this.gest.creaUtente(this.utente).subscribe(
+      response=>{
+        if(response===true)
+        {
+          window.alert("utente creato correttamente")
+          window.location.reload()
+        }
+        else {
+          window.alert("utente gia presente nel sistema.")
+          window.location.reload()
+        }
+      })
   }
 
   gruppoChanged(gruppo : Gruppo)

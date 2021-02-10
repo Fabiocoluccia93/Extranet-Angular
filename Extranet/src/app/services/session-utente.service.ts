@@ -1,4 +1,3 @@
-import { HttpClient, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { SessionStorageService } from 'angular-web-storage';
 import { Utente } from '../login/login.component';
@@ -17,7 +16,12 @@ export class SessionUtenteService {
   {
     if(this.autentica.autenticazione(u) !=null)
     {
-      this.session.set('UTENTE',u)
+      this.session.set('ID',u.id)
+      if(u.primo_accesso!=null)
+      {
+        sessionStorage.setItem('STATOACCESSO',u.primo_accesso.toString())
+      }
+      this.session.set('TIPOLOGIA' , u.gruppo?.descrizione)
       return true
     }
     else{
@@ -27,12 +31,13 @@ export class SessionUtenteService {
 
   isLoggato()
   {
-    return ( this.session.get('UTENTE') != null)? true : false
+    return ( this.session.get('ID') != null)? true : false
   }
 
 
   logOut()
   {
-    this.session.remove('UTENTE')
+    this.session.clear()
+    sessionStorage.clear()
   }
 }

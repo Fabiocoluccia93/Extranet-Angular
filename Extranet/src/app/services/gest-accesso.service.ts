@@ -14,7 +14,7 @@ export class GestAccessoService {
     return this.http.post<Utente>(`http://localhost:8080/utenti/accesso`, u)
   }
 
-  utentiDiUnGruppo(descrizione : string)
+  utentiDiUnGruppo( descrizione : string)
   {
     return this.http.get<Utente[]>(`http://localhost:8080/utenti/${descrizione}`);
   }
@@ -36,7 +36,7 @@ export class GestAccessoService {
 
   creaUtente(u : Utente)
   {
-    return this.http.post<Utente>(`http://localhost:8080/utenti/crea`,u)
+    return this.http.post<boolean>(`http://localhost:8080/utenti/crea`,u)
   }
 
   cercaUtente(u : Utente)
@@ -47,5 +47,10 @@ export class GestAccessoService {
   resetPassword(u : Utente)
   {
     return this.http.post<boolean>(`http://localhost:8080/utenti/resetPassword`,u)
+  }
+
+  confrontaPassword(u : Utente)
+  {
+    return this.http.post<boolean>(`http://localhost:8080/utenti/confrontaPassword`,u)
   }
 }
