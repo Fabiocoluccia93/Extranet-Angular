@@ -18,6 +18,14 @@
     font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
   }
 
+  .sidebar a:hover{
+    background-color: #2B5978;
+    color: white;
+    
+    
+  }
+
+
  
   
   

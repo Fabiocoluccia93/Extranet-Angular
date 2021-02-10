@@ -107,10 +107,5 @@ export class InserimentoService {
     return this.http.post<string>(`http://localhost:8080/usorisorse`,u)
   }
 
-  
-  modUsoRisorse(u :Usorisorse)
-  {
-    return this.http.put<string>(`http://localhost:8080/modusorisorse`,u)
-  }
 
 }

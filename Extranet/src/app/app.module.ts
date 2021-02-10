@@ -26,6 +26,10 @@ import { TableManagmentComponent } from './table-managment/table-managment.compo
 import { CreaUtenteComponent } from './crea-utente/crea-utente.component';
 import { ModificaPasswordComponent } from './modifica-password/modifica-password.component';
 import { DisabilitaUtenteComponent } from './disabilita-utente/disabilita-utente.component';
+import { MatListModule } from '@angular/material/list';
+import {MatIconModule} from '@angular/material/icon';
+import { TableAdminComponent } from './table-admin/table-admin.component';
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 
 
@@ -52,7 +56,9 @@ import { DisabilitaUtenteComponent } from './disabilita-utente/disabilita-utente
     TableManagmentComponent,
     CreaUtenteComponent,
     ModificaPasswordComponent,
-    DisabilitaUtenteComponent
+    DisabilitaUtenteComponent,
+    TableAdminComponent
+    
 
 
   ],
@@ -65,7 +71,13 @@ import { DisabilitaUtenteComponent } from './disabilita-utente/disabilita-utente
     BrowserAnimationsModule,
     MatPaginatorModule,
     MatTableModule,
-    MatButtonModule],
+    MatButtonModule,
+    MatListModule,
+    MatIconModule,
+    MatFormFieldModule
+    
+  ],
+  
 
   providers: [],
   bootstrap: [AppComponent]
