@@ -1,18 +1,14 @@
 import { Component, OnInit, Input} from '@angular/core';
 import { Router } from '@angular/router';
-
-
-import { Task } from '../inseriscitask/inseriscitask.component';
 import { TipoUsoRisorse } from '../preventivorisorse/preventivorisorse.component';
 import { Commessa } from '../selezionacommessa/selezionacommessa.component';
 import { InserimentoService } from '../services/inserimento.service';
 
 export class Attivita
 {
-  
   constructor(
     public id? : number | null,
-    public task? : Task ,   //tipo task
+    public descrizione? : string | null,
     public commessa? : Commessa | null, //tipo commessa
     public valore? : number | null
   ){}
@@ -26,7 +22,6 @@ export class Attivita
 export class AssegnataskComponent implements OnInit {
   idcommessa : String | null =''
   constructor(private inserisci : InserimentoService,private route : Router) { }
-  tasks : Task [] = []
   attivitas : Attivita [] =[]
   attivita : Attivita = new Attivita()
   attivita1 : Attivita = new Attivita()
@@ -35,7 +30,8 @@ export class AssegnataskComponent implements OnInit {
   tipoUsoRisorse : TipoUsoRisorse = new TipoUsoRisorse
   bool : boolean = true
 
-  task : Task = new Task
+  messaggio :string =''
+  regexp =  new RegExp('^[A-Za-z0-9]{3,30}$');
 
   ngOnInit(): void 
   {
@@ -56,62 +52,26 @@ export class AssegnataskComponent implements OnInit {
           console.log("ID Commessa "+this.attivita.commessa.id_commessa)
          }
       }
-    
-
-    this.inserisci.getTasks().subscribe(response=>{this.tasks=response})
     this.inserisci.getCommessaAttivita(this.a).subscribe(response=>{this.attivitas=response;})
   
   }
 
-  taskChanged(taska : Task)
-  {
-    for(let i= 0;i<this.attivitas.length;i++)
-    {
-      console.log(this.attivitas[i].task?.id_task+" "+this.attivitas[i].task?.nome)
-      console.log(taska.id_task+" "+taska.nome)
-      if(this.attivitas[i].task?.id_task===taska.id_task)
-      {
-        this.bool=false;
-        break;
-      }
-      else
-      {
-       this.bool=true;
-       
-        
-      }
-    }
-    if(this.bool==false)
-    {
-      window.alert("attivita già inserita")
-      window.location.reload()
-    }
-    else
-    {
-      this.attivita.task=taska
-      
-    }
-    console.log(taska.id_task)
-    console.log(taska.nome)
-  }
+ 
 
   inserisciattivita()
   {
-    
 
-
-    //seleziono task da array in ingresso e inserisco in attivita.task
-    
-    console.log("ID Task "+this.task.id_task) 
-
-      for(let i=0;i<this.tasks.length;i++)
+    if(this.attivita.descrizione!=null && this.regexp.test(this.attivita.descrizione))
       {
-         if(this.tasks[i].id_task==this.task.id_task)
-         this.attivita.task=this.tasks[i]
+        this.inserisci.setAttivita(this.attivita).subscribe(response=>{})
+        this.inserisci.getCommessaAttivita(this.a).subscribe(response=>{this.attivitas=response;})
+        window.location.reload()
       }
-      this.inserisci.setAttivita(this.attivita).subscribe(response=>{})
-      this.inserisci.getCommessaAttivita(this.a).subscribe(response=>{this.attivitas=response;})
-      window.location.reload()
+    else
+    {
+      this.messaggio="non sono ammessi caratteri speciali nel campo descizione"
+    }
+     
   }
   assegnarisorsepreventivate()
   {

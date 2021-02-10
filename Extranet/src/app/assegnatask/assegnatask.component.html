@@ -1,12 +1,8 @@
 <div class="centrale">
     <div id="inserisci" name="inserisci" class="inserisci">
-        <b>Inserisci la task da selezionare</b> 
+        <b>Inserisci il nome dell'attivita</b> 
         <br>
-        <select [(ngModel)]="task" (ngModelChange)="taskChanged($event)" name="data" class="form-control form-control-lg">
-            <option *ngFor="let task1 of tasks" [ngValue]="task1">
-                {{task1.id_task}}-{{task1.nome}}
-            </option>
-       </select> 
+        <input type="text" class="form-control-lg" name="descrizione" id="descrizione" [(ngModel)]="attivita.descrizione">
         <br>
 
         <b>Inserisci valore della task</b>
@@ -26,11 +22,13 @@
         </thead>
         <tbody>
             <tr *ngFor="let attivita1 of attivitas">
-            <td>{{attivita1.task?.nome}}</td>
+            <td>{{attivita1.descrizione}}</td>
             <td>{{attivita1.valore}}</td>
         </tr>
         </tbody>
     </table>
+
+    <div class="centrale">  {{messaggio}} </div>
 
 </div>
 <div class="centrale">

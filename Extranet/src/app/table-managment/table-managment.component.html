@@ -52,7 +52,7 @@
                   </thead>
                   <tbody>
                     <tr *ngFor="let subject of detAttivita">
-                      <td >{{subject.task?.nome}} -- {{subject.valore}}</td>
+                      <td >{{subject.descrizione}} -- {{subject.valore}}</td>
                     <td *ngFor="let a of avanzamento">{{a.attivita?.valore}}</td>
                     </tr>
                     
@@ -81,6 +81,18 @@
     </table>
     <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
   </div>
+
+
+  <table>
+      <thead>
+          <th>task</th>
+      </thead>
+      <tbody>
+          <tr *ngFor= "let det of detAttivita">
+              <td> {{det.descrizione}}</td>
+          </tr>
+      </tbody>
+  </table>
 
 
   

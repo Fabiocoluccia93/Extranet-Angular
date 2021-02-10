@@ -3,17 +3,6 @@ import { ActivatedRoute, ActivatedRouteSnapshot } from '@angular/router';
 import { Attivita } from '../assegnatask/assegnatask.component';
 import { InserimentoService } from '../services/inserimento.service';
 
-
-export class Task
-{
-  id_task : number = 0
-  nome : string = ''
-    constructor(
-    id_task? : number, 
-    nome? : string
-    ) {}
-}
-
 export class Mese
 {
   constructor(
