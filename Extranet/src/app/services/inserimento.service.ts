@@ -79,5 +79,9 @@ export class InserimentoService {
     return this.http.post<Usorisorse>(`http://localhost:8080/usorisorse`,u)
   }
 
+  getAvanzamentoByCommessa(id: number)
+  {
+    return this.http.get<Avanzamento[]>(`http://localhost:8080/avanzamentolist/${id}`)
+  }
 
 }
