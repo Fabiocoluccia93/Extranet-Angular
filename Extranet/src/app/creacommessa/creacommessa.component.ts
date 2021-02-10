@@ -16,8 +16,11 @@ import { observable } from 'rxjs';
 export class CreacommessaComponent implements OnInit {
   commessa : Commessa = new Commessa
   constructor(private inserisci : InserimentoService,private route : Router,private http: HttpClient) { }
+  messaggio : string = ''
+  asa : string = "ASDASD"
+  regexp =  new RegExp('^[A-Za-z0-9]{3,20}$');
 
-  
+  a : number = 0
   ngOnInit(): void 
   {
   
@@ -36,23 +39,47 @@ export class CreacommessaComponent implements OnInit {
            console.log(this.commessa.inizio)
            console.log(this.commessa.fine)
            this.commessa.valore=0
+           if(this.regexp.test(this.commessa.nome) && this.regexp.test(this.commessa.cliente))
+           {
+
           
            
            //   this.commessa.inizio=null
            //   this.commessa.fine=null
               this.inserisci.setCommessa(this.commessa).subscribe(response=>{
-                
-              
-                  sessionStorage.setItem("idcommessa",response.toString());
-                  console.log("id commessa in creacommessa"+response.toString())
+              let b = response
+                //this.a = b
+                let c  = b.toString()
+                  sessionStorage.setItem("idcommessa",c);
+                 // sessionStorage.setItem("idcommessa",response.toString());
+                  console.log("id commessa in creacommessa"+c)
               
                 
               })
-              
+              this.messaggio="commessa inserita con successo"
 
             
-            
-            this.route.navigate(['assegnatask']);
+              setTimeout(() => 
+              {
+                this.route.navigate(['assegnatask']);
+              },
+              2000);
+            }
+            else
+            {
+              if(!this.regexp.test(this.commessa.nome))
+              {
+                this.messaggio = "non sono concessi caratteri speciali nel campo nome"
+              }
+              if(!this.regexp.test(this.commessa.cliente))
+              {
+                this.messaggio = "non sono concessi caratteri speciali nel campo cliente"
+              }
+              if(!this.regexp.test(this.commessa.nome) && !this.regexp.test(this.commessa.cliente))
+              {
+                this.messaggio = "non sono concessi caratteri speciali nei campi cliente e nel campo nome"
+              }
+            }
           }
         else
         {

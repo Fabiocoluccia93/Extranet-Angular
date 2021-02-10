@@ -17,6 +17,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AssegnataskComponent } from './assegnatask/assegnatask.component';
 import { AssegnarisorseComponent } from './assegnarisorse/assegnarisorse.component';
 import { PreventivorisorseComponent } from './preventivorisorse/preventivorisorse.component';
+import { ModificaavanzamentoComponent } from './modificaavanzamento/modificaavanzamento.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
@@ -29,6 +30,7 @@ import { MatListModule } from '@angular/material/list';
 import {MatIconModule} from '@angular/material/icon';
 import { TableAdminComponent } from './table-admin/table-admin.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
+
 
 
 
@@ -48,6 +50,9 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     AssegnataskComponent,
     AssegnarisorseComponent,
     PreventivorisorseComponent,
+
+    ModificaavanzamentoComponent,
+
     TableManagmentComponent,
     CreaUtenteComponent,
     ModificaPasswordComponent,
@@ -55,12 +60,14 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     TableAdminComponent
     
 
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule, 
     FormsModule,
     HttpClientModule,
+
     BrowserAnimationsModule,
     MatPaginatorModule,
     MatTableModule,
@@ -70,6 +77,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     MatFormFieldModule
     
   ],
+  
+
   providers: [],
   bootstrap: [AppComponent]
 })
