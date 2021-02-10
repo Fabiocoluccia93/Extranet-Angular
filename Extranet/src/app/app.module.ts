@@ -67,7 +67,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     AppRoutingModule, 
     FormsModule,
     HttpClientModule,
-
+    MatIconModule,
     BrowserAnimationsModule,
     MatPaginatorModule,
     MatTableModule,

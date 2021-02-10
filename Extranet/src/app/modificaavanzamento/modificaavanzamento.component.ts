@@ -2,7 +2,7 @@ import { ThisReceiver } from '@angular/compiler';
 import { Component, OnInit , ViewChild } from '@angular/core';
 import { Avanzamento, TipoAvanzamento } from '../inseriscitask/inseriscitask.component';
 import { InserimentoService } from '../services/inserimento.service';
-import { Mese,Task,Anno } from '../inseriscitask/inseriscitask.component';
+import { Mese,Anno } from '../inseriscitask/inseriscitask.component';
 import { Attivita } from '../assegnatask/assegnatask.component';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
@@ -24,7 +24,6 @@ export class ModificaavanzamentoComponent implements OnInit {
   avanzamenti : Avanzamento [] = []
   avanzamento : Avanzamento = new Avanzamento
   mese: Mese = new Mese
-  task: Task = new Task
   attivita: Attivita = new Attivita
 
   tipoAvanzamento : TipoAvanzamento = new TipoAvanzamento

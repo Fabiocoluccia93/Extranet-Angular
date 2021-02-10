@@ -5,7 +5,7 @@
     <br>
         <select [(ngModel)]="attivita" (ngModelChange)="attivitaChanged($event)" name="attivita" class="form-control form-control-lg">
             <option *ngFor="let attivita1 of attivitas" [ngValue]="attivita1">
-                {{attivita1.task?.nome}}
+                {{attivita1.descrizione}}
             </option>
         </select> 
     <br>
