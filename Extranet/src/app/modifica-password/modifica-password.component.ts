@@ -84,10 +84,13 @@ export class ModificaPasswordComponent implements OnInit {
           {
             if(response == true)
             {
-              if(this.nuovaPass === this.confermaNuovaPass)
+              if(this.nuovaPass == this.confermaNuovaPass)
               {
                 this.utente.id = this.session.get('ID')
-                this.utente.password === this.confermaNuovaPass
+                if(this.confermaNuovaPass!=null){
+                  this.utente.password = this.confermaNuovaPass
+                }
+                console.log(this.utente)
                 this.gestAccesso.modificaPassword(this.utente).subscribe(
                   response=>{
                     if (response = true)
@@ -113,7 +116,7 @@ export class ModificaPasswordComponent implements OnInit {
       }
       else
       {
-        window.alert("La vuova password non puo essere vuota e deve contenere almeno 6 caratteri!")
+        window.alert("La nuova password non puo essere vuota e deve contenere almeno 6 caratteri!")
       }
     }
     

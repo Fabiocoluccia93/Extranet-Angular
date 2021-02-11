@@ -29,7 +29,8 @@ export class CreaUtenteComponent implements OnInit {
           window.alert("utente creato correttamente")
           window.location.reload()
         }
-        else {
+        else if(response===null) 
+        {
           window.alert("utente gia presente nel sistema.")
           window.location.reload()
         }
