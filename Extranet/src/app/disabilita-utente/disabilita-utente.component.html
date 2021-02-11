@@ -1,0 +1,16 @@
+
+<div class="centrale">
+    <h2 class="titolo"><b>VISUALIZZA UTENTI</b></h2>
+    <div id="inserisci">
+        <b>seleziona tipologia utenti</b> 
+        <br>
+            <select [(ngModel)]="gruppo.id" (ngModelChange)="gruppoChanged($event)" name="gruppo" class="form-control form-control-lg">
+                <option *ngFor="let tipologia of tipologie" [ngValue]="tipologia">
+                    {{tipologia.descrizione}}
+                </option>
+            </select>
+     </div>
+     
+
+    </div>
+    
