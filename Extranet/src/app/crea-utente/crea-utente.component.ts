@@ -22,19 +22,26 @@ export class CreaUtenteComponent implements OnInit {
 
   crea()
   {
-    this.gest.creaUtente(this.utente).subscribe(
-      response=>{
-        if(response===true)
-        {
-          window.alert("utente creato correttamente")
-          window.location.reload()
-        }
-        else if(response===null) 
-        {
-          window.alert("utente gia presente nel sistema.")
-          window.location.reload()
-        }
-      })
+    if(this.utente.username != null)
+    {
+        this.gest.creaUtente(this.utente).subscribe(
+          response=>{
+            if(response===true)
+            {
+              window.alert("Utente creato correttamente")
+              window.location.reload()
+            }
+            else  
+            {
+              window.alert("Utente gia' presente nel sistema.")
+              this.utente.username=""
+            }
+          })
+    }
+    else
+    {
+      window.alert("Inserisci un nuovo username congruo.")
+    }
   }
 
   gruppoChanged(gruppo : Gruppo)

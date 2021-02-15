@@ -39,9 +39,9 @@ export class GestAccessoService {
     return this.http.post<boolean>(`http://localhost:8080/utenti/crea`,u)
   }
 
-  cercaUtente(u : Utente)
+  cercaUtente(cerca : string)
   {
-    return this.http.get<Utente>(`http://localhost:8080/utenti/cercaUtente`)
+    return this.http.get<Utente[]>(`http://localhost:8080/utenti/cercaUtente/${cerca}`)
   }
 
   resetPassword(u : Utente)
@@ -52,5 +52,10 @@ export class GestAccessoService {
   confrontaPassword(u : Utente)
   {
     return this.http.post<boolean>(`http://localhost:8080/utenti/confrontaPassword`,u)
+  }
+
+  cercaUtenteDiGruppo(username : string , gruppo:string)
+  {
+    return this.http.get<Utente[]>(`http://localhost:8080/utenti/cercaUtenteGruppo/${username}/${gruppo}`)
   }
 }
