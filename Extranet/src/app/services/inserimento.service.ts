@@ -49,7 +49,7 @@ export class InserimentoService {
 
   setCommessa( c: Commessa )
   {
-    return this.http.post<number>(`http://localhost:8080/commessa`, c ) 
+    return this.http.post<number>(`http://localhost:8080/setcommessa`, c ) 
   }
 
   getCommessaId(id : number) 
@@ -106,4 +106,15 @@ export class InserimentoService {
   {
     return this.http.put<string>(`http://localhost:8080/modusorisorse`,u)
   }
+
+  consolidaav(a : Avanzamento)
+  {
+    return this.http.put<string>(`http://localhost:8080/consolidaav`,a)
+  }
+
+  consolidauso(u :Usorisorse)
+  {
+    return this.http.put<string>(`http://localhost:8080/consolidauso`,u)
+  }
+
 }

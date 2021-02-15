@@ -46,6 +46,8 @@ export class CreacommessaComponent implements OnInit {
            
            //   this.commessa.inizio=null
            //   this.commessa.fine=null
+              this.commessa.fatturato=0
+              this.commessa.valore=0
               this.inserisci.setCommessa(this.commessa).subscribe(response=>{
               let b = response
                 //this.a = b

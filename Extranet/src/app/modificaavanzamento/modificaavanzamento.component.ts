@@ -36,10 +36,12 @@ export class ModificaavanzamentoComponent implements OnInit {
 
 
   dataSource = new MatTableDataSource(this.avanzamenti);
-  displayedColumns: string[] = ['cod', 'nome', 'mese', 'anno', 'percentuale', 'valore', "getdetails"]
+  displayedColumns: string[] = ['cod', 'nome', 'mese', 'anno', 'percentuale', 'valore', "getdetails","consolida"]
   @ViewChild(MatPaginator, { static: true })
   paginator!: MatPaginator;
 
+  tipo23 : boolean = true
+  fattura : boolean = false
 titolo : string =''
 commessa : Commessa = new Commessa
   ngOnInit(): void 
@@ -52,6 +54,8 @@ commessa : Commessa = new Commessa
           this.tipoAvanzamento.id_tipo_avanzamento = 1
           this.tipoAvanzamento.nome = "Task"
           console.log('task')
+          this.tipo23=true
+          this.fattura=false
           this.titolo="Stato di avanzamento task di"
           break;
         }
@@ -59,6 +63,9 @@ commessa : Commessa = new Commessa
         {
           this.tipoAvanzamento.id_tipo_avanzamento = 2 
           this.tipoAvanzamento.nome = "Ricavi"
+          this.percentuale=100
+          this.tipo23=false
+          this.fattura=true
           console.log('ricavi')
           this.titolo="Ricavi delle Task di"
           break;
@@ -69,12 +76,17 @@ commessa : Commessa = new Commessa
           this.tipoAvanzamento.nome = "Previsione ricavi"
           console.log('previsionericavi')
           this.titolo="Preveisione dei ricavi di"
+          this.percentuale=100
+          this.tipo23=false
+          this.fattura=false
           break;
         }
         case('previsionetask') :
         {
           this.tipoAvanzamento.id_tipo_avanzamento = 4
           this.tipoAvanzamento.nome = "Previsione task"
+          this.tipo23=true
+          this.fattura=false
           console.log('previsionetask')
           this.titolo="Preveisione avanzamento task di"
           break;
@@ -151,6 +163,8 @@ commessa : Commessa = new Commessa
     this.avanzamento.attivita = attivita
   }
 
+nfattura : string =''
+
   inserisce()
   {
     this.avanzamento.tipoAvanzamento=this.tipoAvanzamento
@@ -162,7 +176,10 @@ commessa : Commessa = new Commessa
        {
          window.alert("percentuale errata")
        }
-       
+       if(this.avanzamento.tipoAvanzamento.id_tipo_avanzamento==2)
+       {
+         this.avanzamento.fattura=this.nfattura
+       }
        this.inserisci.setAvanzamento(this.avanzamento).subscribe(response =>
       { 
         this.messaggiolocale=response
@@ -203,6 +220,15 @@ commessa : Commessa = new Commessa
     })
     
     this.modify=false
+  }
+
+  consolidaav : Avanzamento = new Avanzamento
+  consolida(avanzamento : Avanzamento)
+  {
+    avanzamento.consolida = new Date
+    console.log(avanzamento.consolida)
+    this.consolidaav = avanzamento
+    this.inserisci.consolidaav(this.consolidaav).subscribe(response=>{this.messaggio=response})
   }
   
 
