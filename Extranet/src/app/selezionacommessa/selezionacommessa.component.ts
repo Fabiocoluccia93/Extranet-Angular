@@ -13,6 +13,7 @@ export class Commessa
     public nome? : string | null,
     public cliente? : string | null,
     public valore? : number | null,
+    public fatturato? : number | null,
     public inizio? : Date | null,
     public fine? : Date | null,
     

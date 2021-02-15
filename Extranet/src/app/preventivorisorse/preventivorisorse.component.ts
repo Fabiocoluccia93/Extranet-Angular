@@ -23,6 +23,7 @@ export class UsoRisorse
    public anno? : Anno | null,
    public risorse? : Risorsa | null,
    public tipoUsoRisorse? : TipoUsoRisorse | null,
+   public consolida? : Date | null
   ){}
 }
 
@@ -83,7 +84,7 @@ export class PreventivorisorseComponent implements OnInit {
   titolo : string =''
   usorisorse : UsoRisorse[] = []
   dataSource = new MatTableDataSource(this.usorisorse);
-  displayedColumns: string[] = ['cod', 'nome', 'mese', 'anno', 'figura', 'ore', 'costi', 'ricavi', 'getdetails']
+  displayedColumns: string[] = ['cod', 'nome', 'mese', 'anno', 'figura', 'ore', 'costi', 'ricavi', 'getdetails',"consolida"]
   @ViewChild(MatPaginator, { static: true })
   paginator!: MatPaginator;
 
@@ -222,6 +223,16 @@ modifica()
   this.inserisci.modUsoRisorse(this.usorisorsemod).subscribe(response=>{this.messaggio=response})
   setTimeout("location.reload(true);",1000)
   this.modify=false
+}
+
+consolidaur = new UsoRisorse 
+
+consolida(usorisore : UsoRisorse)
+{
+  usorisore.consolida = new Date
+  console.log(usorisore.consolida)
+  this.consolidaur = usorisore
+  this.inserisci.consolidauso(this.consolidaur).subscribe(response=>{this.messaggio=response})
 }
 
 

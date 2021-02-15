@@ -22,13 +22,15 @@ export class Anno
 export class Avanzamento
 {
   constructor(
-    public id_attivita? : number | null,
+    public id_avanzamento? : number | null,
     public mese? : Mese | null ,
     public anno? : Anno | null ,
     public attivita? : Attivita  | null,
     public valore? : number  | null,
     public percentuale? : number  | null,
     public tipoAvanzamento? : TipoAvanzamento | null,
+    public consolida? : Date | null,
+    public fattura? : string | null
   ){}
 }
 export class TipoAvanzamento
