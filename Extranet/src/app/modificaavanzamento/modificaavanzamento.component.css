@@ -9,3 +9,7 @@ mat-paginator {width: 80%;}
 {
     width: 80%;
 }
+button[disabled]
+{
+    color: blanchedalmond;
+}

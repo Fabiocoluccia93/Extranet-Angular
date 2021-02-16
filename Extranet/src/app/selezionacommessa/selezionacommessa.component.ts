@@ -1,17 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Attivita } from '../assegnatask/assegnatask.component';
 import { InserimentoService } from '../services/inserimento.service';
 
 
 export class Commessa
 {
+
+  
   constructor(
     public id_commessa? : number | null,
     public nome? : string | null,
     public cliente? : string | null,
     public valore? : number | null,
+    public fatturato? : number | null,
     public inizio? : Date | null,
     public fine? : Date | null,
+    
   )
 {}
 }
