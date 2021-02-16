@@ -46,9 +46,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     AssegnataskComponent,
     AssegnarisorseComponent,
     PreventivorisorseComponent,
-
     ModificaavanzamentoComponent,
-
     TableManagmentComponent,
     CreaUtenteComponent,
     ModificaPasswordComponent,
