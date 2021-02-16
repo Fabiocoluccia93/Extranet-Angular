@@ -4,9 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
-import { HomeUserComponent } from './home-user/home-user.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { HomeAdminComponent } from './home-admin/home-admin.component';
 import { FooterComponent } from './footer/footer.component';
 import { LateraleComponent } from './laterale/laterale.component';
 import { TaskComponent } from './task/task.component';
@@ -38,9 +36,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
   declarations: [
     AppComponent,
     LoginComponent,
-    HomeUserComponent,
     NavbarComponent,
-    HomeAdminComponent,
     FooterComponent,
     LateraleComponent,
     TaskComponent,
