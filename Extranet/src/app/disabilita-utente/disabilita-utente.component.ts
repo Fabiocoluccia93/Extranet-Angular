@@ -20,12 +20,12 @@ export class DisabilitaUtenteComponent implements OnInit {
   ricerca : boolean = false
   cercaUtente ?: string | null
 
-  amministratore : boolean = false
+  displayedColumns: string[] = []
 
   constructor(private gest :GestAccessoService ) { }
 
   dataSource = new MatTableDataSource(this.utenti)
-  displayedColumns: string[] = ["username","accesso","stato","tasto"]
+  // displayedColumns: string[] = ["username","accesso","stato","tasto"]
   @ViewChild(MatPaginator, { static: true })
   paginator!: MatPaginator;
 
@@ -48,8 +48,13 @@ export class DisabilitaUtenteComponent implements OnInit {
         this.descrizioneGruppo=gruppo.descrizione
         if(gruppo.descrizione=="amministratore")
         {
-          this.amministratore=true
+          this.displayedColumns =  ["username","accesso","stato"]
         }
+        if(gruppo.descrizione=="utente")
+        {
+          this.displayedColumns =  ["username","accesso","stato","tasto"]
+        }
+
     }
   }
 
