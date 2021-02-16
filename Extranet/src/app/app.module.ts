@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-// import {ChartsModule} from 'ng2-charts';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -30,6 +29,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { ModificaavanzamentoComponent } from './modificaavanzamento/modificaavanzamento.component';
+import { TableManagmentComponent } from './table-managment/table-managment.component';
+import { TableAdminComponent } from './table-admin/table-admin.component';
 
 
 
@@ -52,7 +54,10 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     DisabilitaUtenteComponent,
     HomePageComponent,
     ErrorPathComponent,
-    ResetPasswordComponent
+    ResetPasswordComponent,
+    ModificaavanzamentoComponent,
+    TableManagmentComponent,
+    TableAdminComponent
   ],
   imports: [
     BrowserModule,
