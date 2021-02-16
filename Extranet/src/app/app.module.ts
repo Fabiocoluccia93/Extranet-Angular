@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -15,20 +16,22 @@ import { HttpClientModule } from '@angular/common/http';
 import { AssegnataskComponent } from './assegnatask/assegnatask.component';
 import { AssegnarisorseComponent } from './assegnarisorse/assegnarisorse.component';
 import { PreventivorisorseComponent } from './preventivorisorse/preventivorisorse.component';
-import { ModificaavanzamentoComponent } from './modificaavanzamento/modificaavanzamento.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatPaginatorModule } from '@angular/material/paginator';
-import { MatTableModule } from '@angular/material/table';
-import { MatButtonModule } from '@angular/material/button';
-import { TableManagmentComponent } from './table-managment/table-managment.component';
 import { CreaUtenteComponent } from './crea-utente/crea-utente.component';
 import { ModificaPasswordComponent } from './modifica-password/modifica-password.component';
 import { DisabilitaUtenteComponent } from './disabilita-utente/disabilita-utente.component';
+import { HomePageComponent } from './home-page/home-page.component';
+import { ErrorPathComponent } from './error-path/error-path.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
-import {MatIconModule} from '@angular/material/icon';
+import { MatIconModule } from '@angular/material/icon';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { ModificaavanzamentoComponent } from './modificaavanzamento/modificaavanzamento.component';
+import { TableManagmentComponent } from './table-managment/table-managment.component';
 import { TableAdminComponent } from './table-admin/table-admin.component';
-import {MatFormFieldModule} from '@angular/material/form-field';
-
 
 
 
@@ -46,33 +49,30 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     AssegnataskComponent,
     AssegnarisorseComponent,
     PreventivorisorseComponent,
-    ModificaavanzamentoComponent,
-    TableManagmentComponent,
     CreaUtenteComponent,
     ModificaPasswordComponent,
     DisabilitaUtenteComponent,
+    HomePageComponent,
+    ErrorPathComponent,
+    ResetPasswordComponent,
+    ModificaavanzamentoComponent,
+    TableManagmentComponent,
     TableAdminComponent
-    
-
-
   ],
   imports: [
     BrowserModule,
     AppRoutingModule, 
     FormsModule,
     HttpClientModule,
-    MatIconModule,
     BrowserAnimationsModule,
-    MatPaginatorModule,
     MatTableModule,
+    MatPaginatorModule,
     MatButtonModule,
     MatListModule,
     MatIconModule,
     MatFormFieldModule
-    
-  ],
   
-
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })
