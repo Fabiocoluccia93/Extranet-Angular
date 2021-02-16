@@ -46,7 +46,7 @@ export class GestAccessoService {
 
   resetPassword(u : Utente)
   {
-    return this.http.post<boolean>(`http://localhost:8080/utenti/resetPassword`,u)
+    return this.http.put<boolean>(`http://localhost:8080/utenti/resetPassword`,u)
   }
 
   confrontaPassword(u : Utente)

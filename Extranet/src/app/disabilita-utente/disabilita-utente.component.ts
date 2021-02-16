@@ -17,21 +17,20 @@ export class DisabilitaUtenteComponent implements OnInit {
   utenti : Utente []=[]
   utentiCercati : Utente [] = []
   descrizioneGruppo: string=""
-  tabella ?:[]=[]
   ricerca : boolean = false
   cercaUtente ?: string | null
+
+  amministratore : boolean = false
+
   constructor(private gest :GestAccessoService ) { }
 
   dataSource = new MatTableDataSource(this.utenti)
   displayedColumns: string[] = ["username","accesso","stato","tasto"]
   @ViewChild(MatPaginator, { static: true })
   paginator!: MatPaginator;
-  primo_accesso : string = ""
-  stato : string = ""
 
   ngOnInit(): void {
     this.gest.tuttiGruppi().subscribe(response=>{this.tipologie=response})
-    
 
   }
 
@@ -40,15 +39,21 @@ export class DisabilitaUtenteComponent implements OnInit {
     if(gruppo.descrizione != null)
     {
       this.gest.utentiDiUnGruppo(gruppo.descrizione).subscribe(
-        response=>{
-          this.dataSource.data= response})
+        response=>{         
+          this.dataSource.data=response
+          })
 
         this.dataSource.paginator = this.paginator
         this.ricerca=true
         this.descrizioneGruppo=gruppo.descrizione
+        if(gruppo.descrizione=="amministratore")
+        {
+          this.amministratore=true
+        }
     }
-
   }
+
+  
 
   cerca()
   {
@@ -76,6 +81,27 @@ export class DisabilitaUtenteComponent implements OnInit {
     }
   }
 
+
+  abilita(utente : Utente)
+  {
+    utente.stato = 1
+    this.gest.disabilitaUtente(utente).subscribe(response=>{
+      if(response == true)
+      {
+        window.alert(utente.username+" Attivato")
+      }
+    })
+  }
   
+  disabilita(utente : Utente)
+  {
+    utente.stato = 0
+    this.gest.disabilitaUtente(utente).subscribe(response=>{
+      if(response == true)
+      {
+        window.alert(utente.username+" Disattivato")
+      }
+    })
+  }
 
 }

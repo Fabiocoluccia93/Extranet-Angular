@@ -14,6 +14,8 @@ export class CreaUtenteComponent implements OnInit {
   utente : Utente = new Utente
   gruppo : Gruppo = new Gruppo
 
+  regexp =  new RegExp('^[A-Za-z]{7,20}$')
+
   constructor( private route : Router, private gest : GestAccessoService) { }
 
   ngOnInit(): void {
@@ -22,7 +24,7 @@ export class CreaUtenteComponent implements OnInit {
 
   crea()
   {
-    if(this.utente.username != null)
+    if(this.utente.username != null && this.regexp.test(this.utente.username))
     {
         this.gest.creaUtente(this.utente).subscribe(
           response=>{
@@ -41,6 +43,7 @@ export class CreaUtenteComponent implements OnInit {
     else
     {
       window.alert("Inserisci un nuovo username congruo.")
+      this.utente.username = ""
     }
   }
 

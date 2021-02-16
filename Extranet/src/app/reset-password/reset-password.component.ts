@@ -16,11 +16,12 @@ export class ResetPasswordComponent implements OnInit {
   utente : Utente = new Utente
   gruppo : Gruppo = new Gruppo
   utenti : Utente []=[]
+  descrizione: string ="utente"
 
   cercaUtente : string =""
 
   dataSource = new MatTableDataSource(this.utenti)
-  displayedColumns: string[] = ["username","accesso","stato"]
+  displayedColumns: string[] = ["username","accesso","stato","tasto"]
   @ViewChild(MatPaginator, { static: true })
   paginator!: MatPaginator;
 
@@ -33,7 +34,7 @@ export class ResetPasswordComponent implements OnInit {
 
   cerca()
   {
-    this.gest.cercaUtente(this.cercaUtente).subscribe(
+    this.gest.cercaUtenteDiGruppo(this.cercaUtente, this.descrizione).subscribe(
       response=>{
         if(response.length>0)
         {
@@ -45,6 +46,17 @@ export class ResetPasswordComponent implements OnInit {
           window.location.reload()
         }
       })
+  }
+
+  reset(utente : Utente)
+  {
+    this.gest.resetPassword(utente).subscribe(response=>{
+      if(response == true)
+      {
+        window.alert("Hai resettato lo stato e la password dell' utente "+utente.username)
+        window.location.reload()
+      }
+        })
   }
 
 }
