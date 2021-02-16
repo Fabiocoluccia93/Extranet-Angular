@@ -2,12 +2,13 @@
     <div id="inserisci" name="inserisci" class="inserisci">
         <b>Inserisci il nome dell'attivita</b> 
         <br>
-        <input type="text" class="form-control-lg" name="descrizione" id="descrizione" [(ngModel)]="attivita.descrizione">
+        <input type="text" class="form-control form-control-lg" name="descrizione" id="descrizione" [(ngModel)]="attivita.descrizione">
         <br>
 
         <b>Inserisci valore della task</b>
-        <input type="number" class="form-control-lg" name="valore" id="valore"  [(ngModel)]="attivita.valore">
-        
+        <br>
+        <input type="number" class="form-control form-control-lg" name="valore" id="valore"  [(ngModel)]="attivita.valore">
+        <br>
 
         <button class="btn btn-secondary" type="submit" (click)=inserisciattivita()>Inserisci Attivita</button>
 
