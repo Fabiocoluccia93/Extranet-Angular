@@ -9,7 +9,7 @@ import { ErrorPathComponent } from './error-path/error-path.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { InseriscitaskComponent } from './inseriscitask/inseriscitask.component';
 import { LoginComponent } from './login/login.component';
-
+import { ModificaavanzamentoComponent } from './modificaavanzamento/modificaavanzamento.component';
 import { ModificaPasswordComponent } from './modifica-password/modifica-password.component';
 import { PreventivorisorseComponent } from './preventivorisorse/preventivorisorse.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
@@ -33,6 +33,8 @@ const routes: Routes = [
   { path: 'ricavi', component:InseriscitaskComponent, data :{ kind:'ricavi'}, canActivate:[RouteguardService]},
   { path: 'previsionericavi', component:InseriscitaskComponent, data :{ kind:'previsionericavi'}, canActivate:[RouteguardService]},
   { path: 'previsionetask', component:InseriscitaskComponent, data :{ kind:'previsionetask'}, canActivate:[RouteguardService]},
+  { path : "modificaavanzamento", component : ModificaavanzamentoComponent , canActivate:[RouteguardService]},
+  
   { path : '**'  , component: ErrorPathComponent}
 ];
 
