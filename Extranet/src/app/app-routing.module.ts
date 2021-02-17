@@ -29,11 +29,11 @@ const routes: Routes = [
   { path: 'assegnatask',component:AssegnataskComponent, canActivate:[RouteguardService]},
   { path: 'assegnarisorsepreventivate', component:PreventivorisorseComponent,data: { kind: 'preventivate' }, canActivate:[RouteguardService]},
   { path: 'assegnarisorseerogate', component:PreventivorisorseComponent,data: { kind: 'erogate' }, canActivate:[RouteguardService]},
-  { path: 'task', component:InseriscitaskComponent, data: { kind: 'task' }, canActivate:[RouteguardService]},
-  { path: 'ricavi', component:InseriscitaskComponent, data :{ kind:'ricavi'}, canActivate:[RouteguardService]},
-  { path: 'previsionericavi', component:InseriscitaskComponent, data :{ kind:'previsionericavi'}, canActivate:[RouteguardService]},
-  { path: 'previsionetask', component:InseriscitaskComponent, data :{ kind:'previsionetask'}, canActivate:[RouteguardService]},
-  { path : "modificaavanzamento", component : ModificaavanzamentoComponent , canActivate:[RouteguardService]},
+  { path: 'task', component:ModificaavanzamentoComponent, data: { kind: 'task' }, canActivate:[RouteguardService]},
+  { path: 'ricavi', component:ModificaavanzamentoComponent, data :{ kind:'ricavi'}, canActivate:[RouteguardService]},
+  { path: 'previsionericavi', component:ModificaavanzamentoComponent, data :{ kind:'previsionericavi'}, canActivate:[RouteguardService]},
+  { path: 'previsionetask', component:ModificaavanzamentoComponent, data :{ kind:'previsionetask'}, canActivate:[RouteguardService]},
+  { path : "modificaavanzamento", component : ModificaavanzamentoComponent, canActivate:[RouteguardService]},
   
   { path : '**'  , component: ErrorPathComponent}
 ];
