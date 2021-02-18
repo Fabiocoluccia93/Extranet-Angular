@@ -178,6 +178,7 @@ nfattura : string =''
        }
        if(this.avanzamento.tipoAvanzamento.id_tipo_avanzamento==2)
        {
+        this.avanzamento.consolida = new Date
          this.avanzamento.fattura=this.nfattura
        }
        this.inserisci.setAvanzamento(this.avanzamento).subscribe(response =>
@@ -207,8 +208,6 @@ nfattura : string =''
     this.divinsert = false
     this.modify=true
     this.avanzamentomod=avanzamento
-    
-
   }
 
   modifica()
