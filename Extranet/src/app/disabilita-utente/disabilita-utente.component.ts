@@ -25,7 +25,6 @@ export class DisabilitaUtenteComponent implements OnInit {
   constructor(private gest :GestAccessoService ) { }
 
   dataSource = new MatTableDataSource(this.utenti)
-  // displayedColumns: string[] = ["username","accesso","stato","tasto"]
   @ViewChild(MatPaginator, { static: true })
   paginator!: MatPaginator;
 
@@ -41,6 +40,7 @@ export class DisabilitaUtenteComponent implements OnInit {
       this.gest.utentiDiUnGruppo(gruppo.descrizione).subscribe(
         response=>{         
           this.dataSource.data=response
+          this.utenti=response
           })
 
         this.dataSource.paginator = this.paginator
@@ -62,7 +62,7 @@ export class DisabilitaUtenteComponent implements OnInit {
 
   cerca()
   {
-    if(this.cercaUtente != null)
+    if(this.cercaUtente != null && this.cercaUtente!="")
     {
       this.gest.cercaUtenteDiGruppo(this.cercaUtente, this.descrizioneGruppo).subscribe(
         response=>{
@@ -70,18 +70,20 @@ export class DisabilitaUtenteComponent implements OnInit {
           {
             this.utentiCercati = response
             this.dataSource.data= this.utentiCercati
+            this.cercaUtente= ""
           }
           else 
           {
-            this.cercaUtente= ""
             this.dataSource.data=this.utenti
+            this.cercaUtente= ""
             window.alert("Non ci sono username di tipo "+this.descrizioneGruppo+" cercati.")
           }
         })
 
     }
-    else
+    else if(this.cercaUtente== null)
     {
+      this.dataSource.data=this.utenti
       window.alert("Inserisci username da ricercare!")
     }
   }
