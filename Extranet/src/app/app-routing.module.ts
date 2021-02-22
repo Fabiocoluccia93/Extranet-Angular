@@ -6,32 +6,37 @@ import { CreaUtenteComponent } from './crea-utente/crea-utente.component';
 import { CreacommessaComponent } from './creacommessa/creacommessa.component';
 import { DatiComponent } from './dati/dati.component';
 import { DisabilitaUtenteComponent } from './disabilita-utente/disabilita-utente.component';
-import { HomeAdminComponent } from './home-admin/home-admin.component';
-import { HomeUserComponent } from './home-user/home-user.component';
+import { ErrorPathComponent } from './error-path/error-path.component';
+import { HomePageComponent } from './home-page/home-page.component';
 import { InseriscitaskComponent } from './inseriscitask/inseriscitask.component';
 import { LoginComponent } from './login/login.component';
 import { ModificaavanzamentoComponent } from './modificaavanzamento/modificaavanzamento.component';
+import { ModificaPasswordComponent } from './modifica-password/modifica-password.component';
 import { PreventivorisorseComponent } from './preventivorisorse/preventivorisorse.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { SelezionacommessaComponent } from './selezionacommessa/selezionacommessa.component';
+import { RouteguardService } from './services/routeguard.service';
 
 const routes: Routes = [
   { path : "", component : LoginComponent },
   { path : "login", component : LoginComponent},
-  { path : "homeuser" , component : HomeUserComponent},
-  { path : "homeadmin" , component : HomeAdminComponent},
-  { path : "creaUtente" , component : CreaUtenteComponent},
-  { path : "disabilitaUtente" , component :DisabilitaUtenteComponent},
-  { path: 'creacommessa',component:CreacommessaComponent},
-  { path: 'selezionacommessa',component:SelezionacommessaComponent},
-  { path: 'assegnatask',component:AssegnataskComponent},
-  { path: 'assegnarisorsepreventivate', component:PreventivorisorseComponent,data: { kind: 'preventivate' }},
-  { path: 'assegnarisorseerogate', component:PreventivorisorseComponent,data: { kind: 'erogate' }},
-  { path: 'task', component:ModificaavanzamentoComponent, data: { kind: 'task' }},
-  { path: 'ricavi', component:ModificaavanzamentoComponent, data :{ kind:'ricavi'}},
-  { path: 'previsionericavi', component:ModificaavanzamentoComponent, data :{ kind:'previsionericavi'}},
-  { path: 'previsionetask', component:ModificaavanzamentoComponent, data :{ kind:'previsionetask'}},
-  { path : "modificaavanzamento", component : ModificaavanzamentoComponent},
-  { path : "dati", component : DatiComponent}
+  { path : "creaUtente" , component : CreaUtenteComponent, canActivate:[RouteguardService]},
+  { path : "resetPassword" , component : ResetPasswordComponent, canActivate:[RouteguardService]},
+  { path : "homepage" , component : HomePageComponent, canActivate:[RouteguardService]},
+  { path : "disabilitaUtente" , component :DisabilitaUtenteComponent, canActivate:[RouteguardService]},
+  { path : "modificaPassword" , component : ModificaPasswordComponent, canActivate:[RouteguardService]},
+  { path: 'creacommessa',component:CreacommessaComponent, canActivate:[RouteguardService]},
+  { path: 'selezionacommessa',component:SelezionacommessaComponent, canActivate:[RouteguardService]},
+  { path: 'assegnatask',component:AssegnataskComponent, canActivate:[RouteguardService]},
+  { path: 'assegnarisorsepreventivate', component:PreventivorisorseComponent,data: { kind: 'preventivate' }, canActivate:[RouteguardService]},
+  { path: 'assegnarisorseerogate', component:PreventivorisorseComponent,data: { kind: 'erogate' }, canActivate:[RouteguardService]},
+  { path: 'task', component:ModificaavanzamentoComponent, data: { kind: 'task' }, canActivate:[RouteguardService]},
+  { path: 'ricavi', component:ModificaavanzamentoComponent, data :{ kind:'ricavi'}, canActivate:[RouteguardService]},
+  { path: 'previsionericavi', component:ModificaavanzamentoComponent, data :{ kind:'previsionericavi'}, canActivate:[RouteguardService]},
+  { path: 'previsionetask', component:ModificaavanzamentoComponent, data :{ kind:'previsionetask'}, canActivate:[RouteguardService]},
+  { path : "modificaavanzamento", component : ModificaavanzamentoComponent, canActivate:[RouteguardService]},
+  { path : "dati", component : DatiComponent, canActivate:[RouteguardService]},
+  { path : '**'  , component: ErrorPathComponent}
 ];
 
 @NgModule({

@@ -14,25 +14,37 @@ export class CreaUtenteComponent implements OnInit {
   utente : Utente = new Utente
   gruppo : Gruppo = new Gruppo
 
+  regexp =  new RegExp('^[A-Za-z0-9]{7,20}$')
+
   constructor( private route : Router, private gest : GestAccessoService) { }
 
   ngOnInit(): void {
-  this.gest.tuttiGruppi().subscribe(response=>{this.tipologie=response})
+    this.gest.tuttiGruppi().subscribe(response=>{this.tipologie=response})
   }
 
   crea()
   {
-    this.gest.creaUtente(this.utente).subscribe(response=>{this.utente=response
-    if(response!=null){
-      window.alert("utente creato correttamente")
-      window.location.reload()
+    if(this.utente.username != null && this.regexp.test(this.utente.username))
+    {
+        this.gest.creaUtente(this.utente).subscribe(
+          response=>{
+            if(response===true)
+            {
+              window.alert("Utente creato correttamente")
+              window.location.reload()
+            }
+            else  
+            {
+              window.alert("Utente gia' presente nel sistema.")
+              this.utente.username=""
+            }
+          })
     }
-    else{
-      window.alert("utente gia presente nel sistema.")
-      window.location.reload()
+    else
+    {
+      window.alert("Inserisci un nuovo username congruo.")
+      this.utente.username = ""
     }
-    
-    })
   }
 
   gruppoChanged(gruppo : Gruppo)
