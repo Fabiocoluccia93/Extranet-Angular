@@ -4,6 +4,7 @@ import { AssegnarisorseComponent } from './assegnarisorse/assegnarisorse.compone
 import { AssegnataskComponent } from './assegnatask/assegnatask.component';
 import { CreaUtenteComponent } from './crea-utente/crea-utente.component';
 import { CreacommessaComponent } from './creacommessa/creacommessa.component';
+import { DatiComponent } from './dati/dati.component';
 import { DisabilitaUtenteComponent } from './disabilita-utente/disabilita-utente.component';
 import { ErrorPathComponent } from './error-path/error-path.component';
 import { HomePageComponent } from './home-page/home-page.component';
@@ -34,7 +35,7 @@ const routes: Routes = [
   { path: 'previsionericavi', component:ModificaavanzamentoComponent, data :{ kind:'previsionericavi'}, canActivate:[RouteguardService]},
   { path: 'previsionetask', component:ModificaavanzamentoComponent, data :{ kind:'previsionetask'}, canActivate:[RouteguardService]},
   { path : "modificaavanzamento", component : ModificaavanzamentoComponent, canActivate:[RouteguardService]},
-  
+  { path : "dati", component : DatiComponent, canActivate:[RouteguardService]},
   { path : '**'  , component: ErrorPathComponent}
 ];
 

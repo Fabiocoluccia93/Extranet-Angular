@@ -31,7 +31,7 @@ export class AssegnataskComponent implements OnInit {
   bool : boolean = true
 
   messaggio :string =''
-  regexp =  new RegExp('^[A-Za-z0-9]{3,30}$');
+  regexp =  new RegExp('^[A-Za-z0-9 ]{3,30}$');
 
   ngOnInit(): void 
   {

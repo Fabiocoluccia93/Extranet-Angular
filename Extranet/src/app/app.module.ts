@@ -31,6 +31,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { ModificaavanzamentoComponent } from './modificaavanzamento/modificaavanzamento.component';
 import { TableManagmentComponent } from './table-managment/table-managment.component';
 import { TableAdminComponent } from './table-admin/table-admin.component';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { DatiComponent } from './dati/dati.component';
+
 
 
 
@@ -51,6 +54,7 @@ import { TableAdminComponent } from './table-admin/table-admin.component';
     CreaUtenteComponent,
     ModificaPasswordComponent,
     DisabilitaUtenteComponent,
+    DatiComponent,
     HomePageComponent,
     ErrorPathComponent,
     ResetPasswordComponent,
