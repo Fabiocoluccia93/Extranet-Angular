@@ -8,6 +8,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { ActivatedRoute } from '@angular/router';
 import { Commessa } from '../selezionacommessa/selezionacommessa.component';
+import { SessionStorageService } from 'angular-web-storage';
 
 
 @Component({
@@ -19,7 +20,7 @@ export class ModificaavanzamentoComponent implements OnInit {
 
  
   
-  constructor(private inserisci : InserimentoService, private activatedroute : ActivatedRoute) { }
+  constructor(private inserisci : InserimentoService, private activatedroute : ActivatedRoute, private session : SessionStorageService) { }
   avan : Avanzamento[] =[]
   avanzamenti : Avanzamento [] = []
   avanzamento : Avanzamento = new Avanzamento
@@ -46,6 +47,13 @@ titolo : string =''
 commessa : Commessa = new Commessa
   ngOnInit(): void 
   {
+    if(this.session.get('TIPOLOGIA') == "utente")
+    {
+      this.displayedColumns = ['cod', 'nome', 'mese', 'anno', 'percentuale', 'valore']
+    }
+
+
+
     this.activatedroute.data.subscribe(data => { 
       switch(data.kind)
       {
@@ -75,7 +83,7 @@ commessa : Commessa = new Commessa
           this.tipoAvanzamento.id_tipo_avanzamento = 3 
           this.tipoAvanzamento.nome = "Previsione ricavi"
           console.log('previsionericavi')
-          this.titolo="Preveisione dei ricavi di"
+          this.titolo="Previsione dei ricavi di"
           this.percentuale=100
           this.tipo23=false
           this.fattura=false
@@ -88,7 +96,7 @@ commessa : Commessa = new Commessa
           this.tipo23=true
           this.fattura=false
           console.log('previsionetask')
-          this.titolo="Preveisione avanzamento task di"
+          this.titolo="Previsione avanzamento task di"
           break;
         }
       }

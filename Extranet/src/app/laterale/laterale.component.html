@@ -2,15 +2,14 @@
 <div class="sidebar">
 
     <a href="\creacommessa" *ngIf="amministratore"><b> Crea Commessa </b></a>
-    <a href="\riepilogo"><b> Riepilogo</b></a>
-    <a href="\selezionacommessa"><b> Seleziona Commessa </b></a>
-    <a href="\creacommessa"><b> Crea Commessa </b></a>
-    <a href="\task"><b>Task</b></a>
-    <a href="\ricavi"><b>Ricavi</b></a>
-    <a href="\assegnarisorseerogate"> <b>Erogato risorse</b></a>
-    <a href="\previsionericavi"><b>Previsioni ricavi</b></a>
-    <a href="\previsionetask"><b>Previsioni task</b></a>
-    <a href="\assegnarisorsepreventivate"><b>Previsione risorse</b></a>
-    <a href="\dati"><b>Dati</b></a>
+    <a href="\riepilogo" *ngIf="visualizzazione"><b> Riepilogo</b></a>
+    <a href="\selezionacommessa" ><b> Seleziona Commessa </b></a>
+    <a href="\task" *ngIf="visualizzazione"><b>Task</b></a>
+    <a href="\ricavi" *ngIf="visualizzazione"><b>Ricavi</b></a>
+    <a href="\assegnarisorseerogate" *ngIf="visualizzazione"> <b>Erogato risorse</b></a>
+    <a href="\previsionericavi" *ngIf="visualizzazione"><b>Previsioni ricavi</b></a>
+    <a href="\previsionetask" *ngIf="visualizzazione"><b>Previsioni task</b></a>
+    <a href="\assegnarisorsepreventivate" *ngIf="visualizzazione"><b>Previsione risorse</b></a>
+    <div *ngIf="visualizzazione"><a href="\dati" *ngIf="amministratore"><b>Dati</b></a></div>
 
 </div>

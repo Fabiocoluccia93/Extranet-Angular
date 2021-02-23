@@ -65,7 +65,7 @@ export class AssegnataskComponent implements OnInit {
       {
         this.inserisci.setAttivita(this.attivita).subscribe(response=>{})
         this.inserisci.getCommessaAttivita(this.a).subscribe(response=>{this.attivitas=response;})
-        window.location.reload()
+        setTimeout("location.reload(true);",10)
       }
     else
     {

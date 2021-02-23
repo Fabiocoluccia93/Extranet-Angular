@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Commessa } from '../selezionacommessa/selezionacommessa.component';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
+import { SessionStorageService } from 'angular-web-storage';
 
 
 
@@ -52,7 +53,7 @@ export class Risorsa
 })
 export class PreventivorisorseComponent implements OnInit {
 
-  constructor(private inserisci : InserimentoService,private  activatedroute : ActivatedRoute,private route : Router) { }
+  constructor(private inserisci : InserimentoService,private  activatedroute : ActivatedRoute,private route : Router , private session: SessionStorageService) { }
 
   b : number = 0
 
@@ -92,6 +93,12 @@ export class PreventivorisorseComponent implements OnInit {
   
   ngOnInit(): void 
   { 
+
+    if(this.session.get('TIPOLOGIA') == "utente")
+    {
+      this.displayedColumns = ['cod', 'nome', 'mese', 'anno', 'figura', 'ore', 'costi', 'ricavi']
+    }
+
     this.activatedroute.data.subscribe(data => { 
       switch(data.kind)
       {

@@ -33,34 +33,18 @@ export class CreacommessaComponent implements OnInit {
       {
         if(this.commessa.inizio<this.commessa.fine)
          {
-            console.log(this.commessa.id_commessa)
-            console.log(this.commessa.nome)
-            console.log(this.commessa.cliente)
-           console.log(this.commessa.inizio)
-           console.log(this.commessa.fine)
            this.commessa.valore=0
            if(this.regexp.test(this.commessa.nome) && this.regexp.test(this.commessa.cliente))
            {
-
-          
-           
-           //   this.commessa.inizio=null
-           //   this.commessa.fine=null
               this.commessa.fatturato=0
               this.commessa.valore=0
               this.inserisci.setCommessa(this.commessa).subscribe(response=>{
               let b = response
-                //this.a = b
                 let c  = b.toString()
                   sessionStorage.setItem("idcommessa",c);
-                 // sessionStorage.setItem("idcommessa",response.toString());
                   console.log("id commessa in creacommessa"+c)
-              
-                
               })
               this.messaggio="commessa inserita con successo"
-
-            
               setTimeout(() => 
               {
                 this.route.navigate(['assegnatask']);
@@ -93,7 +77,4 @@ export class CreacommessaComponent implements OnInit {
         window.alert("Inserisci tutti i dati")
       }
     }
-  
-   
-
 }
