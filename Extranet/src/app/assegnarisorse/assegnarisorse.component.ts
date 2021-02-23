@@ -22,7 +22,9 @@ export class Risorse
   constructor(
     public id? : number | null,
     public nome? : string | null,
-    public tariffa? : number | null
+    public tariffa? : number | null,
+    public attivo? : Boolean | null,
+    public iniziovalidita? : Date | null
   ){}
 }
 

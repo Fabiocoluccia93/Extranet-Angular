@@ -4,6 +4,7 @@ import { AssegnarisorseComponent } from './assegnarisorse/assegnarisorse.compone
 import { AssegnataskComponent } from './assegnatask/assegnatask.component';
 import { CreaUtenteComponent } from './crea-utente/crea-utente.component';
 import { CreacommessaComponent } from './creacommessa/creacommessa.component';
+import { DatiComponent } from './dati/dati.component';
 import { DisabilitaUtenteComponent } from './disabilita-utente/disabilita-utente.component';
 import { HomeAdminComponent } from './home-admin/home-admin.component';
 import { HomeUserComponent } from './home-user/home-user.component';
@@ -30,6 +31,7 @@ const routes: Routes = [
   { path: 'previsionericavi', component:ModificaavanzamentoComponent, data :{ kind:'previsionericavi'}},
   { path: 'previsionetask', component:ModificaavanzamentoComponent, data :{ kind:'previsionetask'}},
   { path : "modificaavanzamento", component : ModificaavanzamentoComponent},
+  { path : "dati", component : DatiComponent}
 ];
 
 @NgModule({

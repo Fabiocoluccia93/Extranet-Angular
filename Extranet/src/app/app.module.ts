@@ -30,6 +30,7 @@ import { MatListModule } from '@angular/material/list';
 import {MatIconModule} from '@angular/material/icon';
 import { TableAdminComponent } from './table-admin/table-admin.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import { DatiComponent } from './dati/dati.component';
 
 
 
@@ -57,7 +58,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     CreaUtenteComponent,
     ModificaPasswordComponent,
     DisabilitaUtenteComponent,
-    TableAdminComponent
+    TableAdminComponent,
+    DatiComponent
     
 
 

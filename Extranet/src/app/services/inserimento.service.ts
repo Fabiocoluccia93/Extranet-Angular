@@ -117,4 +117,14 @@ export class InserimentoService {
     return this.http.put<string>(`http://localhost:8080/consolidauso`,u)
   }
 
+  setRisorse(r : Risorse)
+  {
+    return this.http.post<string>(`http://localhost:8080/setrisorse`,r)
+  }
+
+  modRisorse(r : Risorse)
+  {
+    return this.http.post<string>(`http://localhost:8080/modrisorse`,r)
+  }
+
 }
