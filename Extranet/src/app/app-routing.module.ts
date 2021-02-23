@@ -17,16 +17,17 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
 import { SelezionacommessaComponent } from './selezionacommessa/selezionacommessa.component';
 import { RiepilogoComponent } from './riepilogo/riepilogo.component';
 import { RouteguardService } from './services/routeguard.service';
+import { RouteguardTipologiaService } from './services/routeguard-tipologia.service';
 
 const routes: Routes = [
   { path : "", component : LoginComponent },
   { path : "login", component : LoginComponent},
-  { path : "creaUtente" , component : CreaUtenteComponent, canActivate:[RouteguardService]},
-  { path : "resetPassword" , component : ResetPasswordComponent, canActivate:[RouteguardService]},
+  { path : "creaUtente" , component : CreaUtenteComponent, canActivate:[RouteguardTipologiaService]},
+  { path : "resetPassword" , component : ResetPasswordComponent, canActivate:[RouteguardTipologiaService]},
   { path : "homepage" , component : HomePageComponent, canActivate:[RouteguardService]},
-  { path : "disabilitaUtente" , component :DisabilitaUtenteComponent, canActivate:[RouteguardService]},
+  { path : "disabilitaUtente" , component :DisabilitaUtenteComponent, canActivate:[RouteguardTipologiaService]},
   { path : "modificaPassword" , component : ModificaPasswordComponent, canActivate:[RouteguardService]},
-  { path: 'creacommessa',component:CreacommessaComponent, canActivate:[RouteguardService]},
+  { path : "creacommessa", component : CreacommessaComponent, canActivate:[RouteguardTipologiaService]},
   { path: 'selezionacommessa',component:SelezionacommessaComponent, canActivate:[RouteguardService]},
   { path: 'assegnatask',component:AssegnataskComponent, canActivate:[RouteguardService]},
   { path: 'assegnarisorsepreventivate', component:PreventivorisorseComponent,data: { kind: 'preventivate' }, canActivate:[RouteguardService]},
@@ -37,7 +38,7 @@ const routes: Routes = [
   { path: 'previsionetask', component:ModificaavanzamentoComponent, data :{ kind:'previsionetask'}, canActivate:[RouteguardService]},
   { path : "modificaavanzamento", component : ModificaavanzamentoComponent, canActivate:[RouteguardService]},
   { path : "riepilogo", component : RiepilogoComponent, canActivate:[RouteguardService]},
-  { path : "dati", component : DatiComponent, canActivate:[RouteguardService]},
+  { path : "dati", component : DatiComponent, canActivate:[RouteguardTipologiaService]},
   { path : '**'  , component: ErrorPathComponent}
 ];
 

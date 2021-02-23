@@ -8,6 +8,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { ActivatedRoute } from '@angular/router';
 import { Commessa } from '../selezionacommessa/selezionacommessa.component';
+import { SessionStorageService } from 'angular-web-storage';
 
 
 @Component({
@@ -19,7 +20,7 @@ export class ModificaavanzamentoComponent implements OnInit {
 
  
   
-  constructor(private inserisci : InserimentoService, private activatedroute : ActivatedRoute) { }
+  constructor(private inserisci : InserimentoService, private activatedroute : ActivatedRoute, private session : SessionStorageService) { }
   avan : Avanzamento[] =[]
   avanzamenti : Avanzamento [] = []
   avanzamento : Avanzamento = new Avanzamento
@@ -46,6 +47,13 @@ titolo : string =''
 commessa : Commessa = new Commessa
   ngOnInit(): void 
   {
+    if(this.session.get('TIPOLOGIA') == "utente")
+    {
+      this.displayedColumns = ['cod', 'nome', 'mese', 'anno', 'percentuale', 'valore']
+    }
+
+
+
     this.activatedroute.data.subscribe(data => { 
       switch(data.kind)
       {

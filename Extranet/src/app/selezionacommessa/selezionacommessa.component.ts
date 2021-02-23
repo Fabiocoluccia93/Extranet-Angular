@@ -50,7 +50,7 @@ export class SelezionacommessaComponent implements OnInit {
       console.log(this.id)
       sessionStorage.setItem("idcommessa",this.id);
       this.session.set('IDCOMMESSA', this.commessasel.id_commessa)
-      this.route.navigate(['task'])
+      this.route.navigate(['riepilogo'])
     }
    
   }
