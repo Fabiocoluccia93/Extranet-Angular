@@ -16,6 +16,7 @@ export class CreaUtenteComponent implements OnInit {
 
   regexp =  new RegExp('^[A-Za-z0-9]{7,20}$')
 
+
   constructor( private route : Router, private gest : GestAccessoService) { }
 
   ngOnInit(): void {

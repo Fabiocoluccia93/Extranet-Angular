@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { SessionStorageService } from 'angular-web-storage';
 import { Attivita } from '../assegnatask/assegnatask.component';
 import { InserimentoService } from '../services/inserimento.service';
 
@@ -27,7 +28,7 @@ export class Commessa
 })
 export class SelezionacommessaComponent implements OnInit {
 
-  constructor(private inserimento : InserimentoService, private route : Router) { }
+  constructor(private inserimento : InserimentoService, private route : Router , private session : SessionStorageService) { }
   commesse : Commessa[] = []
   commessasel : Commessa = new Commessa;
   commessa : Commessa = new Commessa;
@@ -48,6 +49,7 @@ export class SelezionacommessaComponent implements OnInit {
       this.id = this.commessasel.id_commessa?.toString()
       console.log(this.id)
       sessionStorage.setItem("idcommessa",this.id);
+      this.session.set('IDCOMMESSA', this.commessasel.id_commessa)
       this.route.navigate(['task'])
     }
    

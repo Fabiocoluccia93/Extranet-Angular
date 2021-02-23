@@ -58,12 +58,12 @@ export class LoginComponent implements OnInit {
                 if(this.session.get('TIPOLOGIA')=="amministratore")
                 {
                   window.alert("hai effettuato l'accesso come amministratore")
-                  this.route.navigate(['homepage'])          
+                  this.route.navigate(['selezionacommessa'])          
                 }
                 else if(this.session.get('TIPOLOGIA')=="utente")
                 {
                   window.alert("hai effettuato l'accesso come utente")
-                  this.route.navigate(['homepage'])
+                  this.route.navigate(['selezionacommessa'])
                 }
                 if(sessionStorage.getItem('STATOACCESSO')=="1"){
                   window.alert("Questo è il primo accesso che effettui, cambia password!")
