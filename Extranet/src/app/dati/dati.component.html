@@ -1,0 +1,85 @@
+<div class="centrale">
+    <div class="titolo">
+    <h1>{{titolo}}</h1>
+    </div>
+  </div>
+
+<div class="centrale">
+  <div class="mat-elevation-z8">
+      <table mat-table [dataSource]="dataSource" class>
+        <!-- id_commessa Column -->
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef> Cod. </th>
+          <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+        </ng-container>
+        <!-- Nome Column -->
+        <ng-container matColumnDef="nome">
+          <th mat-header-cell *matHeaderCellDef> Nome </th>
+          <td mat-cell *matCellDef="let element"> {{element.nome}} </td>
+        </ng-container>
+        <!-- Valore Column -->
+        <ng-container matColumnDef="tariffa">
+          <th mat-header-cell *matHeaderCellDef> Tariffa </th>
+          <td mat-cell *matCellDef="let element"> {{element.tariffa}} </td>
+        </ng-container>
+         <!-- Inizio Column -->
+         <ng-container matColumnDef="attivo">
+          <th mat-header-cell *matHeaderCellDef> Attivo </th>
+          <td mat-cell *matCellDef="let element"> {{element.attivo}} </td>
+        </ng-container>
+         <!-- Fine Column -->
+         <ng-container matColumnDef="iniziovalidita">
+          <th mat-header-cell *matHeaderCellDef> Inizio Validita </th>
+          <td mat-cell *matCellDef="let element"> {{element.iniziovalidita}} </td>
+        </ng-container>
+        <!-- Get Details -->
+        <section>
+        <ng-container matColumnDef="getdetails">
+          <th mat-header-cell *matHeaderCellDef="" > <button mat-icon-button style="color: #2B5978 ;" (click)="inserimentoRisorse()"> <mat-icon style=" font-size: 45px">add</mat-icon> </button> </th>
+          <td mat-cell *matCellDef="let element"> 
+            <button mat-icon-button style="color: #2B5978; padding-left: 20px;" (click)="modificaRisorsa(element)"><mat-icon>mode</mat-icon></button>
+          </td>
+        </ng-container>
+        </section>
+  
+     
+  
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+      <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+    </div>
+  </div>
+
+<div class = "centrale" *ngIf="visualizza">
+    <div class="form-group row">
+        <label class="col-2 col-form-label" for="nomerisorse" name="lnomerisorse">Nome Risorsa</label>
+         <div class="col-10">
+               <input class="form-control" type="text"   name="nomerisorse" [(ngModel)]="risorsa.nome" required>
+        </div>
+        <label class="col-2 col-form-label" for="tariffa" name="ltariffa">Tariffa Giornaliera Risorsa</label>
+         <div class="col-10">
+             <input class="form-control" type="number" name='tariffa'    [(ngModel)]="risorsa.tariffa" required>
+        </div>
+        <label for="datainizio" class="col-2 col-form-label">Data di inizio validita della nuova tariffa</label>
+           <div class="col-10">
+              <input class="form-control" type="date" value="2011-08-19" id="datainizio"[(ngModel)]="risorsa.iniziovalidita" ><!---->
+           </div>
+     </div> 
+     <button type="submit" (click)=inserisciRisorsa()>Inserisci Risorsa</button>
+     <a>{{messaggio}}</a>
+</div>
+
+<div class="centrale" *ngIf="modifica">
+  <label class="col-2 col-form-label" for="tariffa" name="ltariffa">Tariffa Giornaliera Risorsa</label>
+  <div class="col-10">
+      <input class="form-control" type="number" name='tariffa'    [(ngModel)]="risorsamod.tariffa" required>
+ </div>
+ <label for="datainizio" class="col-2 col-form-label">Data di inizio validita della nuova tariffa</label>
+           <div class="col-10">
+              <input class="form-control" type="date" value="2011-08-19" id="datainizio"[(ngModel)]="risorsamod.iniziovalidita" >
+           </div>
+
+     <button type="submit" (click)=eseguiModificaRisorse()>Modifica Risorsa</button>
+</div>
+

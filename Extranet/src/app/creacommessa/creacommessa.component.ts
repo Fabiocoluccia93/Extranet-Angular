@@ -18,7 +18,7 @@ export class CreacommessaComponent implements OnInit {
   constructor(private inserisci : InserimentoService,private route : Router,private http: HttpClient) { }
   messaggio : string = ''
   asa : string = "ASDASD"
-  regexp =  new RegExp('^[A-Za-z0-9]{3,20}$');
+  regexp =  new RegExp('^[A-Za-z0-9 ]{3,20}$');
 
   a : number = 0
   ngOnInit(): void 

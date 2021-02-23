@@ -14,7 +14,8 @@ export class CreaUtenteComponent implements OnInit {
   utente : Utente = new Utente
   gruppo : Gruppo = new Gruppo
 
-  regexp =  new RegExp('^[A-Za-z0-9]{6,20}$')
+  regexp =  new RegExp('^[A-Za-z0-9]{7,20}$')
+
 
   constructor( private route : Router, private gest : GestAccessoService) { }
 

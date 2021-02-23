@@ -33,6 +33,8 @@ import { TableManagmentComponent } from './table-managment/table-managment.compo
 import { TableAdminComponent } from './table-admin/table-admin.component';
 import { RiepilogoComponent } from './riepilogo/riepilogo.component';
 import { ChartsModule } from 'ng2-charts';
+import { DatiComponent } from './dati/dati.component';
+
 
 
 @NgModule({
@@ -52,6 +54,7 @@ import { ChartsModule } from 'ng2-charts';
     CreaUtenteComponent,
     ModificaPasswordComponent,
     DisabilitaUtenteComponent,
+    DatiComponent,
     HomePageComponent,
     ErrorPathComponent,
     ResetPasswordComponent,

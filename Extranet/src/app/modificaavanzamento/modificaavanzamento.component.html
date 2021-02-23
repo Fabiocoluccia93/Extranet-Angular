@@ -42,18 +42,18 @@
       <ng-container matColumnDef="getdetails">
         <th mat-header-cell *matHeaderCellDef="" > <button mat-icon-button style="color: #2B5978 ;" (click)="inserimentoAvanzamento()"> <mat-icon style=" font-size: 45px">add</mat-icon> </button> </th>
         <td mat-cell *matCellDef="let element">  
-        <button mat-icon-button style="color: #2B5978; padding-left: 20px;" [disabled]="element.consolida != null" (click)="modificaAvanzamento(element)"><mat-icon *ngIf="element.consolida != null"></mat-icon> <mat-icon *ngIf="element.consolida == null">mode</mat-icon></button></td>
+        <button mat-icon-button style="color: #2B5978; padding-left: 20px;" [disabled]="element.consolida != null || element.tipoAvanzamento?.id_tipo_avanzamento == 2" (click)="modificaAvanzamento(element)"><mat-icon *ngIf="element.consolida != null || element.tipoAvanzamento?.id_tipo_avanzamento == 2"></mat-icon> <mat-icon *ngIf="element.consolida == null || element.tipoAvanzamento?.id_tipo_avanzamento != 2">mode</mat-icon></button></td>
       </ng-container>
-    </section>
+      </section>
 
     <section>
       <ng-container matColumnDef="consolida">
         <th mat-header-cell *matHeaderCellDef="" > Consolida </th>
         <td mat-cell *matCellDef="let element">  
-        <button mat-icon-button style="color: #2B5978; padding-left: 20px;" [disabled]="element.consolida != null" 
+        <button mat-icon-button style="color: #2B5978; padding-left: 20px;" [disabled]="element.consolida != null || element.tipoAvanzamento?.id_tipo_avanzamento == 2" 
         (click)="consolida(element)">
-        <mat-icon *ngIf="element.consolida != null"></mat-icon>
-        <mat-icon *ngIf="element.consolida == null">edit_off</mat-icon></button> 
+        <mat-icon *ngIf="element.consolida != null || element.tipoAvanzamento?.id_tipo_avanzamento == 2"></mat-icon>
+        <mat-icon *ngIf="element.consolida == null || element.tipoAvanzamento?.id_tipo_avanzamento != 2">edit_off</mat-icon></button> 
         </td>
       </ng-container>
     </section>
