@@ -31,7 +31,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { ModificaavanzamentoComponent } from './modificaavanzamento/modificaavanzamento.component';
 import { TableManagmentComponent } from './table-managment/table-managment.component';
 import { TableAdminComponent } from './table-admin/table-admin.component';
-
+import { RiepilogoComponent } from './riepilogo/riepilogo.component';
+import { ChartsModule } from 'ng2-charts';
 
 
 @NgModule({
@@ -56,7 +57,8 @@ import { TableAdminComponent } from './table-admin/table-admin.component';
     ResetPasswordComponent,
     ModificaavanzamentoComponent,
     TableManagmentComponent,
-    TableAdminComponent
+    TableAdminComponent,
+    RiepilogoComponent
   ],
   imports: [
     BrowserModule,
@@ -69,7 +71,8 @@ import { TableAdminComponent } from './table-admin/table-admin.component';
     MatButtonModule,
     MatListModule,
     MatIconModule,
-    MatFormFieldModule
+    MatFormFieldModule, 
+    ChartsModule
   
   ],
   providers: [],

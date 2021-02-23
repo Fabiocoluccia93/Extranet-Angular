@@ -14,6 +14,7 @@ import { ModificaPasswordComponent } from './modifica-password/modifica-password
 import { PreventivorisorseComponent } from './preventivorisorse/preventivorisorse.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { SelezionacommessaComponent } from './selezionacommessa/selezionacommessa.component';
+import { RiepilogoComponent } from './riepilogo/riepilogo.component';
 import { RouteguardService } from './services/routeguard.service';
 
 const routes: Routes = [
@@ -34,7 +35,7 @@ const routes: Routes = [
   { path: 'previsionericavi', component:ModificaavanzamentoComponent, data :{ kind:'previsionericavi'}, canActivate:[RouteguardService]},
   { path: 'previsionetask', component:ModificaavanzamentoComponent, data :{ kind:'previsionetask'}, canActivate:[RouteguardService]},
   { path : "modificaavanzamento", component : ModificaavanzamentoComponent, canActivate:[RouteguardService]},
-  
+  { path : "riepilogo", component : RiepilogoComponent, canActivate:[RouteguardService]},
   { path : '**'  , component: ErrorPathComponent}
 ];
 

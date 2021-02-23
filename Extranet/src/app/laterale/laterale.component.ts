@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SessionStorageService } from 'angular-web-storage';
 
 @Component({
   selector: 'app-laterale',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LateraleComponent implements OnInit {
 
-  constructor() { }
+  amministratore: boolean = false
+
+  constructor(private session : SessionStorageService) { }
 
   ngOnInit(): void {
+    if(this.session.get('TIPOLOGIA')=="amministratore")
+    {
+      this.amministratore= true
+    }
+
   }
 
 }

@@ -1,0 +1,26 @@
+<div class="centrale">
+
+  <b>Seleziona l'anno da visualizzare</b> 
+        <br>
+            <select [(ngModel)]="anno" (ngModelChange)="CambioAnno($event)"  name="anno" class="form-control form-control-lg">
+                <option *ngFor="let anno of anni" [ngValue]="anno">
+                    {{anno.numero}}
+                </option>
+            </select>
+        <br>       
+    <br> 
+
+      <div style="display: block;" *ngIf="grafico">
+          <canvas baseChart width="400" height="180"
+            [datasets]="lineChartData"
+            [labels]="lineChartLabels"
+            [options]="lineChartOptions"
+            [colors]="lineChartColors"
+            [legend]="lineChartLegend"
+            [chartType]="lineChartType"
+            [plugins]="lineChartPlugins">
+          </canvas>
+        </div>
+
+</div>
+  
