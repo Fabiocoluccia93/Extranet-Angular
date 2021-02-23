@@ -4,7 +4,7 @@
     <div id="inserisci">
         <b>seleziona tipologia nuovo utente</b> 
         <br>
-            <select [(ngModel)]="gruppo.id" (ngModelChange)="gruppoChanged($event)" name="gruppo" class="form-control form-control-lg">
+            <select [(ngModel)]="gruppo" (ngModelChange)="gruppoChanged($event)" name="gruppo" class="form-control form-control-lg">
                 <option *ngFor="let tipologia of tipologie" [ngValue]="tipologia">
                     {{tipologia.descrizione}}
                 </option>
