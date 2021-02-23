@@ -49,6 +49,7 @@ export class DatiComponent implements OnInit {
     this.risorsa.attivo = true
     this.inserimento.setRisorse(this.risorsa).subscribe(response=>{this.messaggio=response})
     this.visualizza = false;
+    setTimeout("location.reload(true);",1000)
   }
   modifica :boolean = false
   risorsamod : Risorse = new Risorse
@@ -69,6 +70,7 @@ export class DatiComponent implements OnInit {
     this.risorsamod.attivo = false
     this.inserimento.modRisorse(this.risorsamod).subscribe(response=>{this.messaggio=response})
     this.modifica = false 
+    setTimeout("location.reload(true);",1000)
   }
 
 
