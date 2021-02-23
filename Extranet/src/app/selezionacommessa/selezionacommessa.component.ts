@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { SessionStorageService } from 'angular-web-storage';
 import { Attivita } from '../assegnatask/assegnatask.component';
+import { LateraleComponent } from '../laterale/laterale.component';
 import { InserimentoService } from '../services/inserimento.service';
 
 
@@ -28,14 +29,15 @@ export class Commessa
 })
 export class SelezionacommessaComponent implements OnInit {
 
-  constructor(private inserimento : InserimentoService, private route : Router , private session : SessionStorageService) { }
+  constructor(private inserimento : InserimentoService, private route : Router , private session : SessionStorageService ) { }
   commesse : Commessa[] = []
   commessasel : Commessa = new Commessa;
   commessa : Commessa = new Commessa;
   public id : string = '' 
-
+  i : number = 0
+  
   ngOnInit(): void 
-  {
+  {    
     this.inserimento.getCommessa().subscribe(response=>{this.commesse=response;})
   }
 
@@ -50,6 +52,7 @@ export class SelezionacommessaComponent implements OnInit {
       console.log(this.id)
       sessionStorage.setItem("idcommessa",this.id);
       this.session.set('IDCOMMESSA', this.commessasel.id_commessa)
+      setTimeout('location.reload(true)', 0)
       this.route.navigate(['riepilogo'])
     }
    
