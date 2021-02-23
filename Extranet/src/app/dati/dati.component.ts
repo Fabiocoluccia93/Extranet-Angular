@@ -43,9 +43,6 @@ export class DatiComponent implements OnInit {
 
   inserisciRisorsa()
   {
-    console.log(this.risorsa.nome)
-    console.log(this.risorsa.tariffa)
-    console.log(this.risorsa.iniziovalidita)
     this.risorsa.attivo = true
     this.inserimento.setRisorse(this.risorsa).subscribe(response=>{this.messaggio=response})
     this.visualizza = false;
@@ -64,9 +61,6 @@ export class DatiComponent implements OnInit {
  
   eseguiModificaRisorse()
   {
-    console.log(this.risorsamod.nome)
-    console.log(this.risorsamod.tariffa)
-    console.log(this.risorsamod.iniziovalidita)
     this.risorsamod.attivo = false
     this.inserimento.modRisorse(this.risorsamod).subscribe(response=>{this.messaggio=response})
     this.modifica = false 

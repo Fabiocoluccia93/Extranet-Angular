@@ -1,8 +1,8 @@
 <div class="centrale">
     <div class="titolo">
-    <h1>{{titolo}}</h1>
+      <h1>{{titolo}}</h1>
     </div>
-  </div>
+</div>
 
 <div class="centrale">
   <div class="mat-elevation-z8">
@@ -42,14 +42,16 @@
         </ng-container>
         </section>
   
-     
-  
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
       </table>
       <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
     </div>
   </div>
+
+<div class="centrale">
+  <a>{{messaggio}}</a>
+</div>
 
 <div class = "centrale" *ngIf="visualizza">
     <div class="form-group row">
@@ -67,7 +69,7 @@
            </div>
      </div> 
      <button type="submit" (click)=inserisciRisorsa()>Inserisci Risorsa</button>
-     <a>{{messaggio}}</a>
+    
 </div>
 
 <div class="centrale" *ngIf="modifica">
