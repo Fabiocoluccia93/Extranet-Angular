@@ -1,9 +1,8 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { SessionStorageService } from 'angular-web-storage';
-import { ChartDataSets, ChartOptions } from 'chart.js';
-import { Color, Label } from 'ng2-charts';
-import { Anno, Avanzamento, InseriscitaskComponent, Mese } from '../inseriscitask/inseriscitask.component';
-import { Commessa } from '../selezionacommessa/selezionacommessa.component';
+import { ChartDataSets } from 'chart.js';
+import { Color } from 'ng2-charts';
+import { Anno, Avanzamento, Commessa } from '../classi/ClassiGenerali';
 import { InserimentoService } from '../services/inserimento.service';
 
 

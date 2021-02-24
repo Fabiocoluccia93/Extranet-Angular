@@ -1,50 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Anno, Mese } from '../inseriscitask/inseriscitask.component';
 import { InserimentoService } from '../services/inserimento.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Commessa } from '../selezionacommessa/selezionacommessa.component';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { SessionStorageService } from 'angular-web-storage';
+import { Anno, Commessa, Mese, Risorsa, TipoUsoRisorse, UsoRisorse } from '../classi/ClassiGenerali';
 
-
-
-
-
-export class UsoRisorse
-{
-  
-  constructor(
-   public id? :number | null,
-   public costi? : number | null,
-   public ricavi? : number | null,
-   public commessa? : Commessa | null,
-   public ore? : number | null,
-   public mese? : Mese | null,
-   public anno? : Anno | null,
-   public risorse? : Risorsa | null,
-   public tipoUsoRisorse? : TipoUsoRisorse | null,
-   public consolida? : Date | null
-  ){}
-}
-
-export class TipoUsoRisorse
-{
-  constructor(
-  public id_tipo_usorisorse? : number | null,
-  public nome? : string | null
-  ){}
-}
-
-
-export class Risorsa
-{
-  
-    id_risorse? : number | null
-    nome? : string | null
-    tariffa? : number | null
- 
-}
 
 @Component({
   selector: 'app-preventivorisorse',

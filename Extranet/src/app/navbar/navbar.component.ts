@@ -1,7 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { RouteConfigLoadEnd, Router } from '@angular/router';
 import { SessionStorageService } from 'angular-web-storage';
-import { Utente } from '../login/login.component';
+import { Utente } from '../classi/ClassiUtenti';
+
 import { SessionUtenteService } from '../services/session-utente.service';
 
 

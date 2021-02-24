@@ -1,10 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
-import { Commessa } from 'src/app/selezionacommessa/selezionacommessa.component'
-import { InserimentoService } from 'src/app/services/inserimento.service'
-import { Attivita } from 'src/app/assegnatask/assegnatask.component'
+import { InserimentoService } from 'src/app/services/inserimento.service';
 import { MatPaginator } from '@angular/material/paginator';
 import { animate, state, style, transition, trigger } from '@angular/animations';
+import { Attivita, Commessa } from '../classi/ClassiGenerali';
 
 export interface PeriodicElement {
   name: string;

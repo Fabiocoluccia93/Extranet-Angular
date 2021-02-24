@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
-import { Gruppo, Utente } from '../login/login.component';
+import { Gruppo, Utente } from '../classi/ClassiUtenti';
 import { GestAccessoService } from '../services/gest-accesso.service';
 
 @Component({

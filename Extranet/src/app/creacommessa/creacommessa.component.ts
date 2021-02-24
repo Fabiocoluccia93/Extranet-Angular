@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Commessa } from '../selezionacommessa/selezionacommessa.component';
 import { FormGroup , FormControl , Validators } from '@angular/forms'
 import { InserimentoService } from '../services/inserimento.service';
 import { Router } from '@angular/router';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { observable } from 'rxjs';
+import { Commessa } from '../classi/ClassiGenerali';
 
 
 

@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Gruppo, Utente } from '../login/login.component';
+import { Gruppo, Utente } from '../classi/ClassiUtenti';
+
 
 @Injectable({
   providedIn: 'root'

@@ -1,18 +1,9 @@
 import { Component, OnInit, Input} from '@angular/core';
 import { Router } from '@angular/router';
-import { TipoUsoRisorse } from '../preventivorisorse/preventivorisorse.component';
-import { Commessa } from '../selezionacommessa/selezionacommessa.component';
+import { Attivita, TipoUsoRisorse } from '../classi/ClassiGenerali';
 import { InserimentoService } from '../services/inserimento.service';
 
-export class Attivita
-{
-  constructor(
-    public id_attivita? : number | null,
-    public descrizione? : string | null,
-    public commessa? : Commessa | null, //tipo commessa
-    public valore? : number | null
-  ){}
-}
+
 
 @Component({
   selector: 'app-assegnatask',

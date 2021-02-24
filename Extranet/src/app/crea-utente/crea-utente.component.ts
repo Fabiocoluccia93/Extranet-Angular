@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Gruppo, Utente } from '../login/login.component';
+import { Gruppo, Utente } from '../classi/ClassiUtenti';
 import { GestAccessoService } from '../services/gest-accesso.service';
 
 @Component({

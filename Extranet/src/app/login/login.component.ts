@@ -4,26 +4,8 @@ import { SessionStorageService } from 'angular-web-storage';
 import { AppComponent } from '../app.component';
 import { GestAccessoService } from '../services/gest-accesso.service';
 import { SessionUtenteService } from '../services/session-utente.service';
+import { Utente } from '../classi/ClassiUtenti';
 
-export class Utente
-{
-  constructor(
-  public id ?: number ,
-  public username  ?: string,
-  public password ?:  string,
-  public stato ?: number,
-  public primo_accesso ?: number,
-  public gruppo ?: Gruppo
-  ){}
-}
-
-export class Gruppo
-{
-  constructor(
-   public id  ?: number,
-   public descrizione ?: string
-    ) {}
-} 
 
 @Component({
   selector: 'app-login',
