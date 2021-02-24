@@ -1,40 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Attivita } from '../assegnatask/assegnatask.component';
-import { Mese } from '../inseriscitask/inseriscitask.component';
+import { Attivita, Mese, Risorse, Usorisorse } from '../classi/ClassiGenerali';
 import { InserimentoService } from '../services/inserimento.service';
 
-export class Usorisorse
-{
-  constructor(
-    public mesa? : Mese | null,
-    public risorsa? : Risorse | null,
-    public ore? : number |null,
-    public ricavi? : number | null,
-    public costi? : number | null,
-    public tiporisorsa? : TipoRisorse | null,
-    public attivita? : Attivita | null
-  )  {  }
-}
-
-export class Risorse
-{
-  constructor(
-    public id? : number | null,
-    public nome? : string | null,
-    public tariffa? : number | null,
-    public attivo? : Boolean | null,
-    public iniziovalidita? : Date | null
-  ){}
-}
-
-export class TipoRisorse
-{
-  constructor(
-    public id_uso_risorse? : number | null,
-    public nome? : string | null
-  ){}
-}
 
 @Component({
   selector: 'app-assegnarisorse',

@@ -1,27 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { SessionStorageService } from 'angular-web-storage';
-import { Attivita } from '../assegnatask/assegnatask.component';
-import { LateraleComponent } from '../laterale/laterale.component';
+import { Commessa } from '../classi/ClassiGenerali';
 import { InserimentoService } from '../services/inserimento.service';
 
 
-export class Commessa
-{
 
-  
-  constructor(
-    public id_commessa? : number | null,
-    public nome? : string | null,
-    public cliente? : string | null,
-    public valore? : number | null,
-    public fatturato? : number | null,
-    public inizio? : Date | null,
-    public fine? : Date | null,
-    
-  )
-{}
-}
 @Component({
   selector: 'app-selezionacommessa',
   templateUrl: './selezionacommessa.component.html',
