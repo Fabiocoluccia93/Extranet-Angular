@@ -127,4 +127,9 @@ export class InserimentoService {
     return this.http.post<string>(`http://localhost:8080/modrisorse`,r)
   }
 
+  getAnniCommesse(id: number)
+  {
+    return this.http.get<Anno[]>(`http://localhost:8080/anniCommesse/${id}`)
+  }
+
 }

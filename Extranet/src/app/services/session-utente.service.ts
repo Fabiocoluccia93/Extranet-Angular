@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { SessionStorageService } from 'angular-web-storage';
+import { AppComponent } from '../app.component';
 import { Utente } from '../login/login.component';
 import { GestAccessoService } from './gest-accesso.service';
 

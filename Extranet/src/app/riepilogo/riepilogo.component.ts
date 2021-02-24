@@ -43,12 +43,25 @@ export class RiepilogoComponent implements OnInit  {
   avanzamento : Avanzamento[] = []
   avanzamento2 :Avanzamento [] = []
   grafico : boolean = false
+  messaggioerrore : boolean = false
+  messaggio : string = ''
 
 
   constructor(private inserimento : InserimentoService, private session : SessionStorageService) { }
 
   ngOnInit() {
-    this.inserimento.getAnni().subscribe(response =>{this.anni = response})
+    this.inserimento.getAnniCommesse(this.session.get('IDCOMMESSA')).subscribe(response =>{this.anni = response
+    if(response.length>0)
+  {
+    this.messaggioerrore = false
+  }
+  else
+  {
+    this.messaggioerrore = true
+    this.messaggio = "Non ci sono anni da visualizzare"
+  }
+  })
+
 
     this.inserimento.getMesi().subscribe(response=>{     
       for(var i = 0; i < response.length; i++)
