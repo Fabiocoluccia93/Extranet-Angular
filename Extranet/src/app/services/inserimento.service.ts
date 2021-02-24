@@ -37,6 +37,11 @@ export class InserimentoService {
     return this.http.get<Risorse[]>(`http://localhost:8080/risorse`);
   }
 
+  getRisorseActive()
+  {
+    return this.http.get<Risorse[]>(`http://localhost:8080/risorseActive`);
+  }
+
   getTipoRisorse()
   {
     return this.http.get<TipoRisorse[]>(`http://localhost:8080/tiporisorse`);

@@ -142,7 +142,7 @@ export class PreventivorisorseComponent implements OnInit {
     //console.log("ID Commessa usorisorse "+this.usoRisorse.commessa.id_commessa)
     this.inserisci.getAnni().subscribe(response=>{this.anni=response})
     this.inserisci.getMesi().subscribe(response=>{this.mesi=response})
-    this.inserisci.getRisorse().subscribe(response=>{this.risorse=response})
+    this.inserisci.getRisorseActive().subscribe(response=>{this.risorse=response})
     console.log("id commessa "+this.a)
     
     if(this.tipoUsoRisorse?.id_tipo_usorisorse!=null)
