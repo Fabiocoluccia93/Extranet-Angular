@@ -34,6 +34,11 @@ export class InserimentoService {
     return this.http.get<Risorse[]>(`http://localhost:8080/risorse`);
   }
 
+  getRisorseActive()
+  {
+    return this.http.get<Risorse[]>(`http://localhost:8080/risorseActive`);
+  }
+
   getTipoRisorse()
   {
     return this.http.get<TipoRisorse[]>(`http://localhost:8080/tiporisorse`);
@@ -122,6 +127,11 @@ export class InserimentoService {
   modRisorse(r : Risorse)
   {
     return this.http.post<string>(`http://localhost:8080/modrisorse`,r)
+  }
+
+  getAnniCommesse(id: number)
+  {
+    return this.http.get<Anno[]>(`http://localhost:8080/anniCommesse/${id}`)
   }
 
 }

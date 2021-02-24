@@ -8,7 +8,10 @@
                 </option>
             </select>
         <br>       
-    <br> 
+    <br> <br>
+    <div *ngIf="messaggioerrore"><h2><b>{{messaggio}}</b></h2></div>
+
+    <br><br>
 
       <div style="display: block;" *ngIf="grafico">
           <canvas baseChart width="400" height="180"
