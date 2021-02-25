@@ -51,16 +51,29 @@ export class AssegnataskComponent implements OnInit {
 
   inserisciattivita()
   {
-
-    if(this.attivita.descrizione!=null && this.regexp.test(this.attivita.descrizione))
+    
+    if(this.attivita.descrizione!=null && this.attivita.valore!=null && this.regexp.test(this.attivita.descrizione))
       {
         this.inserisci.setAttivita(this.attivita).subscribe(response=>{})
         this.inserisci.getCommessaAttivita(this.a).subscribe(response=>{this.attivitas=response;})
         setTimeout("location.reload(true);",10)
       }
-    else
+    else if(this.attivita.descrizione!=null && !this.regexp.test(this.attivita.descrizione))
     {
       this.messaggio="non sono ammessi caratteri speciali nel campo descizione"
+    }
+    else if(this.attivita.valore==null)
+    {
+      this.messaggio="inserici valore nel campo valore della task"
+    }
+    else if(this.attivita.descrizione==null)
+    {
+      this.messaggio="inserisci qualcosa nel campo attivita"
+    }
+    else
+    {
+      this.messaggio="Errore"
+      setTimeout("location.reload(true);",1000)
     }
      
   }
