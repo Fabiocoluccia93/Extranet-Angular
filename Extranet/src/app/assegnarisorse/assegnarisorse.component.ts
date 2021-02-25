@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Attivita } from '../assegnatask/assegnatask.component';
 import { Mese } from '../inseriscitask/inseriscitask.component';
+import { Attivita } from '../preventivorisorse/preventivorisorse.component';
 import { InserimentoService } from '../services/inserimento.service';
 
 export class Usorisorse

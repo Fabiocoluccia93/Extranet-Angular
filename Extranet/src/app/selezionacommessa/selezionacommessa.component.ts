@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Attivita } from '../assegnatask/assegnatask.component';
 import { InserimentoService } from '../services/inserimento.service';
 
 

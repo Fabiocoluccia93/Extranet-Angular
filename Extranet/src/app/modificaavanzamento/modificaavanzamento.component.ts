@@ -3,11 +3,11 @@ import { Component, OnInit , ViewChild } from '@angular/core';
 import { Avanzamento, TipoAvanzamento } from '../inseriscitask/inseriscitask.component';
 import { InserimentoService } from '../services/inserimento.service';
 import { Mese,Anno } from '../inseriscitask/inseriscitask.component';
-import { Attivita } from '../assegnatask/assegnatask.component';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { ActivatedRoute } from '@angular/router';
 import { Commessa } from '../selezionacommessa/selezionacommessa.component';
+import { Attivita } from '../preventivorisorse/preventivorisorse.component';
 
 
 @Component({

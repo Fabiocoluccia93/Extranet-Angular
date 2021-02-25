@@ -1,18 +1,10 @@
 import { Component, OnInit, Input} from '@angular/core';
 import { Router } from '@angular/router';
-import { TipoUsoRisorse } from '../preventivorisorse/preventivorisorse.component';
+import { Attivita, TipoUsoRisorse } from '../preventivorisorse/preventivorisorse.component';
 import { Commessa } from '../selezionacommessa/selezionacommessa.component';
 import { InserimentoService } from '../services/inserimento.service';
 
-export class Attivita
-{
-  constructor(
-    public id_attivita? : number | null,
-    public descrizione? : string | null,
-    public commessa? : Commessa | null, //tipo commessa
-    public valore? : number | null
-  ){}
-}
+
 
 @Component({
   selector: 'app-assegnatask',
@@ -65,7 +57,7 @@ export class AssegnataskComponent implements OnInit {
       {
         this.inserisci.setAttivita(this.attivita).subscribe(response=>{})
         this.inserisci.getCommessaAttivita(this.a).subscribe(response=>{this.attivitas=response;})
-        window.location.reload()
+        setTimeout("location.reload(true);",10)
       }
     else
     {

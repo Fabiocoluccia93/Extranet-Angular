@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ActivatedRouteSnapshot } from '@angular/router';
-import { Attivita } from '../assegnatask/assegnatask.component';
+import { Attivita } from '../preventivorisorse/preventivorisorse.component';
 import { InserimentoService } from '../services/inserimento.service';
 
 export class Mese

@@ -2,12 +2,11 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Anno, Avanzamento, Mese} from '../inseriscitask/inseriscitask.component';
 import { Commessa } from '../selezionacommessa/selezionacommessa.component';
-import { Attivita } from '../assegnatask/assegnatask.component';
 import { Risorse, TipoRisorse, Usorisorse } from '../assegnarisorse/assegnarisorse.component';
 import { ThrowStmt } from '@angular/compiler';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { TipoUsoRisorse, UsoRisorse } from '../preventivorisorse/preventivorisorse.component';
+import { Attivita, TipoUsoRisorse, UsoRisorse } from '../preventivorisorse/preventivorisorse.component';
 
 
 @Injectable({

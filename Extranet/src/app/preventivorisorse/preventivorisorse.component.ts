@@ -8,7 +8,15 @@ import { MatPaginator } from '@angular/material/paginator';
 
 
 
-
+export class Attivita
+{
+  constructor(
+    public id_attivita? : number | null,
+    public descrizione? : string | null,
+    public commessa? : Commessa | null, //tipo commessa
+    public valore? : number | null
+  ){}
+}
 
 export class UsoRisorse
 {
