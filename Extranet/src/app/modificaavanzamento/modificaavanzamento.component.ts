@@ -34,7 +34,7 @@ export class ModificaavanzamentoComponent implements OnInit {
 
 
   dataSource = new MatTableDataSource(this.avanzamenti);
-  displayedColumns: string[] = ['cod', 'nome', 'mese', 'anno', 'percentuale', 'valore', "getdetails","consolida"]
+  displayedColumns: string[] = ['cod', 'nome', 'mese', 'anno', 'percentuale', 'valore','fattura', "getdetails","consolida"]
   @ViewChild(MatPaginator, { static: true })
   paginator!: MatPaginator;
 

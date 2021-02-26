@@ -76,7 +76,7 @@ export class InserimentoService {
 
   setAttivita(a : Attivita) 
   {
-    return this.http.post<Attivita>(`http://localhost:8080/assegnaattivita`,a);
+    return this.http.post<string>(`http://localhost:8080/assegnaattivita`,a);
   }
 
   setAvanzamento(a : Avanzamento) 

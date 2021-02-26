@@ -83,7 +83,6 @@ export class TipoAvanzamento
 
 export class UsoRisorse
 {
-  
   constructor(
    public id? :number | null,
    public costi? : number | null,
@@ -109,17 +108,13 @@ export class TipoUsoRisorse
 
 export class Risorsa
 {
-  
     id_risorse? : number | null
     nome? : string | null
     tariffa? : number | null
- 
 }
 
 export class Commessa
 {
-
-  
   constructor(
     public id_commessa? : number | null,
     public nome? : string | null,
@@ -127,8 +122,7 @@ export class Commessa
     public valore? : number | null,
     public fatturato? : number | null,
     public inizio? : Date | null,
-    public fine? : Date | null,
-    
+    public fine? : Date | null, 
   )
 {}
 }
