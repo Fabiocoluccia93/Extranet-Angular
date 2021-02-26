@@ -34,7 +34,7 @@ export class ModificaavanzamentoComponent implements OnInit {
 
 
   dataSource = new MatTableDataSource(this.avanzamenti);
-  displayedColumns: string[] = ['cod', 'nome', 'mese', 'anno', 'percentuale', 'valore','fattura', "getdetails","consolida"]
+  displayedColumns: string[] = ['cod', 'nome', 'mese', 'anno', 'percentuale', 'valore','getdetails','consolida','aggiungi']
   @ViewChild(MatPaginator, { static: true })
   paginator!: MatPaginator;
 
@@ -73,6 +73,7 @@ commessa : Commessa = new Commessa
           this.fattura=true
           console.log('ricavi')
           this.titolo="Ricavi delle Task di"
+          this.displayedColumns = ['cod', 'nome', 'mese', 'anno', 'percentuale', 'valore','fattura','aggiungi']
           break;
         }
         case('previsionericavi') :
