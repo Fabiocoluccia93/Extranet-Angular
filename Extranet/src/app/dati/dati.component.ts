@@ -42,6 +42,7 @@ export class DatiComponent implements OnInit {
 
   inserisciRisorsa()
   {
+    this.risorsa.iniziovalidita= new Date
     this.risorsa.attivo = true
     this.inserimento.setRisorse(this.risorsa).subscribe(response=>{this.messaggio=response})
     this.visualizza = false;
