@@ -8,6 +8,7 @@ import { Commessa } from '../classi/ClassiGenerali';
 
 
 
+
 @Component({
   selector: 'app-creacommessa',
   templateUrl: './creacommessa.component.html',
@@ -38,6 +39,9 @@ export class CreacommessaComponent implements OnInit {
            {
               this.commessa.fatturato=0
               this.commessa.valore=0
+              this.commessa.costo=0
+              this.commessa.fatturato_previsto=0
+              this.commessa.costo_previsto=0
               this.inserisci.setCommessa(this.commessa).subscribe(response=>{
               let b = response
                 let c  = b.toString()
