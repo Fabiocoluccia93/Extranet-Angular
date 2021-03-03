@@ -6,7 +6,6 @@ import { MatPaginator } from '@angular/material/paginator';
 import { SessionStorageService } from 'angular-web-storage';
 import { Anno, Commessa, Mese, Risorsa, TipoUsoRisorse, UsoRisorse } from '../classi/ClassiGenerali';
 
-
 @Component({
   selector: 'app-preventivorisorse',
   templateUrl: './preventivorisorse.component.html',

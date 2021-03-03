@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+
 import { Attivita, Mese, Risorse, Usorisorse } from '../classi/ClassiGenerali';
+
 import { InserimentoService } from '../services/inserimento.service';
 
 

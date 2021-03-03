@@ -56,8 +56,8 @@ export class AssegnataskComponent implements OnInit {
       {
         this.inserisci.setAttivita(this.attivita).subscribe(response=>{this.messaggio=response})
         this.inserisci.getCommessaAttivita(this.a).subscribe(response=>{this.attivitas=response;})
-        
         setTimeout("location.reload(true);",1000)
+
       }
     else if(this.attivita.descrizione!=null && !this.regexp.test(this.attivita.descrizione))
     {
