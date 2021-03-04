@@ -36,7 +36,8 @@ export class Attivita
     public id_attivita? : number | null,
     public descrizione? : string | null,
     public commessa? : Commessa | null, //tipo commessa
-    public valore? : number | null
+    public valore? : number | null,
+    public avanzamento? : Avanzamento[] | null
   ){}
 }
 

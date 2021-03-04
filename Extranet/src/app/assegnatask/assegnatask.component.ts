@@ -51,7 +51,7 @@ export class AssegnataskComponent implements OnInit {
 
   inserisciattivita()
   {
-    
+    this.attivita.avanzamento = null;
     if(this.attivita.descrizione!=null && this.attivita.valore!=null && this.regexp.test(this.attivita.descrizione))
       {
         this.inserisci.setAttivita(this.attivita).subscribe(response=>{this.messaggio=response})
