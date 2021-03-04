@@ -9,7 +9,7 @@
             <td>{{attivita.descrizione}}</td>  
             <td *ngFor="let mese of mesi">
             <ng-container *ngFor="let avanzamentos of attivita.avanzamento" >
-            <a *ngIf="mese.nome==avanzamentos.mese?.nome && avanzamento.tipologiaavanzamento==a">{{avanzamentos.percentuale}}</a>
+            <a *ngIf="mese.nome==avanzamentos.mese?.nome">{{avanzamentos.percentuale}}</a>
             </ng-container>
             </td> 
         </tr>

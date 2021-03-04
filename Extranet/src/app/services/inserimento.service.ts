@@ -138,4 +138,9 @@ export class InserimentoService {
   {​​
     return this.http.get<TipoAvanzamento[]>(`http://localhost:8080/tipiavanzamento`)
   }​​
+
+  getAttivitaCommessaByType(id: number,idt : number)
+  {
+    return this.http.get<Attivita[]>(`http://localhost:8080/tipiattivita/${id}/${idt}`)
+  }
 }
