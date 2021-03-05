@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SessionStorageService } from 'angular-web-storage';
 import { ChartDataSets } from 'chart.js';
 import { Color } from 'ng2-charts';
-import { Anno, Avanzamento, Commessa } from '../classi/ClassiGenerali';
+import { Anno, Avanzamento, Commessa, UsoRisorse } from '../classi/ClassiGenerali';
 import { InserimentoService } from '../services/inserimento.service';
 
 
@@ -29,6 +29,21 @@ export class RiepilogoComponent implements OnInit  {
   public lineChartType : any =  "line";
   public lineChartPlugins = [];
 
+  public lineChartData2: ChartDataSets[] = [];
+  public lineChartLabels2 : Array<any> = []
+  public lineChartOptions2: any  = {
+    responsive: true,
+  };
+  public lineChartColors2: Color[] = [
+    {
+      borderColor: 'black',
+      backgroundColor: 'rgba(255,0,0,0.3)',
+    },
+  ];
+  public lineChartLegend2 = true;
+  public lineChartType2 : any =  "line";
+  public lineChartPlugins2 = [];
+
   commessa : Commessa = new Commessa;
 
   anni : Anno [] = []
@@ -38,6 +53,12 @@ export class RiepilogoComponent implements OnInit  {
 
   previsioniRicavi : any [] = []
   ricavi : any [] = []
+
+  previsioneCosti: any [] = []
+  costi : any [] = []
+
+  usorisorse : UsoRisorse[]=[]
+  usorisorse2 : UsoRisorse[]=[]
 
   avanzamento : Avanzamento[] = []
   avanzamento2 :Avanzamento [] = []
@@ -76,8 +97,11 @@ export class RiepilogoComponent implements OnInit  {
   {
     this.grafico=true
     this.lineChartData = []
+    this.lineChartData2 = []
     this.avanzamento=[]
     this.avanzamento2=[]
+    this.usorisorse=[]
+    this.usorisorse2=[]
 
     this.inserimento.getCommessaId(this.session.get('IDCOMMESSA')).subscribe(
       response=>{
@@ -85,6 +109,52 @@ export class RiepilogoComponent implements OnInit  {
         
         if(this.commessa.id_commessa != null)
         {
+          this.inserimento.getUsoRisorse(this.commessa.id_commessa , 1 ).subscribe(
+            response=>{
+              console.log(response)
+              for(var i=0 ; i<response.length; i++)
+              {
+                if(response[i].anno?.numero == anno.numero)
+                {
+                  this.usorisorse.push(response[i])
+                }
+              }
+              for ( var i=0 ; i<this.lineChartLabels2.length ; i++)
+              {
+                this.previsioneCosti[i] = 0
+                for( var k = 0 ; k<this.usorisorse.length ; k++)
+                {                
+                  if(this.lineChartLabels2[i] == this.usorisorse[k].mese?.nome)
+                  {
+                    this.previsioneCosti[i] = this.previsioneCosti[i] + this.usorisorse[k].costi 
+                  }
+                }
+              }
+            })
+
+          this.inserimento.getUsoRisorse(this.commessa.id_commessa , 2 ).subscribe(
+            response=>{
+              console.log(response)
+              for(var i=0 ; i<response.length; i++)
+              {
+                if(response[i].anno?.numero == anno.numero)
+                {
+                  this.usorisorse2.push(response[i])
+                }
+              }
+              for ( var i=0 ; i<this.lineChartLabels2.length ; i++)
+              {
+                this.costi[i] = 0
+                for( var k = 0 ; k<this.usorisorse2.length ; k++)
+                {                
+                  if(this.lineChartLabels2[i] == this.usorisorse2[k].mese?.nome)
+                  {
+                    this.costi[i] = this.costi[i] + this.usorisorse2[k].costi 
+                  }
+                }
+              }
+            })
+
           this.inserimento.getAvanzamentoByCommessaType(this.commessa.id_commessa , 3 ).subscribe(
             response=>{
               for(var i=0 ; i<response.length; i++)
@@ -128,10 +198,14 @@ export class RiepilogoComponent implements OnInit  {
                     }
                   }
                 }
-                this.lineChartData = [
-                  { data : this.previsioniRicavi , label : 'Previsione ricavi'},
-                  { data : this.ricavi , label : 'Ricavi effettivi'}]
+                
               })
+              this.lineChartData = [
+                { data : this.previsioniRicavi , label : 'Previsione ricavi'},
+                { data : this.ricavi , label : 'Ricavi effettivi'}]
+                this.lineChartData2 = [
+                  { data : this.previsioneCosti , label : 'Previsione ricavi'},
+                  { data : this.costi , label : 'Ricavi effettivi'}]
           }
         })
       }    

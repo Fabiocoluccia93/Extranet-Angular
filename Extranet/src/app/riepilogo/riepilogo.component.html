@@ -14,7 +14,7 @@
     <br><br>
 
       <div style="display: block;" *ngIf="grafico">
-          <canvas baseChart width="400" height="180"
+          <canvas baseChart width="200" height="90"
             [datasets]="lineChartData"
             [labels]="lineChartLabels"
             [options]="lineChartOptions"
@@ -22,6 +22,18 @@
             [legend]="lineChartLegend"
             [chartType]="lineChartType"
             [plugins]="lineChartPlugins">
+          </canvas>
+        </div>
+
+        <div style="display: block;" *ngIf="grafico">
+          <canvas baseChart width="200" height="90"
+            [datasets]="lineChartData2"
+            [labels]="lineChartLabels2"
+            [options]="lineChartOptions2"
+            [colors]="lineChartColors2"
+            [legend]="lineChartLegend2"
+            [chartType]="lineChartType2"
+            [plugins]="lineChartPlugins2">
           </canvas>
         </div>
 
