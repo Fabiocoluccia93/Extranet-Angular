@@ -87,10 +87,12 @@ export class RiepilogoComponent implements OnInit  {
       for(var i = 0; i < response.length; i++)
       {
         this.lineChartLabels[i] = response[i].nome
+        this.lineChartLabels2[i] = response[i].nome
       }
        })
 
        this.lineChartData = []
+       this.lineChartData2 = []
   }
 
   CambioAnno(anno : Anno)
