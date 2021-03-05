@@ -18,6 +18,7 @@ import { SelezionacommessaComponent } from './selezionacommessa/selezionacommess
 import { RiepilogoComponent } from './riepilogo/riepilogo.component';
 import { RouteguardService } from './services/routeguard.service';
 import { RouteguardTipologiaService } from './services/routeguard-tipologia.service';
+import { VisualizzaAvanzamentoComponent } from './visualizza-avanzamento/visualizza-avanzamento.component';
 
 const routes: Routes = [
   { path : "", component : LoginComponent },
@@ -39,7 +40,9 @@ const routes: Routes = [
   { path : "modificaavanzamento", component : ModificaavanzamentoComponent, canActivate:[RouteguardService]},
   { path : "riepilogo", component : RiepilogoComponent, canActivate:[RouteguardService]},
   { path : "dati", component : DatiComponent, canActivate:[RouteguardTipologiaService]},
+  { path : "vis" , component : VisualizzaAvanzamentoComponent },
   { path : '**'  , component: ErrorPathComponent}
+  
 ];
 
 @NgModule({

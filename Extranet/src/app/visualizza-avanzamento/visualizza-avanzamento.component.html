@@ -1,0 +1,18 @@
+<div class="centrale">
+<table>
+    <thead>
+        <th>Attivita</th>
+        <th *ngFor="let mese of mesi">{{mese.nome}}</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let attivita of attivitas">   
+            <td>{{attivita.descrizione}}</td>  
+            <td *ngFor="let mese of mesi">
+            <ng-container *ngFor="let avanzamentos of attivita.avanzamento" >
+            <a *ngIf="mese.nome==avanzamentos.mese?.nome">{{avanzamentos.percentuale}}</a>
+            </ng-container>
+            </td> 
+        </tr>
+    </tbody>
+</table>
+</div>

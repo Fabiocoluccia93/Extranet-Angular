@@ -51,13 +51,13 @@ export class AssegnataskComponent implements OnInit {
 
   inserisciattivita()
   {
-    
+    this.attivita.avanzamento = null;
     if(this.attivita.descrizione!=null && this.attivita.valore!=null && this.regexp.test(this.attivita.descrizione))
       {
         this.inserisci.setAttivita(this.attivita).subscribe(response=>{this.messaggio=response})
         this.inserisci.getCommessaAttivita(this.a).subscribe(response=>{this.attivitas=response;})
-        
         setTimeout("location.reload(true);",1000)
+
       }
     else if(this.attivita.descrizione!=null && !this.regexp.test(this.attivita.descrizione))
     {

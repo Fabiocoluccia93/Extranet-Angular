@@ -8,6 +8,7 @@ import { SessionStorageService } from 'angular-web-storage';
 import { Anno, Attivita, Avanzamento, Commessa, Mese, TipoAvanzamento } from '../classi/ClassiGenerali';
 
 
+
 @Component({
   selector: 'app-modificaavanzamento',
   templateUrl: './modificaavanzamento.component.html',

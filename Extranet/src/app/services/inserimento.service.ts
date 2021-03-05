@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { ThrowStmt } from '@angular/compiler';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { Anno, Attivita, Avanzamento, Commessa, Mese, Risorse, TipoRisorse, TipoUsoRisorse, Usorisorse, UsoRisorse } from '../classi/ClassiGenerali';
+import { Anno, Attivita, Avanzamento, Commessa, Mese, Risorse, TipoAvanzamento, TipoRisorse, TipoUsoRisorse, Usorisorse, UsoRisorse } from '../classi/ClassiGenerali';
 
 
 
@@ -134,4 +134,13 @@ export class InserimentoService {
     return this.http.get<Anno[]>(`http://localhost:8080/anniCommesse/${id}`)
   }
 
+  getTipiAvanzamento()
+  {​​
+    return this.http.get<TipoAvanzamento[]>(`http://localhost:8080/tipiavanzamento`)
+  }​​
+
+  getAttivitaCommessaByType(id: number,idt : number)
+  {
+    return this.http.get<Attivita[]>(`http://localhost:8080/tipiattivita/${id}/${idt}`)
+  }
 }
