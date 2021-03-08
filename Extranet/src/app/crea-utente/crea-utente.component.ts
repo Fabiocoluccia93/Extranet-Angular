@@ -20,7 +20,14 @@ export class CreaUtenteComponent implements OnInit {
   constructor( private route : Router, private gest : GestAccessoService) { }
 
   ngOnInit(): void {
-    this.gest.tuttiGruppi().subscribe(response=>{this.tipologie=response})
+    this.gest.tuttiGruppi().subscribe(response=>{
+      response.forEach(element=>{
+        if(element.id!=1)
+        {
+          this.tipologie.push(element)
+        }
+      })
+    })
   }
 
   crea()

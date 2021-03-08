@@ -37,12 +37,17 @@ export class LoginComponent implements OnInit {
           this.sessioneAutenticata.autenticazioneAccesso(this.utente)
            if(this.utente.stato===1)
            {
-                if(this.session.get('TIPOLOGIA')=="amministratore")
+                if(this.session.get('IDGRUPPO')=="1")
                 {
-                  window.alert("hai effettuato l'accesso come amministratore")
-                  this.route.navigate(['selezionacommessa'])          
+                  window.alert("hai effettuato l'accesso come AMMINISTRATORE GENERALE")
+                  this.route.navigate(['homepage'])          
                 }
-                else if(this.session.get('TIPOLOGIA')=="utente")
+                else if(this.session.get('IDGRUPPO')=="2")
+                {
+                  window.alert("hai effettuato l'accesso come UTENTE AMMINISTRATORE")
+                  this.route.navigate(['selezionacommessa'])
+                }
+                else if(this.session.get('IDGRUPPO')=="3")
                 {
                   window.alert("hai effettuato l'accesso come utente")
                   this.route.navigate(['selezionacommessa'])

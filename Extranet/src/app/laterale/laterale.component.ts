@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SessionStorageService } from 'angular-web-storage';
+import { Abilitazioni } from '../classi/ClassiUtenti';
+import { GestAccessoService } from '../services/gest-accesso.service';
 
 @Component({
   selector: 'app-laterale',
@@ -8,20 +10,25 @@ import { SessionStorageService } from 'angular-web-storage';
 })
 export class LateraleComponent implements OnInit {
 
-  amministratore: boolean = false
   visualizzazione : boolean = false
+  abilitazioni : Abilitazioni = new Abilitazioni
 
-  constructor(private session : SessionStorageService) { }
+
+  constructor(private session : SessionStorageService, private gest : GestAccessoService ) { }
 
   ngOnInit(): void {
     if(this.session.get('IDCOMMESSA')!=null && sessionStorage.getItem('idcommessa')!=null)
     {
      this.visualizzazione = true
     }
-    if(this.session.get('TIPOLOGIA')=="amministratore")
-    {
-      this.amministratore= true
-    }
+    
+    this.gest.getAbilitazioniByTipoUtente(this.session.get('IDGRUPPO')).subscribe(response=>
+      {
+        this.abilitazioni=response
+      })
+      
+ 
+
 
   }
 
