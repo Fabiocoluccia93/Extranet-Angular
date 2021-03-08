@@ -3,12 +3,12 @@
 
     <a href="\selezionacommessa" *ngIf="abilitazioni.visualizzazione==1" ><b> Seleziona Commessa </b></a>
     <a href="\creacommessa" *ngIf="abilitazioni.gestioneCommesse==1"><b> Crea Commessa </b></a>
-    <div *ngIf="visualizzazione"><a href="\task" *ngIf="abilitazioni.gestioneCommesse==1"><b>Task</b></a>
-    <a href="\ricavi" *ngIf="abilitazioni.gestioneCommesse==1"><b>Ricavi</b></a>
-    <a href="\assegnarisorseerogate" *ngIf="abilitazioni.gestioneCommesse==1"> <b>Erogato risorse</b></a>
-    <a href="\previsionericavi" *ngIf="abilitazioni.gestioneCommesse==1"><b>Previsioni ricavi</b></a>
-    <a href="\previsionetask" *ngIf="abilitazioni.gestioneCommesse==1"><b>Previsioni task</b></a>
-    <a href="\assegnarisorsepreventivate" *ngIf="abilitazioni.gestioneCommesse==1"><b>Previsione risorse</b></a>
+    <div *ngIf="visualizzazione"><a href="\task" *ngIf="abilitazioni.gestioneCommesse==1 && commessa.prevchiuso==true"><b>Task</b></a>
+    <a href="\ricavi" *ngIf="abilitazioni.gestioneCommesse==1 && commessa.prevchiuso==true"><b>Ricavi</b></a>
+    <a href="\assegnarisorseerogate" *ngIf="abilitazioni.gestioneCommesse==1 && commessa.prevchiuso==true"> <b>Erogato risorse</b></a>
+    <a href="\previsionericavi" *ngIf="abilitazioni.gestioneCommesse==1 && commessa.prevchiuso==false"><b>Previsioni ricavi</b></a>
+    <a href="\previsionetask" *ngIf="abilitazioni.gestioneCommesse==1 && commessa.prevchiuso==false"><b>Previsioni task</b></a>
+    <a href="\assegnarisorsepreventivate" *ngIf="abilitazioni.gestioneCommesse==1 && commessa.prevchiuso==false"><b>Previsione risorse</b></a>
     <a href="\riepilogo" *ngIf="abilitazioni.visualizzazione==1"><b> Riepilogo</b></a>
     <a href="\dati" *ngIf="abilitazioni.gestioneCommesse==1"><b>Dati</b></a>
     <a href="\vis" *ngIf="abilitazioni.visualizzazione==1"><b>visualizza andamenti</b></a>

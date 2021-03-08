@@ -42,6 +42,7 @@ export class CreacommessaComponent implements OnInit {
               this.commessa.costo=0
               this.commessa.fatturato_previsto=0
               this.commessa.costo_previsto=0
+              this.commessa.prevchiuso=false
               this.inserisci.setCommessa(this.commessa).subscribe(response=>{
               let b = response
                 let c  = b.toString()
