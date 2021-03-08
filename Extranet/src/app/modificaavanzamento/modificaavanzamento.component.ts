@@ -3,7 +3,7 @@ import { Component, OnInit , ViewChild } from '@angular/core';
 import { InserimentoService } from '../services/inserimento.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { SessionStorageService } from 'angular-web-storage';
 import { Anno, Attivita, Avanzamento, Commessa, Mese, TipoAvanzamento } from '../classi/ClassiGenerali';
 
@@ -18,7 +18,7 @@ export class ModificaavanzamentoComponent implements OnInit {
 
  
   
-  constructor(private inserisci : InserimentoService, private activatedroute : ActivatedRoute, private session : SessionStorageService) { }
+  constructor(private inserisci : InserimentoService, private activatedroute : ActivatedRoute, private session : SessionStorageService,private route : Router) { }
   avan : Avanzamento[] =[]
   avanzamenti : Avanzamento [] = []
   avanzamento : Avanzamento = new Avanzamento
@@ -241,5 +241,11 @@ nfattura : string =''
     this.inserisci.consolidaav(this.consolidaav).subscribe(response=>{this.messaggio=response})
   }
   
+  chiudipreventivo()
+  {
+    this.inserisci.chiudipreventivo(this.session.get('IDCOMMESSA')).subscribe(response=>{this.messaggio=response})
+    this.route.navigate(['riepilogo']);
+  }
+
 
 }

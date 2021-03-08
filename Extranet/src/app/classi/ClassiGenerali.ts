@@ -127,7 +127,8 @@ export class Commessa
     public fine? : Date | null, 
     public fatturato_previsto? : number | null,
     public costo? : number | null,
-    public costo_previsto? : number | null
+    public costo_previsto? : number | null,
+    public prevchiuso? :boolean |null
   )
 {}
 }

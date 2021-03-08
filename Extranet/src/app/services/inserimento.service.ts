@@ -148,4 +148,9 @@ export class InserimentoService {
   {
     return this.http.get<Risorse[]>(`http://localhost:8080/tipirisorse/${id}/${idt}`)
   }
+
+  chiudipreventivo(id:number)
+  {
+    return this.http.put<string>(`http://localhost:8080/chiudiprev/${id}`,id)
+  }
 }

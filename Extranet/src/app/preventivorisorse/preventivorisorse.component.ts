@@ -205,7 +205,11 @@ consolida(usorisore : UsoRisorse)
   this.inserisci.consolidauso(this.consolidaur).subscribe(response=>{this.messaggio=response})
 }
 
-
+chiudipreventivo()
+  {
+    this.inserisci.chiudipreventivo(this.session.get('IDCOMMESSA')).subscribe(response=>{this.messaggio=response})
+    this.route.navigate(['riepilogo']);
+  }
 
 
 
