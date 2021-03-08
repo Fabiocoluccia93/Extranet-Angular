@@ -49,6 +49,7 @@ export class PreventivorisorseComponent implements OnInit {
   @ViewChild(MatPaginator, { static: true })
   paginator!: MatPaginator;
 
+  type : number = 0
   // attivitas : Attivita [] = []
   
   ngOnInit(): void 
@@ -64,6 +65,7 @@ export class PreventivorisorseComponent implements OnInit {
       {
         case('preventivate') :
         {
+          this.type=1
           this.tipoUsoRisorse.id_tipo_usorisorse=1
           this.tipoUsoRisorse.nome='Preventivo'
           this.titolo="Figure professionali preventivate per"
@@ -71,6 +73,7 @@ export class PreventivorisorseComponent implements OnInit {
         }
         case('erogate'):
         {
+          this.type=2
           this.tipoUsoRisorse.id_tipo_usorisorse=2
           this.tipoUsoRisorse.nome='Erogate'
           this.titolo="Figure professionali erogate per"

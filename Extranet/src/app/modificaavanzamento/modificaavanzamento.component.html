@@ -3,9 +3,11 @@
   <h1>{{titolo}} {{commessa.nome}}</h1>
   </div>
 </div>
+
+<app-visualizza-avanzamento [b]="type"></app-visualizza-avanzamento>
+
 <div class="centrale">
-    
-<div class="mat-elevation-z8">
+<div class="example-container mat-elevation-z8">
     <table mat-table [dataSource]="dataSource" class>
       <!-- id_commessa Column -->
       <ng-container matColumnDef="cod">

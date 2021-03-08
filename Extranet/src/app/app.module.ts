@@ -35,6 +35,7 @@ import { RiepilogoComponent } from './riepilogo/riepilogo.component';
 import { ChartsModule } from 'ng2-charts';
 import { DatiComponent } from './dati/dati.component';
 import { VisualizzaAvanzamentoComponent } from './visualizza-avanzamento/visualizza-avanzamento.component';
+import { VisualizzaRisorseComponent } from './visualizza-risorse/visualizza-risorse.component';
 
 
 
@@ -63,7 +64,8 @@ import { VisualizzaAvanzamentoComponent } from './visualizza-avanzamento/visuali
     TableManagmentComponent,
     TableAdminComponent,
     RiepilogoComponent,
-    VisualizzaAvanzamentoComponent
+    VisualizzaAvanzamentoComponent,
+    VisualizzaRisorseComponent
   ],
   imports: [
     BrowserModule,

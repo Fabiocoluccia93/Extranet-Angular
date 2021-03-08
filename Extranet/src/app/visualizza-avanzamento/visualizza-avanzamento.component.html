@@ -1,15 +1,29 @@
 <div class="centrale">
-<table>
+    
+   <b>seleziona l'anno</b> 
+            <br>
+                <select [(ngModel)]="anno" (ngModelChange)="annoChanged($event)" name="anno" class="form-control form-control-lg">
+                    <option *ngFor="let anno1 of anni" [ngValue]="anno1">
+                        {{anno1.numero}}
+                    </option>
+                </select>    
+        <br>
+
+<table class="table table-bordered">
     <thead>
-        <th>Attivita</th>
-        <th *ngFor="let mese of mesi">{{mese.nome}}</th>
+        <th scope="col">Attivita</th>
+        <th scope="col">Valore</th>
+        <th class="zero"></th>
+        <th scope="col" *ngFor="let mese of mesi">{{mese.nome}}</th>
     </thead>
     <tbody>
-        <tr *ngFor="let attivita of attivitas">   
+        <tr scope="row" *ngFor="let attivita of attivitas">   
             <td>{{attivita.descrizione}}</td>  
+            <td>{{attivita.valore}}</td>  
+            <td class="zero"></td>
             <td *ngFor="let mese of mesi">
             <ng-container *ngFor="let avanzamentos of attivita.avanzamento" >
-            <a *ngIf="mese.nome==avanzamentos.mese?.nome">{{avanzamentos.percentuale}}</a>
+            <a *ngIf="mese.nome==avanzamentos.mese?.nome && avanzamentos.anno?.numero==anno.numero">{{avanzamentos.percentuale}}</a>
             </ng-container>
             </td> 
         </tr>

@@ -19,6 +19,7 @@ import { RiepilogoComponent } from './riepilogo/riepilogo.component';
 import { RouteguardService } from './services/routeguard.service';
 import { RouteguardTipologiaService } from './services/routeguard-tipologia.service';
 import { VisualizzaAvanzamentoComponent } from './visualizza-avanzamento/visualizza-avanzamento.component';
+import { VisualizzaRisorseComponent } from './visualizza-risorse/visualizza-risorse.component';
 import { RouteguardTipologia2Service } from './services/routeguardtipologia2.service';
 import { RouteguardTipologia3Service } from './services/routeguardtipologia3.service';
 
@@ -44,6 +45,7 @@ const routes: Routes = [
   { path : "riepilogo", component : RiepilogoComponent, canActivate:[RouteguardService, RouteguardTipologiaService]},
   { path : "dati", component : DatiComponent, canActivate:[ RouteguardService, RouteguardTipologia3Service]},
   { path : "vis" , component : VisualizzaAvanzamentoComponent, canActivate : [RouteguardService , RouteguardTipologiaService] },
+  { path : "ris" , component : VisualizzaRisorseComponent, canActivate : [RouteguardService , RouteguardTipologiaService] },
   { path : '**'  , component: ErrorPathComponent}
   
 ];

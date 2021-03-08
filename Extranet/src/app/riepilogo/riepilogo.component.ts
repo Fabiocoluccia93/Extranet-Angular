@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SessionStorageService } from 'angular-web-storage';
 import { ChartDataSets } from 'chart.js';
 import { Color } from 'ng2-charts';
-import { Anno, Avanzamento, Commessa, UsoRisorse } from '../classi/ClassiGenerali';
+import { Anno, Avanzamento, Commessa, UsoRisorse,Attivita } from '../classi/ClassiGenerali';
 import { InserimentoService } from '../services/inserimento.service';
 
 
@@ -45,6 +45,7 @@ export class RiepilogoComponent implements OnInit  {
   public lineChartPlugins2 = [];
 
   commessa : Commessa = new Commessa;
+  commessavisual : Commessa = new Commessa;
 
   anni : Anno [] = []
   anno : Anno = new Anno
@@ -56,6 +57,9 @@ export class RiepilogoComponent implements OnInit  {
 
   previsioneCosti: any [] = []
   costi : any [] = []
+
+  attivitas : Attivita[] = []
+  attivita: Attivita = new Attivita
 
   usorisorse : UsoRisorse[]=[]
   usorisorse2 : UsoRisorse[]=[]
@@ -70,6 +74,8 @@ export class RiepilogoComponent implements OnInit  {
   constructor(private inserimento : InserimentoService, private session : SessionStorageService) { }
 
   ngOnInit() {
+    this.inserimento.getCommessaId(this.session.get('IDCOMMESSA')).subscribe(response =>{this.commessavisual=response})
+    this.inserimento.getAttivitaCommessaByType(this.session.get('IDCOMMESSA'),2).subscribe(response =>{this.attivitas = response; console.log(response)})
     this.inserimento.getAnniCommesse(this.session.get('IDCOMMESSA')).subscribe(response =>{this.anni = response
     if(response.length>0)
   {

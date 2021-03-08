@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { Attivita, Avanzamento, Mese } from '../classi/ClassiGenerali';
+import { Component, Input, OnInit } from '@angular/core';
+import { SessionStorageService } from 'angular-web-storage';
+import { Anno, Attivita, Avanzamento, Mese } from '../classi/ClassiGenerali';
 import { InserimentoService } from '../services/inserimento.service';
 
 @Component({
@@ -9,14 +10,22 @@ import { InserimentoService } from '../services/inserimento.service';
 })
 export class VisualizzaAvanzamentoComponent implements OnInit {
 
-  constructor(public inserisci : InserimentoService) { }
+  constructor(public inserisci : InserimentoService, private session: SessionStorageService) { }
 
+ 
+  @Input()
+  b: number = 0;
 
   commessaid : string | null = ''
   a : number = 0
-  b : number = 1 //mockato su ricavi
+  
  attivitas : Attivita[] = []
  mesi : Mese [] = []
+ 
+ anni : Anno[]= []
+
+ anno:Anno=new Anno
+
  
   ngOnInit(): void
   {
@@ -28,38 +37,18 @@ export class VisualizzaAvanzamentoComponent implements OnInit {
       this.a = +this.commessaid
       console.log("id commessa"+this.a)
     }
-    this.inserisci.getAttivitaCommessaByType(this.a,this.b).subscribe(response=>{ this.attivitas=response
-    //   response.forEach(element => {
-    //     element.avanzamento?.forEach(element2 =>{ 
-    //       console.log(element2)
-    //       if(element2.tipoAvanzamento?.id_tipo_avanzamento==this.b)
-    //       {
-    //         if(this.avanzamentiarray.length>0)
-    //         {
-    //         this.avanzamentiarray.forEach(element3 =>{
-    //           if(element3.id_avanzamento!=element2.id_avanzamento)
-    //           {
-    //             this.avanzamentiarray.push(element2);
-    //           }
-    //         })
-    //         }
-    //         else
-    //         {
-    //           this.avanzamentiarray.push(element2);
-    //         }
-    //       }
-    //     })
-    //   element.avanzamento=this.avanzamentiarray
-      
-      // this.attivitas.push(element)
-      // })
-      
-        
-      });
+    this.inserisci.getAttivitaCommessaByType(this.a,this.b).subscribe(response=>{ this.attivitas=response});
       console.log(this.attivitas)
     
-   
+      this.inserisci.getAnniCommesse(this.session.get('IDCOMMESSA')).subscribe(response =>{this.anni = response 
+        console.log(this.anni)})
     this.inserisci.getMesi().subscribe(response=>{​​​​ this.mesi = response}​​​​)
   }
+
+  annoChanged(anno : Anno)
+ {
+   this.anno = anno
+ }
+
 
 }

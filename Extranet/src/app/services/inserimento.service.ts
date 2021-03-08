@@ -143,4 +143,9 @@ export class InserimentoService {
   {
     return this.http.get<Attivita[]>(`http://localhost:8080/tipiattivita/${id}/${idt}`)
   }
+
+  getRisorseCommessaByType(id: number,idt : number)
+  {
+    return this.http.get<Risorse[]>(`http://localhost:8080/tipirisorse/${id}/${idt}`)
+  }
 }
