@@ -26,7 +26,7 @@ export class ModificaavanzamentoComponent implements OnInit {
   attivita: Attivita = new Attivita
 
   tipoAvanzamento : TipoAvanzamento = new TipoAvanzamento
-
+  type : number=0
 
   a : number = 0
   b:number = 0
@@ -57,6 +57,7 @@ commessa : Commessa = new Commessa
       {
         case('task') :
         {
+          this.type=1
           this.tipoAvanzamento.id_tipo_avanzamento = 1
           this.tipoAvanzamento.nome = "Task"
           console.log('task')
@@ -67,6 +68,7 @@ commessa : Commessa = new Commessa
         }
         case('ricavi') :
         {
+          this.type=2
           this.tipoAvanzamento.id_tipo_avanzamento = 2 
           this.tipoAvanzamento.nome = "Ricavi"
           this.percentuale=100
@@ -79,6 +81,7 @@ commessa : Commessa = new Commessa
         }
         case('previsionericavi') :
         {
+          this.type=3
           this.tipoAvanzamento.id_tipo_avanzamento = 3 
           this.tipoAvanzamento.nome = "Previsione ricavi"
           console.log('previsionericavi')
@@ -90,6 +93,7 @@ commessa : Commessa = new Commessa
         }
         case('previsionetask') :
         {
+          this.type=4
           this.tipoAvanzamento.id_tipo_avanzamento = 4
           this.tipoAvanzamento.nome = "Previsione task"
           this.tipo23=true

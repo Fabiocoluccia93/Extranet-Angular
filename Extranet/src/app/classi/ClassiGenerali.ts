@@ -18,7 +18,8 @@ export class Risorse
     public nome? : string | null,
     public tariffa? : number | null,
     public attivo? : Boolean | null,
-    public iniziovalidita? : Date | null
+    public iniziovalidita? : Date | null,
+    public usorisorse? : UsoRisorse[] | null
   ){}
 }
 
