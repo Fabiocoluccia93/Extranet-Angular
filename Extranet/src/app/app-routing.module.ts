@@ -20,29 +20,32 @@ import { RouteguardService } from './services/routeguard.service';
 import { RouteguardTipologiaService } from './services/routeguard-tipologia.service';
 import { VisualizzaAvanzamentoComponent } from './visualizza-avanzamento/visualizza-avanzamento.component';
 import { VisualizzaRisorseComponent } from './visualizza-risorse/visualizza-risorse.component';
+import { RouteguardTipologia2Service } from './services/routeguardtipologia2.service';
+import { RouteguardTipologia3Service } from './services/routeguardtipologia3.service';
+
 
 const routes: Routes = [
   { path : "", component : LoginComponent },
   { path : "login", component : LoginComponent},
-  { path : "creaUtente" , component : CreaUtenteComponent, canActivate:[RouteguardTipologiaService]},
-  { path : "resetPassword" , component : ResetPasswordComponent, canActivate:[RouteguardTipologiaService]},
-  { path : "homepage" , component : HomePageComponent, canActivate:[RouteguardService]},
-  { path : "disabilitaUtente" , component :DisabilitaUtenteComponent, canActivate:[RouteguardTipologiaService]},
+  { path : "creaUtente" , component : CreaUtenteComponent, canActivate:[RouteguardService , RouteguardTipologia2Service]},
+  { path : "resetPassword" , component : ResetPasswordComponent, canActivate:[RouteguardService, RouteguardTipologia2Service]},
+  { path : "homepage" , component : HomePageComponent, canActivate:[RouteguardService, RouteguardTipologia2Service]},
+  { path : "disabilitaUtente" , component :DisabilitaUtenteComponent, canActivate:[RouteguardService , RouteguardTipologia2Service]},
   { path : "modificaPassword" , component : ModificaPasswordComponent, canActivate:[RouteguardService]},
-  { path : "creacommessa", component : CreacommessaComponent, canActivate:[RouteguardTipologiaService]},
-  { path: 'selezionacommessa',component:SelezionacommessaComponent, canActivate:[RouteguardService]},
-  { path: 'assegnatask',component:AssegnataskComponent, canActivate:[RouteguardService]},
-  { path: 'assegnarisorsepreventivate', component:PreventivorisorseComponent,data: { kind: 'preventivate' }, canActivate:[RouteguardService]},
-  { path: 'assegnarisorseerogate', component:PreventivorisorseComponent,data: { kind: 'erogate' }, canActivate:[RouteguardService]},
-  { path: 'task', component:ModificaavanzamentoComponent, data: { kind: 'task' }, canActivate:[RouteguardService]},
-  { path: 'ricavi', component:ModificaavanzamentoComponent, data :{ kind:'ricavi'}, canActivate:[RouteguardService]},
-  { path: 'previsionericavi', component:ModificaavanzamentoComponent, data :{ kind:'previsionericavi'}, canActivate:[RouteguardService]},
-  { path: 'previsionetask', component:ModificaavanzamentoComponent, data :{ kind:'previsionetask'}, canActivate:[RouteguardService]},
-  { path : "modificaavanzamento", component : ModificaavanzamentoComponent, canActivate:[RouteguardService]},
-  { path : "riepilogo", component : RiepilogoComponent, canActivate:[RouteguardService]},
-  { path : "dati", component : DatiComponent, canActivate:[RouteguardTipologiaService]},
-  { path : "vis" , component : VisualizzaAvanzamentoComponent },
-  { path : "ris" , component : VisualizzaRisorseComponent},
+  { path : "creacommessa", component : CreacommessaComponent, canActivate:[RouteguardService, RouteguardTipologia3Service]},
+  { path: 'selezionacommessa',component:SelezionacommessaComponent, canActivate:[RouteguardService, RouteguardTipologiaService]},
+  { path: 'assegnatask',component:AssegnataskComponent, canActivate:[RouteguardService, RouteguardTipologia3Service]},
+  { path: 'assegnarisorsepreventivate', component:PreventivorisorseComponent,data: { kind: 'preventivate' }, canActivate:[RouteguardService , RouteguardTipologia3Service]},
+  { path: 'assegnarisorseerogate', component:PreventivorisorseComponent,data: { kind: 'erogate' }, canActivate:[RouteguardService , RouteguardTipologia3Service]},
+  { path: 'task', component:ModificaavanzamentoComponent, data: { kind: 'task' }, canActivate:[RouteguardService , RouteguardTipologia3Service]},
+  { path: 'ricavi', component:ModificaavanzamentoComponent, data :{ kind:'ricavi'}, canActivate:[RouteguardService , RouteguardTipologia3Service]},
+  { path: 'previsionericavi', component:ModificaavanzamentoComponent, data :{ kind:'previsionericavi'}, canActivate:[RouteguardService , RouteguardTipologia3Service]},
+  { path: 'previsionetask', component:ModificaavanzamentoComponent, data :{ kind:'previsionetask'}, canActivate:[RouteguardService, RouteguardTipologia3Service]},
+  { path : "modificaavanzamento", component : ModificaavanzamentoComponent, canActivate:[RouteguardService, RouteguardTipologia3Service]},
+  { path : "riepilogo", component : RiepilogoComponent, canActivate:[RouteguardService, RouteguardTipologiaService]},
+  { path : "dati", component : DatiComponent, canActivate:[ RouteguardService, RouteguardTipologia3Service]},
+  { path : "vis" , component : VisualizzaAvanzamentoComponent, canActivate : [RouteguardService , RouteguardTipologiaService] },
+  { path : "ris" , component : VisualizzaRisorseComponent, canActivate : [RouteguardService , RouteguardTipologiaService] },
   { path : '**'  , component: ErrorPathComponent}
   
 ];

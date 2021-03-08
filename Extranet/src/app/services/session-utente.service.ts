@@ -23,6 +23,8 @@ export class SessionUtenteService {
         sessionStorage.setItem('STATOACCESSO',u.primo_accesso.toString())
       }
       this.session.set('TIPOLOGIA' , u.gruppo?.descrizione)
+
+      this.session.set('IDGRUPPO' , u.gruppo?.id)
       return true
     }
     else{
@@ -34,7 +36,6 @@ export class SessionUtenteService {
   {
     return ( this.session.get('ID') != null)? true : false
   }
-
 
   logOut()
   {

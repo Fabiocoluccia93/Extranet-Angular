@@ -1,7 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { RouteConfigLoadEnd, Router } from '@angular/router';
 import { SessionStorageService } from 'angular-web-storage';
-import { Utente } from '../classi/ClassiUtenti';
+import { Abilitazioni, Utente } from '../classi/ClassiUtenti';
+import { GestAccessoService } from '../services/gest-accesso.service';
 
 import { SessionUtenteService } from '../services/session-utente.service';
 
@@ -14,19 +15,15 @@ import { SessionUtenteService } from '../services/session-utente.service';
 export class NavbarComponent implements OnInit {
 
 utente : Utente = new Utente
-amministratore : boolean = false
+abilitazioni : Abilitazioni = new Abilitazioni
 
-  constructor(private sessioneAutenticata : SessionUtenteService ,  private session : SessionStorageService , private route : Router) { }
+  constructor(private sessioneAutenticata : SessionUtenteService ,  private session : SessionStorageService , private route : Router, private gest :GestAccessoService) { }
 
   ngOnInit(): void {
-    if(this.session.get('TIPOLOGIA')==="amministratore")
-    {
-      this.amministratore=true
-    }
-    else
-    {
-      this.amministratore = false
-    }
+    this.gest.getAbilitazioniByTipoUtente(this.session.get('IDGRUPPO')).subscribe(response=>
+      {
+        this.abilitazioni=response
+      })
   }
 
   visualizza()

@@ -29,7 +29,14 @@ export class DisabilitaUtenteComponent implements OnInit {
   paginator!: MatPaginator;
 
   ngOnInit(): void {
-    this.gest.tuttiGruppi().subscribe(response=>{this.tipologie=response})
+    this.gest.tuttiGruppi().subscribe(response=>{
+      response.forEach(element=>{
+        if(element.id!=1)
+        {
+          this.tipologie.push(element)
+        }
+      })
+    })
 
   }
 
@@ -50,11 +57,11 @@ export class DisabilitaUtenteComponent implements OnInit {
         {
           this.displayedColumns =  ["username","accesso","stato"]
         }
-        if(gruppo.descrizione=="utente")
+        else
         {
           this.displayedColumns =  ["username","accesso","stato","tasto"]
         }
-
+        
     }
   }
 
