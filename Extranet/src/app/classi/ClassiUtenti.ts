@@ -17,3 +17,13 @@ export class Gruppo
    public descrizione ?: string
     ) {}
 } 
+export class Abilitazioni
+{
+  constructor(
+    public id ?: number,
+    public gruppo ?: Gruppo, 
+    public gestioneUtenti ?: number,
+    public gestioneCommesse ?: number,
+    public visualizzazione ?: number,
+  ){}
+}

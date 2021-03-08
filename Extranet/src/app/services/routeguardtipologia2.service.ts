@@ -6,31 +6,25 @@ import { SessionUtenteService } from './session-utente.service';
 @Injectable({
   providedIn: 'root'
 })
-export class RouteguardTipologiaService {
+export class RouteguardTipologia2Service {
 
   constructor(private sessioneAutenticazione:SessionUtenteService , private route : Router , private session : SessionStorageService) { }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot)
   {
 
-
-    //VISUALIZZAZIONE 
-
+    //SOLO PER LE PAGINE ACCESSIBILI AMMINISTRATORE
     
-    switch(this.session.get('IDGRUPPO'))
-    {
- 
-      case 2: 
+      if (this.session.get('IDGRUPPO') == '1')
+      {
         return true
-      case 3:
-        return true
-        default : 
-
-        
-        this.route.navigate(['homepage'])
-        return false  
-    }
-
-     
+      }
+      else
+      {
+      this.route.navigate(['selezionacommessa'])
+       return false
+     }
   }
+
+
 }

@@ -8,13 +8,13 @@
       
    <form style="padding-left: 2%;" class="collapse navbar-collapse" id="navbarNav" >
     <ul class="navbar-nav">
-        <li class="nav-item" style="padding-left: 2%;" *ngIf="amministratore">
+        <li class="nav-item" style="padding-left: 2%;" *ngIf="abilitazioni.gestioneUtenti==1">
         <a class="btn btn-sm btn-outline-secondary" type="button" href="creaUtente">CREA UTENTE</a>
       </li>
-      <li class="nav-item" style="padding-left: 2%;" *ngIf="amministratore">
+      <li class="nav-item" style="padding-left: 2%;" *ngIf="abilitazioni.gestioneUtenti==1">
         <a class="btn btn-sm btn-outline-secondary" type="button" href="disabilitaUtente">VISUALIZZA E DISABILITA UTENTI</a>
       </li>
-      <li class="nav-item" style="padding-left: 2%;" *ngIf="amministratore">
+      <li class="nav-item" style="padding-left: 2%;" *ngIf="abilitazioni.gestioneUtenti==1">
         <a class="btn btn-sm btn-outline-secondary" type="button" href="resetPassword">RESET PASSWORD UTENTI</a>
       </li>
       <li class="nav-item" style="padding-left: 2%;">
