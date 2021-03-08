@@ -1,0 +1,114 @@
+<div class="centrale">
+  <p class="h3"><strong>Commessa</strong></p>
+  <table class="table">
+    <thead>
+          <th scope="col">codice</th>
+          <th scope="col">descrizione</th>
+          <th scope="col">cliente</th>
+          <th scope="col">inizio</th>
+          <th scope="col">fine</th>
+    </thead>
+    <tbody>
+            <tr scope="row">
+              <td>{{commessavisual.id_commessa}}</td>
+              <td>{{commessavisual.nome}}</td>
+              <td>{{commessavisual.cliente}}</td>
+              <td>{{commessavisual.inizio}}</td>
+              <td>{{commessavisual.fine}}</td>
+            </tr>
+    </tbody>
+  </table>
+  
+  <p class="h3"><strong>Lista Attivita</strong></p>
+  <table class="table">
+    <thead>
+      <th scope="col">cod</th>
+      <th scope="col">Attività</th>
+      <th scope="col">Valore</th>
+      <th scope="col">Fatturato</th>
+      <th scope="col">Residuo</th>
+    </thead>
+    <tbody>
+        <tr scope="row" *ngFor="let attivita of attivitas">
+          <td>{{attivita.id_attivita}}</td>
+          <td>{{attivita.descrizione}}</td>
+          <td>{{attivita.valore}}</td>
+          <td ><a *ngIf="attivita.avanzamento && attivita.avanzamento.length>0">{{attivita.valore}}</a></td>
+          <td ><a *ngIf="attivita.avanzamento && attivita.avanzamento.length==0">{{attivita.valore}}</a></td>
+        </tr>
+    </tbody>
+  </table>
+    
+
+  <table>
+    <tr>
+      <td>
+
+  <table class="table">
+    <thead>
+        <th scope="col">Stime Economiche</th>
+    </thead>
+    <tbody>
+      <tr scope="row"><td>Costo</td><td>{{commessavisual.costo_previsto}}</td></tr>
+      <tr scope="row"><td>Ricavo</td><td>{{commessavisual.fatturato_previsto}}</td></tr>
+    </tbody>
+  </table>
+
+</td>
+
+<td>
+  <table class="table">
+    <thead>
+        <th scope="col">Effettivo</th>
+    </thead>
+    <tbody>
+      <tr scope="row"><td>Costo</td><td>{{commessavisual.costo}}</td></tr>
+      <tr scope="row"><td>Ricavo</td><td>{{commessavisual.fatturato}}</td></tr>
+    </tbody>
+  </table>
+
+</td>
+</tr>
+</table>
+
+
+
+  <b>Seleziona l'anno da visualizzare</b> 
+        <br>
+            <select [(ngModel)]="anno" (ngModelChange)="CambioAnno($event)"  name="anno" class="form-control form-control-lg">
+                <option *ngFor="let anno of anni" [ngValue]="anno">
+                    {{anno.numero}}
+                </option>
+            </select>
+        <br>       
+    <br> <br>
+    <div *ngIf="messaggioerrore"><h2><b>{{messaggio}}</b></h2></div>
+
+    <br><br>
+ 
+      <div class="chart chartjs-render-monitor" style="display: block;" *ngIf="grafico">
+          <canvas baseChart width="200" height="90"
+            [datasets]="lineChartData"
+            [labels]="lineChartLabels"
+            [options]="lineChartOptions"
+            [colors]="lineChartColors"
+            [legend]="lineChartLegend"
+            [chartType]="lineChartType"
+            [plugins]="lineChartPlugins">
+          </canvas>
+        </div>
+
+        <div style="display: block;" *ngIf="grafico">
+          <canvas baseChart width="200" height="90"
+            [datasets]="lineChartData2"
+            [labels]="lineChartLabels2"
+            [options]="lineChartOptions2"
+            [colors]="lineChartColors2"
+            [legend]="lineChartLegend2"
+            [chartType]="lineChartType2"
+            [plugins]="lineChartPlugins2">
+          </canvas>
+        </div>
+
+</div>
+  

@@ -1,57 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Anno, Mese } from '../inseriscitask/inseriscitask.component';
 import { InserimentoService } from '../services/inserimento.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Commessa } from '../selezionacommessa/selezionacommessa.component';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
-
-
-
-export class Attivita
-{
-  constructor(
-    public id_attivita? : number | null,
-    public descrizione? : string | null,
-    public commessa? : Commessa | null, //tipo commessa
-    public valore? : number | null
-  ){}
-}
-
-export class UsoRisorse
-{
-  
-  constructor(
-   public id? :number | null,
-   public costi? : number | null,
-   public ricavi? : number | null,
-   public commessa? : Commessa | null,
-   public ore? : number | null,
-   public mese? : Mese | null,
-   public anno? : Anno | null,
-   public risorse? : Risorsa | null,
-   public tipoUsoRisorse? : TipoUsoRisorse | null,
-   public consolida? : Date | null
-  ){}
-}
-
-export class TipoUsoRisorse
-{
-  constructor(
-  public id_tipo_usorisorse? : number | null,
-  public nome? : string | null
-  ){}
-}
-
-
-export class Risorsa
-{
-  
-    id_risorse? : number | null
-    nome? : string | null
-    tariffa? : number | null
- 
-}
+import { SessionStorageService } from 'angular-web-storage';
+import { Anno, Commessa, Mese, Risorsa, TipoUsoRisorse, UsoRisorse } from '../classi/ClassiGenerali';
 
 @Component({
   selector: 'app-preventivorisorse',
@@ -60,7 +13,7 @@ export class Risorsa
 })
 export class PreventivorisorseComponent implements OnInit {
 
-  constructor(private inserisci : InserimentoService,private  activatedroute : ActivatedRoute,private route : Router) { }
+  constructor(private inserisci : InserimentoService,private  activatedroute : ActivatedRoute,private route : Router , private session: SessionStorageService) { }
 
   b : number = 0
 
@@ -96,15 +49,23 @@ export class PreventivorisorseComponent implements OnInit {
   @ViewChild(MatPaginator, { static: true })
   paginator!: MatPaginator;
 
+  type : number = 0
   // attivitas : Attivita [] = []
   
   ngOnInit(): void 
   { 
+
+    if(this.session.get('TIPOLOGIA') == "utente")
+    {
+      this.displayedColumns = ['cod', 'nome', 'mese', 'anno', 'figura', 'ore', 'costi', 'ricavi']
+    }
+
     this.activatedroute.data.subscribe(data => { 
       switch(data.kind)
       {
         case('preventivate') :
         {
+          this.type=1
           this.tipoUsoRisorse.id_tipo_usorisorse=1
           this.tipoUsoRisorse.nome='Preventivo'
           this.titolo="Figure professionali preventivate per"
@@ -112,6 +73,7 @@ export class PreventivorisorseComponent implements OnInit {
         }
         case('erogate'):
         {
+          this.type=2
           this.tipoUsoRisorse.id_tipo_usorisorse=2
           this.tipoUsoRisorse.nome='Erogate'
           this.titolo="Figure professionali erogate per"
@@ -143,7 +105,7 @@ export class PreventivorisorseComponent implements OnInit {
     //console.log("ID Commessa usorisorse "+this.usoRisorse.commessa.id_commessa)
     this.inserisci.getAnni().subscribe(response=>{this.anni=response})
     this.inserisci.getMesi().subscribe(response=>{this.mesi=response})
-    this.inserisci.getRisorse().subscribe(response=>{this.risorse=response})
+    this.inserisci.getRisorseActive().subscribe(response=>{this.risorse=response})
     console.log("id commessa "+this.a)
     
     if(this.tipoUsoRisorse?.id_tipo_usorisorse!=null)
@@ -243,7 +205,11 @@ consolida(usorisore : UsoRisorse)
   this.inserisci.consolidauso(this.consolidaur).subscribe(response=>{this.messaggio=response})
 }
 
-
+chiudipreventivo()
+  {
+    this.inserisci.chiudipreventivo(this.session.get('IDCOMMESSA')).subscribe(response=>{this.messaggio=response})
+    this.route.navigate(['riepilogo']);
+  }
 
 
 

@@ -1,12 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
-import { Commessa } from 'src/app/selezionacommessa/selezionacommessa.component'
 import { InserimentoService } from 'src/app/services/inserimento.service'
-import { Attivita } from 'src/app/assegnatask/assegnatask.component'
 import { MatPaginator } from '@angular/material/paginator';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { RouterLinkWithHref } from '@angular/router';
-import { Avanzamento } from '../inseriscitask/inseriscitask.component';
+import { Attivita, Avanzamento, Commessa } from '../classi/ClassiGenerali';
 
 @Component({
   selector: 'app-table-managment',

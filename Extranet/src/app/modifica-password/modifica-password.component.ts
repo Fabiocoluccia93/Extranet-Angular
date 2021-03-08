@@ -2,7 +2,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LocalStorage, SessionStorage, SessionStorageService } from 'angular-web-storage';
 import { AppComponent } from '../app.component';
-import { Utente } from '../login/login.component';
+import { Utente } from '../classi/ClassiUtenti';
+
 import { GestAccessoService } from '../services/gest-accesso.service';
 
 @Component({
@@ -96,7 +97,7 @@ export class ModificaPasswordComponent implements OnInit {
                     if (response = true)
                     {
                        window.alert("Password modificata correttamente")
-                      this.route.navigate(['homepage'])
+                      this.route.navigate(['selezionacommessa'])
                     }
                   })
                 }   

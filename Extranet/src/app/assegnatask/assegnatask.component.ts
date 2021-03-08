@@ -1,7 +1,6 @@
 import { Component, OnInit, Input} from '@angular/core';
 import { Router } from '@angular/router';
-import { Attivita, TipoUsoRisorse } from '../preventivorisorse/preventivorisorse.component';
-import { Commessa } from '../selezionacommessa/selezionacommessa.component';
+import { Attivita, TipoUsoRisorse } from '../classi/ClassiGenerali';
 import { InserimentoService } from '../services/inserimento.service';
 
 
@@ -52,16 +51,30 @@ export class AssegnataskComponent implements OnInit {
 
   inserisciattivita()
   {
-
-    if(this.attivita.descrizione!=null && this.regexp.test(this.attivita.descrizione))
+    this.attivita.avanzamento = null;
+    if(this.attivita.descrizione!=null && this.attivita.valore!=null && this.regexp.test(this.attivita.descrizione))
       {
-        this.inserisci.setAttivita(this.attivita).subscribe(response=>{})
+        this.inserisci.setAttivita(this.attivita).subscribe(response=>{this.messaggio=response})
         this.inserisci.getCommessaAttivita(this.a).subscribe(response=>{this.attivitas=response;})
-        setTimeout("location.reload(true);",10)
+        setTimeout("location.reload(true);",1000)
+
       }
-    else
+    else if(this.attivita.descrizione!=null && !this.regexp.test(this.attivita.descrizione))
     {
       this.messaggio="non sono ammessi caratteri speciali nel campo descizione"
+    }
+    else if(this.attivita.valore==null)
+    {
+      this.messaggio="inserici valore nel campo valore della task"
+    }
+    else if(this.attivita.descrizione==null)
+    {
+      this.messaggio="inserisci qualcosa nel campo attivita"
+    }
+    else
+    {
+      this.messaggio="Errore"
+      setTimeout("location.reload(true);",1000)
     }
      
   }

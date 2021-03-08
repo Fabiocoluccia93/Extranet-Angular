@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { SessionStorageService } from 'angular-web-storage';
-import { Utente } from '../login/login.component';
+import {  Utente } from '../classi/ClassiUtenti';
+import { AppComponent } from '../app.component';
 import { GestAccessoService } from './gest-accesso.service';
 
 
@@ -22,6 +23,8 @@ export class SessionUtenteService {
         sessionStorage.setItem('STATOACCESSO',u.primo_accesso.toString())
       }
       this.session.set('TIPOLOGIA' , u.gruppo?.descrizione)
+
+      this.session.set('IDGRUPPO' , u.gruppo?.id)
       return true
     }
     else{
@@ -33,7 +36,6 @@ export class SessionUtenteService {
   {
     return ( this.session.get('ID') != null)? true : false
   }
-
 
   logOut()
   {

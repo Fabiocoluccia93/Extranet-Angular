@@ -1,12 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Anno, Avanzamento, Mese} from '../inseriscitask/inseriscitask.component';
-import { Commessa } from '../selezionacommessa/selezionacommessa.component';
-import { Risorse, TipoRisorse, Usorisorse } from '../assegnarisorse/assegnarisorse.component';
 import { ThrowStmt } from '@angular/compiler';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { Attivita, TipoUsoRisorse, UsoRisorse } from '../preventivorisorse/preventivorisorse.component';
+import { Anno, Attivita, Avanzamento, Commessa, Mese, Risorse, TipoAvanzamento, TipoRisorse, TipoUsoRisorse, Usorisorse, UsoRisorse } from '../classi/ClassiGenerali';
+
 
 
 @Injectable({
@@ -34,6 +32,11 @@ export class InserimentoService {
   getRisorse()
   {
     return this.http.get<Risorse[]>(`http://localhost:8080/risorse`);
+  }
+
+  getRisorseActive()
+  {
+    return this.http.get<Risorse[]>(`http://localhost:8080/risorseActive`);
   }
 
   getTipoRisorse()
@@ -73,7 +76,7 @@ export class InserimentoService {
 
   setAttivita(a : Attivita) 
   {
-    return this.http.post<Attivita>(`http://localhost:8080/assegnaattivita`,a);
+    return this.http.post<string>(`http://localhost:8080/assegnaattivita`,a);
   }
 
   setAvanzamento(a : Avanzamento) 
@@ -126,4 +129,28 @@ export class InserimentoService {
     return this.http.post<string>(`http://localhost:8080/modrisorse`,r)
   }
 
+  getAnniCommesse(id: number)
+  {
+    return this.http.get<Anno[]>(`http://localhost:8080/anniCommesse/${id}`)
+  }
+
+  getTipiAvanzamento()
+  {​​
+    return this.http.get<TipoAvanzamento[]>(`http://localhost:8080/tipiavanzamento`)
+  }​​
+
+  getAttivitaCommessaByType(id: number,idt : number)
+  {
+    return this.http.get<Attivita[]>(`http://localhost:8080/tipiattivita/${id}/${idt}`)
+  }
+
+  getRisorseCommessaByType(id: number,idt : number)
+  {
+    return this.http.get<Risorse[]>(`http://localhost:8080/tipirisorse/${id}/${idt}`)
+  }
+
+  chiudipreventivo(id:number)
+  {
+    return this.http.put<string>(`http://localhost:8080/chiudiprev/${id}`,id)
+  }
 }

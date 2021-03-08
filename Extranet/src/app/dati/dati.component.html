@@ -1,8 +1,8 @@
 <div class="centrale">
     <div class="titolo">
-    <h1>{{titolo}}</h1>
+      <h1>{{titolo}}</h1>
     </div>
-  </div>
+</div>
 
 <div class="centrale">
   <div class="mat-elevation-z8">
@@ -42,8 +42,6 @@
         </ng-container>
         </section>
   
-     
-  
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
       </table>
@@ -51,6 +49,10 @@
     </div>
   </div>
 
+<div class="centrale">
+  <a>{{messaggio}}</a>
+</div>
+<br><br>
 <div class = "centrale" *ngIf="visualizza">
     <div class="form-group row">
         <label class="col-2 col-form-label" for="nomerisorse" name="lnomerisorse">Nome Risorsa</label>
@@ -61,13 +63,13 @@
          <div class="col-10">
              <input class="form-control" type="number" name='tariffa'    [(ngModel)]="risorsa.tariffa" required>
         </div>
-        <label for="datainizio" class="col-2 col-form-label">Data di inizio validita della nuova tariffa</label>
+        <!--<label for="datainizio" class="col-2 col-form-label">Data di inizio validita della nuova tariffa</label>
            <div class="col-10">
-              <input class="form-control" type="date" value="2011-08-19" id="datainizio"[(ngModel)]="risorsa.iniziovalidita" ><!---->
-           </div>
+              <input class="form-control" type="date" value="2011-08-19" id="datainizio"[(ngModel)]="risorsa.iniziovalidita" >
+           </div>-->
      </div> 
      <button type="submit" (click)=inserisciRisorsa()>Inserisci Risorsa</button>
-     <a>{{messaggio}}</a>
+    
 </div>
 
 <div class="centrale" *ngIf="modifica">

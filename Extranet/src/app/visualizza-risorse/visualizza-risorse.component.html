@@ -1,0 +1,65 @@
+<div class="centrale">
+    
+    <p class="h5"><strong>Seleziona l'anno per visualizzarne l'andamento</strong></p>
+             <br>
+                 <select [(ngModel)]="anno" (ngModelChange)="annoChanged($event)" name="anno" class="form-control form-control-lg">
+                     <option *ngFor="let anno1 of anni" [ngValue]="anno1">
+                         {{anno1.numero}}
+                     </option>
+                 </select>    
+         <br>
+ 
+         <p class="h5"><strong>Figure Professionali</strong></p>        
+ <table class="table table-bordered">
+     <thead>
+         <th scope="col">Attivita</th>
+         <th scope="col" *ngFor="let mese of mesi">{{mese.nome}}</th>
+     </thead>
+     <tbody>
+         <tr scope="row" *ngFor="let risorse of risorses">   
+             <td>{{risorse.nome}}</td>  
+             <td *ngFor="let mese of mesi">
+             <ng-container *ngFor="let usorisorses of risorse.usorisorse" >
+             <a *ngIf="mese.nome==usorisorses.mese?.nome && usorisorses.anno?.numero==anno.numero">{{usorisorses.ore}}<br></a>
+             </ng-container>
+             </td> 
+         </tr>
+     </tbody>
+ </table>
+
+ <p class="h5"><strong>Andamento Costi</strong></p>
+ <table class="table table-bordered">
+    <thead>
+        <th scope="col">Attivita</th>
+        <th scope="col" *ngFor="let mese of mesi">{{mese.nome}}</th>
+    </thead>
+    <tbody>
+        <tr scope="row" *ngFor="let risorse of risorses">   
+            <td>{{risorse.nome}}</td>  
+            <td *ngFor="let mese of mesi">
+            <ng-container *ngFor="let usorisorses of risorse.usorisorse" >
+            <a *ngIf="mese.nome==usorisorses.mese?.nome && usorisorses.anno?.numero==anno.numero">{{usorisorses.costi}}<br></a>
+            </ng-container>
+            </td> 
+        </tr>
+    </tbody>
+</table>
+
+<p class="h5"><strong>Andamento Ricavi</strong></p>
+<table class="table table-bordered">
+    <thead>
+        <th scope="col">Attivita</th>
+        <th scope="col" *ngFor="let mese of mesi">{{mese.nome}}<br></th>
+    </thead>
+    <tbody>
+        <tr scope="row" *ngFor="let risorse of risorses">   
+            <td>{{risorse.nome}}</td>  
+            <td *ngFor="let mese of mesi">
+            <ng-container *ngFor="let usorisorses of risorse.usorisorse" >
+            <a *ngIf="mese.nome==usorisorses.mese?.nome && usorisorses.anno?.numero==anno.numero">{{usorisorses.ricavi}}<br></a>
+            </ng-container>
+            </td> 
+        </tr>
+    </tbody>
+</table>
+ </div>

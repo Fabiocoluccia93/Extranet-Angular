@@ -1,0 +1,13 @@
+.zero
+{
+ border: 1px solid Transparent!important; 
+ border-right: 1px!important;
+}
+table
+{
+    box-shadow: 5px 5px 5px #bebcbc
+}
+th,col
+{
+    height: 20px;
+}

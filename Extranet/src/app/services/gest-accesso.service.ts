@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Gruppo, Utente } from '../login/login.component';
+import { Abilitazioni, Gruppo, Utente } from '../classi/ClassiUtenti';
+
 
 @Injectable({
   providedIn: 'root'
@@ -57,5 +58,10 @@ export class GestAccessoService {
   cercaUtenteDiGruppo(username : string , gruppo:string)
   {
     return this.http.get<Utente[]>(`http://localhost:8080/utenti/cercaUtenteGruppo/${username}/${gruppo}`)
+  }
+
+  getAbilitazioniByTipoUtente(idgruppo : number)
+  {
+    return this.http.get<Abilitazioni>(`http://localhost:8080/utenti/abilitazioni/${idgruppo}`)
   }
 }

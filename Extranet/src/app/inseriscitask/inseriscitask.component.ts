@@ -1,48 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ActivatedRouteSnapshot } from '@angular/router';
-import { Attivita } from '../preventivorisorse/preventivorisorse.component';
+import { Anno, Attivita, Avanzamento, Mese, TipoAvanzamento } from '../classi/ClassiGenerali';
 import { InserimentoService } from '../services/inserimento.service';
 
-export class Mese
-{
-  constructor(
-    public id_mese? : number,
-    public nome? : string
-  ){}
-}
 
-export class Anno
-{
-  constructor(
-    public id_anno? : number,
-    public numero? : number,
-  ){}
-}
-
-export class Avanzamento
-{
-  constructor(
-    public id_avanzamento? : number | null,
-    public mese? : Mese | null ,
-    public anno? : Anno | null ,
-    public attivita? : Attivita  | null,
-    public valore? : number  | null,
-    public percentuale? : number  | null,
-    public tipoAvanzamento? : TipoAvanzamento | null,
-    public consolida? : Date | null,
-    public fattura? : string | null
-  ){}
-}
-export class TipoAvanzamento
-{
-  constructor(
-    public  id_tipo_avanzamento? : number | null,
-    public nome? : string  | null
-  )
-  {
-
-  }
-}
 
 @Component({
   selector: 'app-inseriscitask',

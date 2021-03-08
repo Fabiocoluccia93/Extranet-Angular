@@ -31,8 +31,11 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { ModificaavanzamentoComponent } from './modificaavanzamento/modificaavanzamento.component';
 import { TableManagmentComponent } from './table-managment/table-managment.component';
 import { TableAdminComponent } from './table-admin/table-admin.component';
+import { RiepilogoComponent } from './riepilogo/riepilogo.component';
+import { ChartsModule } from 'ng2-charts';
 import { DatiComponent } from './dati/dati.component';
-
+import { VisualizzaAvanzamentoComponent } from './visualizza-avanzamento/visualizza-avanzamento.component';
+import { VisualizzaRisorseComponent } from './visualizza-risorse/visualizza-risorse.component';
 
 
 
@@ -59,7 +62,10 @@ import { DatiComponent } from './dati/dati.component';
     ResetPasswordComponent,
     ModificaavanzamentoComponent,
     TableManagmentComponent,
-    TableAdminComponent
+    TableAdminComponent,
+    RiepilogoComponent,
+    VisualizzaAvanzamentoComponent,
+    VisualizzaRisorseComponent
   ],
   imports: [
     BrowserModule,
@@ -72,7 +78,8 @@ import { DatiComponent } from './dati/dati.component';
     MatButtonModule,
     MatListModule,
     MatIconModule,
-    MatFormFieldModule
+    MatFormFieldModule, 
+    ChartsModule
   
   ],
   providers: [],

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Gruppo, Utente } from '../login/login.component';
+import { Gruppo, Utente } from '../classi/ClassiUtenti';
 import { GestAccessoService } from '../services/gest-accesso.service';
 
 @Component({
@@ -16,10 +16,18 @@ export class CreaUtenteComponent implements OnInit {
 
   regexp =  new RegExp('^[A-Za-z0-9]{7,20}$')
 
+
   constructor( private route : Router, private gest : GestAccessoService) { }
 
   ngOnInit(): void {
-    this.gest.tuttiGruppi().subscribe(response=>{this.tipologie=response})
+    this.gest.tuttiGruppi().subscribe(response=>{
+      response.forEach(element=>{
+        if(element.id!=1)
+        {
+          this.tipologie.push(element)
+        }
+      })
+    })
   }
 
   crea()

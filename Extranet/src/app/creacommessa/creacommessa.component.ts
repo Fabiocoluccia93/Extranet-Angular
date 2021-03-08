@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { Commessa } from '../selezionacommessa/selezionacommessa.component';
 import { FormGroup , FormControl , Validators } from '@angular/forms'
 import { InserimentoService } from '../services/inserimento.service';
 import { Router } from '@angular/router';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { observable } from 'rxjs';
+import { Commessa } from '../classi/ClassiGenerali';
+
 
 
 
@@ -33,34 +34,22 @@ export class CreacommessaComponent implements OnInit {
       {
         if(this.commessa.inizio<this.commessa.fine)
          {
-            console.log(this.commessa.id_commessa)
-            console.log(this.commessa.nome)
-            console.log(this.commessa.cliente)
-           console.log(this.commessa.inizio)
-           console.log(this.commessa.fine)
            this.commessa.valore=0
            if(this.regexp.test(this.commessa.nome) && this.regexp.test(this.commessa.cliente))
            {
-
-          
-           
-           //   this.commessa.inizio=null
-           //   this.commessa.fine=null
               this.commessa.fatturato=0
               this.commessa.valore=0
+              this.commessa.costo=0
+              this.commessa.fatturato_previsto=0
+              this.commessa.costo_previsto=0
+              this.commessa.prevchiuso=false
               this.inserisci.setCommessa(this.commessa).subscribe(response=>{
               let b = response
-                //this.a = b
                 let c  = b.toString()
                   sessionStorage.setItem("idcommessa",c);
-                 // sessionStorage.setItem("idcommessa",response.toString());
                   console.log("id commessa in creacommessa"+c)
-              
-                
               })
               this.messaggio="commessa inserita con successo"
-
-            
               setTimeout(() => 
               {
                 this.route.navigate(['assegnatask']);
@@ -93,7 +82,4 @@ export class CreacommessaComponent implements OnInit {
         window.alert("Inserisci tutti i dati")
       }
     }
-  
-   
-
 }

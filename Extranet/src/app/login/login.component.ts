@@ -4,26 +4,8 @@ import { SessionStorageService } from 'angular-web-storage';
 import { AppComponent } from '../app.component';
 import { GestAccessoService } from '../services/gest-accesso.service';
 import { SessionUtenteService } from '../services/session-utente.service';
+import { Utente } from '../classi/ClassiUtenti';
 
-export class Utente
-{
-  constructor(
-  public id ?: number ,
-  public username  ?: string,
-  public password ?:  string,
-  public stato ?: number,
-  public primo_accesso ?: number,
-  public gruppo ?: Gruppo
-  ){}
-}
-
-export class Gruppo
-{
-  constructor(
-   public id  ?: number,
-   public descrizione ?: string
-    ) {}
-} 
 
 @Component({
   selector: 'app-login',
@@ -55,15 +37,20 @@ export class LoginComponent implements OnInit {
           this.sessioneAutenticata.autenticazioneAccesso(this.utente)
            if(this.utente.stato===1)
            {
-                if(this.session.get('TIPOLOGIA')=="amministratore")
+                if(this.session.get('IDGRUPPO')=="1")
                 {
-                  window.alert("hai effettuato l'accesso come amministratore")
+                  window.alert("hai effettuato l'accesso come AMMINISTRATORE GENERALE")
                   this.route.navigate(['homepage'])          
                 }
-                else if(this.session.get('TIPOLOGIA')=="utente")
+                else if(this.session.get('IDGRUPPO')=="2")
+                {
+                  window.alert("hai effettuato l'accesso come UTENTE AMMINISTRATORE")
+                  this.route.navigate(['selezionacommessa'])
+                }
+                else if(this.session.get('IDGRUPPO')=="3")
                 {
                   window.alert("hai effettuato l'accesso come utente")
-                  this.route.navigate(['homepage'])
+                  this.route.navigate(['selezionacommessa'])
                 }
                 if(sessionStorage.getItem('STATOACCESSO')=="1"){
                   window.alert("Questo è il primo accesso che effettui, cambia password!")

@@ -1,13 +1,12 @@
 import { ThisReceiver } from '@angular/compiler';
 import { Component, OnInit , ViewChild } from '@angular/core';
-import { Avanzamento, TipoAvanzamento } from '../inseriscitask/inseriscitask.component';
 import { InserimentoService } from '../services/inserimento.service';
-import { Mese,Anno } from '../inseriscitask/inseriscitask.component';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
-import { ActivatedRoute } from '@angular/router';
-import { Commessa } from '../selezionacommessa/selezionacommessa.component';
-import { Attivita } from '../preventivorisorse/preventivorisorse.component';
+import { ActivatedRoute, Router } from '@angular/router';
+import { SessionStorageService } from 'angular-web-storage';
+import { Anno, Attivita, Avanzamento, Commessa, Mese, TipoAvanzamento } from '../classi/ClassiGenerali';
+
 
 
 @Component({
@@ -19,7 +18,7 @@ export class ModificaavanzamentoComponent implements OnInit {
 
  
   
-  constructor(private inserisci : InserimentoService, private activatedroute : ActivatedRoute) { }
+  constructor(private inserisci : InserimentoService, private activatedroute : ActivatedRoute, private session : SessionStorageService,private route : Router) { }
   avan : Avanzamento[] =[]
   avanzamenti : Avanzamento [] = []
   avanzamento : Avanzamento = new Avanzamento
@@ -27,7 +26,7 @@ export class ModificaavanzamentoComponent implements OnInit {
   attivita: Attivita = new Attivita
 
   tipoAvanzamento : TipoAvanzamento = new TipoAvanzamento
-
+  type : number=0
 
   a : number = 0
   b:number = 0
@@ -36,7 +35,7 @@ export class ModificaavanzamentoComponent implements OnInit {
 
 
   dataSource = new MatTableDataSource(this.avanzamenti);
-  displayedColumns: string[] = ['cod', 'nome', 'mese', 'anno', 'percentuale', 'valore', "getdetails","consolida"]
+  displayedColumns: string[] = ['cod', 'nome', 'mese', 'anno', 'percentuale', 'valore','getdetails','consolida','aggiungi']
   @ViewChild(MatPaginator, { static: true })
   paginator!: MatPaginator;
 
@@ -46,11 +45,19 @@ titolo : string =''
 commessa : Commessa = new Commessa
   ngOnInit(): void 
   {
+    if(this.session.get('TIPOLOGIA') == "utente")
+    {
+      this.displayedColumns = ['cod', 'nome', 'mese', 'anno', 'percentuale', 'valore']
+    }
+
+
+
     this.activatedroute.data.subscribe(data => { 
       switch(data.kind)
       {
         case('task') :
         {
+          this.type=1
           this.tipoAvanzamento.id_tipo_avanzamento = 1
           this.tipoAvanzamento.nome = "Task"
           console.log('task')
@@ -61,6 +68,7 @@ commessa : Commessa = new Commessa
         }
         case('ricavi') :
         {
+          this.type=2
           this.tipoAvanzamento.id_tipo_avanzamento = 2 
           this.tipoAvanzamento.nome = "Ricavi"
           this.percentuale=100
@@ -68,14 +76,16 @@ commessa : Commessa = new Commessa
           this.fattura=true
           console.log('ricavi')
           this.titolo="Ricavi delle Task di"
+          this.displayedColumns = ['cod', 'nome', 'mese', 'anno', 'percentuale', 'valore','fattura','aggiungi']
           break;
         }
         case('previsionericavi') :
         {
+          this.type=3
           this.tipoAvanzamento.id_tipo_avanzamento = 3 
           this.tipoAvanzamento.nome = "Previsione ricavi"
           console.log('previsionericavi')
-          this.titolo="Preveisione dei ricavi di"
+          this.titolo="Previsione dei ricavi di"
           this.percentuale=100
           this.tipo23=false
           this.fattura=false
@@ -83,12 +93,13 @@ commessa : Commessa = new Commessa
         }
         case('previsionetask') :
         {
+          this.type=4
           this.tipoAvanzamento.id_tipo_avanzamento = 4
           this.tipoAvanzamento.nome = "Previsione task"
           this.tipo23=true
           this.fattura=false
           console.log('previsionetask')
-          this.titolo="Preveisione avanzamento task di"
+          this.titolo="Previsione avanzamento task di"
           break;
         }
       }
@@ -230,5 +241,11 @@ nfattura : string =''
     this.inserisci.consolidaav(this.consolidaav).subscribe(response=>{this.messaggio=response})
   }
   
+  chiudipreventivo()
+  {
+    this.inserisci.chiudipreventivo(this.session.get('IDCOMMESSA')).subscribe(response=>{this.messaggio=response})
+    this.route.navigate(['riepilogo']);
+  }
+
 
 }

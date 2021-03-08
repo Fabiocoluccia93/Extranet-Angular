@@ -7,5 +7,5 @@ import { Component, Input } from '@angular/core';
 })
 export class AppComponent {
   title = 'extranet';
-  @Input() show :boolean = true
+  show :boolean = true
 }
