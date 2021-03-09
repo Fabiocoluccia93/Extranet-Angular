@@ -1,5 +1,16 @@
 <div class="centrale">
-    
+   
+    <div *ngIf="visualizza">
+    <b>seleziona tipologia</b>
+        <br>
+                <select [(ngModel)]="tipoavanzamento" (ngModelChange)="tipoavanzamentoChanged($event)" name="tipoavanzamento" class="form-control form-control-lg">
+                    <option *ngFor="let tipoavanzamento1 of tipiavanzamenti" [ngValue]="tipoavanzamento1">
+                        {{tipoavanzamento1.nome}}
+                    </option>
+                </select>    
+        <br>
+    </div>
+
    <b>seleziona l'anno</b> 
             <br>
                 <select [(ngModel)]="anno" (ngModelChange)="annoChanged($event)" name="anno" class="form-control form-control-lg">

@@ -44,7 +44,7 @@ const routes: Routes = [
   { path : "modificaavanzamento", component : ModificaavanzamentoComponent, canActivate:[RouteguardService, RouteguardTipologia3Service]},
   { path : "riepilogo", component : RiepilogoComponent, canActivate:[RouteguardService, RouteguardTipologiaService]},
   { path : "dati", component : DatiComponent, canActivate:[ RouteguardService, RouteguardTipologia3Service]},
-  { path : "vis" , component : VisualizzaAvanzamentoComponent, canActivate : [RouteguardService , RouteguardTipologiaService] },
+  { path : "vis" , component : VisualizzaAvanzamentoComponent,data:{kind:'a'}, canActivate : [RouteguardService , RouteguardTipologiaService] },
   { path : "ris" , component : VisualizzaRisorseComponent, canActivate : [RouteguardService , RouteguardTipologiaService] },
   { path : '**'  , component: ErrorPathComponent}
   
